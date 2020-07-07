@@ -184,10 +184,31 @@
           <a class="nav-link bg-info" href="http://facebook.com" style="text-align: center;"><strong style="font-variant:small-caps;">Facebook lapa</strong></a>
           <a class="nav-link bg-info" href="http://instagram.com" style="text-align: center;"><strong style="font-variant:small-caps;">Instagram lapa</strong></a>
           <a class="nav-link bg-danger" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">Login</strong></a>
+          <a class="nav-link bg-danger" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">Register</strong></a>
         <a class="nav-link bg-warning" href="/cart" style="text-align: center;"><strong style="font-variant:small-caps;">Grozs</strong></a>
         <a class="nav-link bg-warning" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
         <a class="nav-link bg-warning" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
-          <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
+          
+        <?php 
+        if(isset($_COOKIE['user'])):
+        ?>
+        <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
+            
+            <p class="text-center">Hello, <?=$_COOKIE['user']?>! </p> 
+        
+        </div>
+        <div style="padding-top: 5px;">
+        <a class="btn btn-outline-danger" href="/exit">EXIT</a>
+        </div>
+        <?php else: ?>
+        
+        <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
+            
+        <h5 class="text-center">Hello, Guest</h5>
+        
+        </div>
+        <?php endif; ?>
+        <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
             
             <input type="text" id="search" placeholder="Prece..." class="form-control bg-light border-0" small name="id">
     

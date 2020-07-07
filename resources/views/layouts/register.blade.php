@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,21 +69,24 @@ span.psw {
 </head>
 
 
-<h2>Login in Shop</h2>
+<h2>Register in Shop</h2>
 
 
   <div class="imgcontainer">
     <img class="rounded center" src="/images/A&A.jpg" alt="Avatar" class="avatar">
   </div>
-<form action="/login_final/" method="get">
-  <div class="container">
-    <p>Username:</p><input type="text" name="ulogin" id="ulogin" class="form-control" />
+<form action="/register_final/" method="get">
+    <div class="container">
+    <p>Name:</p><input type="text" name="reguname" id="reguname" class="form-control" />
   </div>
   <div class="container">
-    <p>Password:</p><input type="password" name="upsw" id="upsw" class="form-control" />
+    <p>Username:</p><input type="text" name="regulogin" id="regulogin" class="form-control" />
+  </div>
+  <div class="container">
+    <p>Password:</p><input type="password" name="regupsw" id="regupsw" class="form-control" />
   </div>
         
-    <button type="submit">Login</button>
+    <button type="submit">Register</button>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
