@@ -53,8 +53,18 @@ Route::get('/home_eng', function () {
 Route::get('/login', function(){
         return view('layouts/login');
 });
-
-
 Route::get('/login_final', [
         'uses' => 'LoginController@finishLogin'
+]);
+
+
+Route::get('/register', function(){
+        return view('layouts/register');
+});
+Route::get('/register_final', [
+        'uses' => 'RegController@finishReg'
+]);
+
+Route::get('/exit', [
+        'uses' => 'LoginController@loginExit'
 ]);
