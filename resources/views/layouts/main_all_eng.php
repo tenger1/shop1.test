@@ -183,7 +183,8 @@
         <a class="nav-link bg-success" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">autor-ziedi</strong></a>
           <a class="nav-link bg-info" href="http://facebook.com" style="text-align: center;"><strong style="font-variant:small-caps;">Facebook lapa</strong></a>
           <a class="nav-link bg-info" href="http://instagram.com" style="text-align: center;"><strong style="font-variant:small-caps;">Instagram lapa</strong></a>
-        <a class="nav-link bg-warning" href="/cart" style="text-align: center;"><strong style="font-variant:small-caps;">Grozs</strong></a>
+        <a class="nav-link bg-danger" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">Login</strong></a>
+          <a class="nav-link bg-warning" href="/cart" style="text-align: center;"><strong style="font-variant:small-caps;">Grozs</strong></a>
         <a class="nav-link bg-warning" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
         <a class="nav-link bg-warning" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
           <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
@@ -193,6 +194,7 @@
     <input type="button" id="GFG_Button" class="btn btn-primary" value="Meklēt" onclick="location.href='/search/'+escape(document.forms['idform'].elements['id'].value)">
     
         </form> 
+        
           <script>  
         $("#search").keypress(function(event) { 
             if (event.keyCode === 13) { 
