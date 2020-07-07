@@ -49,3 +49,12 @@ Route::get('/action_cart', [
 Route::get('/home_eng', function () {
         return view('layouts/main_all_eng');
 });
+
+Route::get('/login', function(){
+        return view('layouts/login');
+});
+
+
+Route::get('/login_final', [
+        'uses' => 'LoginController@finishLogin'
+]);
