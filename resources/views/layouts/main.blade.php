@@ -88,7 +88,7 @@
 }
 .col-md-3 a:hover{
     text-decoration: none;
-    letter-spacing: 8px;
+    letter-spacing: 5px;
     color: #c93200;  
     border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%
 }
@@ -153,9 +153,7 @@
        
    }
     </style>
-    <script src= 
-"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> 
-    </script>
+    
     <!-- <link href="css/starter-template.css" rel="stylesheet"> -->
     
   </head>
@@ -173,14 +171,12 @@
       
       
           <a class="nav-link bg-success btn" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">autor-ziedi</strong></a>
-          <a class="nav-link bg-info btn" href="http://facebook.com" style="text-align: center;"><strong style="font-variant:small-caps;">Facebook lapa</strong></a>
-          <a class="nav-link bg-info btn" href="http://instagram.com" style="text-align: center;"><strong style="font-variant:small-caps;">Instagram lapa</strong></a>
-          <a class="nav-link bg-danger btn" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">Login</strong></a>
+         <a class="nav-link bg-danger btn" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">Login</strong></a>
           <a class="nav-link bg-danger btn" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">Register</strong></a>
         <a class="nav-link bg-warning btn" href="/cart2" style="text-align: center;"><strong style="font-variant:small-caps;">Grozs</strong></a>
         <a class="nav-link bg-warning btn" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
         <a class="nav-link bg-warning btn" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
-    
+    </ul>
         <?php 
         if(isset($_COOKIE['user'])):
         ?>
@@ -190,7 +186,10 @@
         
         </div>
         <div style="padding-top: 5px;">
+            <ul class="navbar-nav mr-auto">
+        <a class="btn btn-outline-danger" href="/redactor" style="text-align: center;"><strong style="font-variant:small-caps;">Redactor</strong></a>
         <a class="btn btn-outline-danger" href="/exit">EXIT</a>
+            </ul>
         </div>
         <?php else: ?>
         
@@ -200,7 +199,7 @@
         
         </div>
         <?php endif; ?>
-    </ul>
+   
         <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
             
             <input type="text" id="search" placeholder="Prece..." class="form-control bg-light border-0" small name="id">
