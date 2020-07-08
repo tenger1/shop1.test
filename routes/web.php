@@ -77,3 +77,15 @@ Route::get('/exit', [
 Route::get('/change', [
         'uses' => 'ChangeController@change'
 ]);
+
+Route::get('/redactor',[
+	'uses' => 'RedactorController@Add'
+]);
+
+Route::get('/add_final', [
+        'uses' => 'AddController@Addtodb'
+]);
+
+Route::get('/delete_by_id', [
+        'uses' => 'DeleteController@Deletefromdb'
+]);
