@@ -69,7 +69,7 @@ span.psw {
 </head>
 
 
-<h2>Register in Shop</h2>
+<h2>Register in <a href="/home" class="">Shop</a></h2>
 
 
   <div class="imgcontainer">
@@ -77,20 +77,25 @@ span.psw {
   </div>
 <form action="/register_final/" method="get">
     <div class="container">
-    <p>Name:</p><input type="text" name="reguname" id="reguname" class="form-control" />
+    <p>Name <sup style="font-size: 150%; color: #f44336">*</sup>:</p><input type="text" name="reguname" id="reguname" class="form-control" />
   </div>
   <div class="container">
-    <p>Username:</p><input type="text" name="regulogin" id="regulogin" class="form-control" />
+      <p>Username <sup style="font-size: 150%; color: #f44336">*</sup>:</p><input type="text" name="regulogin" id="regulogin" class="form-control" />
   </div>
   <div class="container">
-    <p>Password:</p><input type="password" name="regupsw" id="regupsw" class="form-control" />
+      <p>Password <sup style="font-size: 150%; color: #f44336">*</sup>:</p><input type="password" name="regupsw" id="regupsw" class="form-control" />
   </div>
-        
-    <button type="submit">Register</button>
+  <div class="container">
+    <p>Role:</p><input type="text" name="regurole" id="regurole" class="form-control" />
   </div>
-
-  <div class="container" style="background-color:#f1f1f1">
     
+    
+    <button type="submit" class="btn btn-success">Register</button>
+   
+  </div>
+  
+  <div class="container-md" style="background-color:#f1f1f1">
+      <p style="padding-left: 20px;"><sup style="font-size: 150%; color: #f44336">*</sup> - Obligātie lauķi</p> 
 
   </div>
 </form>
