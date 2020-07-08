@@ -18,6 +18,7 @@
                }
                .goods_image{
                    width: 250px;
+                   height: 250px;
                }
                .goods_border{
                   border: 5px solid;
@@ -26,13 +27,13 @@
                   
                }
                .good_content{
-                   margin-top: 90px;
-                   margin-bottom: 90px;
-                   top:30px;
+                   margin-bottom: 50px;
+                   
                    left: 20px;
                    position: relative;
                    width: 350px;
-                  //border-bottom: 3px solid red;
+                   height: 620px;
+                  // border: 3px solid red;
                }
                .goods_pamatojums{
                    position: relative;
@@ -40,7 +41,7 @@
                    top: 0px;
                    right: 0;
                    width: 340px;
-                   height: 150px;
+                   height: 330px;
                   // border: 3px solid #73AD21;
                }
                
@@ -67,8 +68,6 @@ if($go == 0) $go= "Šī prece nav pieejama!";
 					<br>Cena: <span style="font-size: 140%; color: purple">{{$good->price}} €</span><span style="font-variant: normal">/gb.</span></p>
                     <p>Ražotājs: {{$good->country}}
                     <p> Piejamība gb.: <span class="cena" style="color:#cc6666">{{$go}}</span></p>
-					</p>
-                   
                     
                     </div>
                 </div>

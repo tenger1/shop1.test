@@ -53,6 +53,18 @@
                    $gcount = $good->count;
                    ?>
                     <p> Piejamība gb.: <span class="cena" style="color:#cc6666">{{$go}}</span></p>
+                    
+                    <?php if(!isset($_COOKIE['userrole'])):?>
+                    <?php elseif ($_COOKIE['userrole'] == 'admin'): ?> 
+                    <div style="border: 3px solid white;"><p>Mainīt uz: </p>
+                        <form action="/change/" method="get">
+                        <input class="form-group col-md-4" type="number" name="change" id="change" class="form-control" />
+                        <button class="btn btn-warning" type="submit">Change</button>
+                        </form>
+                    </div>
+                     <?php setcookie('id', $good->id, time() + 3600, "/");
+                     else: ?> <p></p>
+                     <?php endif; ?>
                 <form class="formorder" action="/order/{{$good->id}}">
                     <input type="submit" value="Pasūtīt" class="btn btn-success"/>
 		</form>
