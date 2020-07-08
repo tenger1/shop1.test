@@ -46,6 +46,11 @@ Route::get('/cart', [
 Route::get('/action_cart', [
         'uses' => 'CartController@CartClear'
 ]);
+
+Route::get('/cart2', [
+        'uses' => 'CartController2@Cart2Action'
+]);
+
 Route::get('/home_eng', function () {
         return view('layouts/main_all_eng');
 });
@@ -67,4 +72,8 @@ Route::get('/register_final', [
 
 Route::get('/exit', [
         'uses' => 'LoginController@loginExit'
+]);
+
+Route::get('/change', [
+        'uses' => 'ChangeController@change'
 ]);
