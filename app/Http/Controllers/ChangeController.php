@@ -10,12 +10,9 @@ class ChangeController extends Controller
     public function change(){
 
         $change = ($_GET["change"]);  
-        $changeid = $_COOKIE['id'];
+        $changeid = ($_GET['good_id']);
         
-        if($change <= -1){
-            echo "<h1>Ievadiet pozitivo skaitli vai 0</h1>";
-            exit();
-        }
+        
         $servername = "127.0.0.1:3308";
         $username = "user1";
         $password = "12345";
@@ -26,7 +23,7 @@ class ChangeController extends Controller
         $result = mysqli_query($conn, "UPDATE goods SET count = '$change' WHERE id = '$changeid'");
         if ($result) echo "<h1>Change good!</h1>";
         mysqli_close($conn);
-        header('location: /');
+        return view('welcome');
         
     }
     

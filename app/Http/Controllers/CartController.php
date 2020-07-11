@@ -30,4 +30,60 @@ print_r($result);
 //$result = mysqli_query($conn, "SELECT * x`FROM ".$table." WHERE id= ".$product_id."");
 
     }
+    
+    public function addtocartAction($id){
+        
+        $key = array_search($id, $_SESSION["cart"]);
+        if($key){
+            echo "<h1>Also added to cart!<h1>";
+        }
+        else {
+            $_SESSION["cart"][] = $id;
+            echo "<h1>Add $id</h1>";
+        
+        var_dump($_SESSION);
+        }
+    }
+    
+    public function deletefromcartAction(){
+        
+        $del_from_cart_id = ($_GET["id_to_delete"]);
+        $del_from_cart_id_space = "$del_from_cart_id ";
+        
+        
+        unset($_SESSION[$del_from_cart_id_space]);
+        
+        return view('cart');
+        
+    }
+       /*
+        $key = array_search($id, $_SESSION["cart"]);
+
+        if($key){
+            $_SESSION["cart"] = array_diff($_SESSION["cart"], ["$id"]);
+            echo "<h1>Id $id was deleted!</h1>";
+        }
+        
+        else echo "No such element in cart!";
+        var_dump($_SESSION);
+    }
+        
+        */
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
