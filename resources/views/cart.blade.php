@@ -6,7 +6,7 @@
         
         ?>
 <h1 style="text-align:center;">Cart</h1>
-	   @foreach($cart as $cart)   
+	    
            
            <style>
                .cat_g{
@@ -48,45 +48,72 @@
                    height: 150px;
                   // border: 3px solid #73AD21;
                }
-               
+               table, th, td {
+                   border: 3px solid black;
+               }
                
            </style>
+           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	
-		<div class="good_content">
+		<div class="table">
                     
-                    <p>
-					
-                        <a href="/goods/{{$cart->Gid}}"><img class= "goods_image goods_border"src="/images/{{$cart->Gid}}.jpg" alt="Good image" ></a>
-                    </p>
-                    <div class="goods_pamatojums">
-                        
-                        <p style="font-variant: small-caps; text-align: center;"> <a class="cat_g" href="/goods/{{$cart->Gid}}"> {{$cart->Gname}} </a>
-					<br>Cena: <span style="font-size: 140%; color: purple">{{$cart->Gprice}} €</span><span style="font-variant: normal">/gb.</span><br></p>
+                    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+                     <?php  foreach ($_SESSION as $v1) {
+                         echo "<tr>";
+                    foreach ($v1 as $v2) {
+                      echo "<td>$v2</td>";
+                     }
+                     echo "</tr>";
+                     }  ?>
+                     </table>
+                    <p class="text-right">Jusu pasūtījuma summa ir: <span class="text-uppercase" style="color: #c93200; font-size: 150%;"><?php 
+$prices = array_column($_SESSION, 'price');
+$counts = array_column($_SESSION, 'count');
+
+$summ = 0;
+for($i = 0; $i < count($prices); ++$i) {
+  $summ += $prices[$i]*$counts[$i];
+}
+
+echo $summ;?>€</span></p>
                     
-                        <p>Daudzums: <span style="font-size: 140%; color: purple">{{$cart->Gamount}} gb.</span></p>
-					
-                        <?php
-                        
-                        $am = $cart->Gamount;
-                        $pr = $cart->Gprice;
-                        
-                        $summ += $am*$pr;
-                        
-                        ?>
-                    </div>
                 </div>
-	@endforeach
-	
-        <h2>Kopā: <span style="color:#9c1402"><?php
-        echo $summ;
-        
-        ?></span>€</h2> 
         
     
-           <form method="get" action="/action_cart">
-    <button class="btn-success" type="submit">Continue</button>
+           
+           <form method="get" action="/uncart">
+               <div class="form-group col-md-2">
+                    <label for="id_to_delete">Input ID to delete:</label>
+                    <select class="form-control" type="number" name="id_to_delete" id="id_to_delete">
+                     <?php
+                        $prices = array_column($_SESSION, 'id');
+                        print_r($prices);
+                        for($i = 0; $i < count($prices); ++$i) {
+                        echo'<option value="'.$prices[$i].'">'.$prices[$i].'</option>';
+                        }
+                        ?>       
+                    </select><br>
+               </div>
+    <button class="btn btn-success ml-3" type="submit">Delete ID</button>  
 </form>
+           
+           <form action="/delete_all_cart">
+    <input class="btn btn-warning mt-3 ml-3" type="submit" value="Delete all" />
+</form>
+           <form action="/cart_continue">
+    <input class="btn-lg btn-danger mt-3 ml-3" type="submit" value="ORDERSUKA!" />
+</form>
+          
 
-        
+    
         
 @endsection

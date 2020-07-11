@@ -56,18 +56,49 @@
                     
                     <?php if(!isset($_COOKIE['userrole'])):?>
                     <?php elseif ($_COOKIE['userrole'] == 'admin'): ?> 
-                    <div style="border: 3px solid white;"><p>Mainīt uz: </p>
-                        <form action="/change/" method="get">
-                        <input class="form-group col-md-4" type="number" name="change" id="change" class="form-control" />
-                        <button class="btn btn-warning" type="submit">Change</button>
+                    
+                        <form class="form-inline" action="/change/" method="get">
+                            <div class="form-group mx-sm-3 mb-2"><p>Mainīt uz:</p>
+                            <input class="form-group col-md-4" type="number" name="change" id="change" class="form-control" min="0" />
+                            <input style="display:none" type="radio" id="good_id" name="good_id" value="{{$good->id}}" checked>
+                            </div>
+                        <button class="btn btn-warning mb-2" type="submit">Change</button>
                         </form>
-                    </div>
-                     <?php setcookie('id', $good->id, time() + 3600, "/");
-                     else: ?> <p></p>
+                    
+                     
+                      
                      <?php endif; ?>
-                <form class="formorder" action="/order/{{$good->id}}">
-                    <input type="submit" value="Pasūtīt" class="btn btn-success"/>
+                <form class="form-inline" action="/add_action/"> 
+                    <div class="form-group mx-sm-3 mb-2">
+                    <input type="number" class="form-control" name="daudzums" id="daudzums" placeholder="Cik daudz?" min="1"><br>
+                    <input style="display:none" type="radio" id="good_id" name="good_id" value="{{$good->id}}" checked>
+                    </div>
+                    
+                    <input style="margin-bottom: 20px;" type="submit" class="btn btn-primary mb-2" value="Add to cart" />
 		</form>
+                     
+                     <div class="table">
+                     <table class="table">
+                         <h2 style="font-variant: small-caps;">In your cart:</h2>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+                     <?php  foreach ($_SESSION as $v1) {
+                         echo "<tr>";
+                    foreach ($v1 as $v2) {
+                      echo "<td>$v2</td>";
+                     }
+                     echo "</tr>";
+                     }  ?>
+                     </table>
+                     </div>
+                    
 </div>
 	
 @endsection
