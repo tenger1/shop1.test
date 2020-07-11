@@ -39,9 +39,16 @@ Route::get('/home', function () {
 Route::get('/search/{search}', [
         'uses' => 'SearchController@SearchAction'
 ]);
-Route::get('/cart', [
-        'uses' => 'CartController@CartAction'
+
+
+Route::get('/cart/{id}', [
+        'uses' => 'CartController@addtocartAction'
 ]);
+
+Route::get('/uncart', [
+        'uses' => 'CartController@deletefromcartAction'
+]);
+
 
 Route::get('/action_cart', [
         'uses' => 'CartController@CartClear'
@@ -88,4 +95,15 @@ Route::get('/add_final', [
 
 Route::get('/delete_by_id', [
         'uses' => 'DeleteController@Deletefromdb'
+]);
+
+Route::get('/add_action', [
+        'uses' => 'CartController2@AddAction'
+]);
+Route::get('/delete_all_cart', [
+        'uses' => 'CartController2@DeleteAllAction'
+]);
+
+Route::get('/cart_continue', [
+        'uses' => 'CartController2@CartContinueAction'
 ]);
