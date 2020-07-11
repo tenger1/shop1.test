@@ -6,7 +6,9 @@
     <link rel="shortcut icon" href="/images/A&A.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
-
+    
+    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
 
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/starter-template/">
@@ -185,6 +187,13 @@
         <a class="nav-link bg-warning btn" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
         <a class="nav-link bg-warning btn" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
     </ul>
+      
+      <div>
+          <a class="nav-link bg-warning btn" href="/cart2/" title="To Cart">To Cart</a>
+          <span id="cartCtnItems">
+              
+          </span>
+      </div>
         <?php 
         if(isset($_COOKIE['user'])):
         ?>
