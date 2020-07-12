@@ -107,3 +107,7 @@ Route::get('/delete_all_cart', [
 Route::get('/cart_continue', [
         'uses' => 'CartController2@CartContinueAction'
 ]);
+Route::get('/search_by_name', [
+        'uses' => 'RedactorController@SearchByNameAction'
+]);
+
