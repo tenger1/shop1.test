@@ -60,7 +60,10 @@
   <button type="submit" class="btn btn-primary mb-2">Search</button>
 </form>
 </div>
-<table class="table">
+  
+                <?php if($key ?? ''){
+                
+                echo '<table class="table">
 <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -73,11 +76,8 @@
       <th scope="col">Comment</th>
     </tr>
   </thead>
-  <tbody>  
-                <?php 
-                
-                
-                foreach ($key as $v1) {
+  <tbody>';
+                foreach ($key ?? '' as $v1) {
                          echo "<tr>";
                     
                       echo "<td>";
@@ -108,6 +108,7 @@
                      
                      echo "</tr>";
                      }  
+                }
                               
                 ?>
 <tbody></table>
