@@ -89,19 +89,57 @@ var_dump($_SESSION);
     
      public function CartContinueAction(){
          
+         $name = ($_GET["name"]);
+         $adress = ($_GET["adress"]);
+         $phone = ($_GET["phone"]);
+         $info = ($_GET["info"]);
+         
          $servername = "127.0.0.1:3308";
 $username = "user1";
 $password = "12345";
 $dbname = "shop";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-print_r($_SESSION);
+//print_r($_SESSION);
 
+
+
+$id_to_delete = array_column($_SESSION, 'id');
+$count_to_delete = array_column($_SESSION, 'count');
+$product_name_to_delete = array_column($_SESSION, 'name');
+
+for($i = 0; $i < count($count_to_delete); ++$i){
+    $query = "INSERT INTO orders ( customer_name, adress, phone, countf, ptoduct_id, product_name, comment) VALUES ('".$name."','".$adress."','".$phone."','".$count_to_delete[$i]."','".$id_to_delete[$i]."','".$info."','".product_name_to_delete[$i]."')";
+
+    $result = mysqli_query($conn,$query);
+    
+}
+/*
+echo "<br>";
+print_r($id_to_delete);
+echo "<br>";
+print_r($count_to_delete);
+*/
+
+
+for($i = 0; $i < count($count_to_delete); ++$i){
+    $result = mysqli_query($conn, "UPDATE Goods SET count = count - '$count_to_delete[$i]' WHERE id = '$id_to_delete[$i]';");
+    if($result){
+      //  echo "<br>Update good!";
+    }
+    else echo "<br>Update ERROR!";
+}
+
+ 
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // Тут не знаю куда складывать заказы после того как пользователь нажимает купить типа. 
     // В $_SESSION как видищь массив с данными из карзины. 
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+mysqli_close($conn);
+        session_destroy();
 
+
+        
         return view('cart');
      }
     

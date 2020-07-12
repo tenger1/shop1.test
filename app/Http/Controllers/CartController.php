@@ -25,7 +25,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 $result = mysqli_query($conn, "SELECT orders.ptoduct_id, goods_orders.Gid  FROM goods_orders, orders WHERE goods_orders.Gid = orders.ptoduct_id");
 
 print_r($result);
-
+mysqli_close($conn);
 //$table = 'goods';
 //$result = mysqli_query($conn, "SELECT * x`FROM ".$table." WHERE id= ".$product_id."");
 
