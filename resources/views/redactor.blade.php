@@ -50,5 +50,67 @@
 </form>
 </div>
 
+<div class="container ">
+    <h2 style="margin-left: 30px; color: #df5000; font-variant: small-caps;">Mēklēt pēc vārda:</h2>
+<form action="/search_by_name/" method="get" class="form-inline">
+
+  <div class="form-group mx-sm-3 mb-2">
+      <input type="text" class="form-control ml-3" id="name_order" name="name_order" placeholder="name">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Search</button>
+</form>
+</div>
+<table class="table">
+<thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone</th>
+      <th scope="col">ID</th>
+      <th scope="col">Pcs.</th>
+      <th scope="col">Product</th>
+      <th scope="col">Comment</th>
+    </tr>
+  </thead>
+  <tbody>  
+                <?php 
+                
+                
+                foreach ($key as $v1) {
+                         echo "<tr>";
+                    
+                      echo "<td>";
+                      echo $v1['order_id'];
+                      echo "</td>";
+                      echo "<td>";
+                      echo $v1['customer_name'];
+                      echo "</td>";
+                      echo "<td>";
+                      echo $v1['adress'];
+                      echo "</td>";
+                      echo "<td>";
+                      echo $v1['phone'];
+                      echo "</td>";
+                      echo "<td>";
+                      echo $v1['ptoduct_id'];
+                      echo "</td>";
+                      echo "<td>";
+                      echo $v1['countf'];
+                      echo "</td>";
+                      echo "<td>";
+                      echo $v1['product_name'];
+                      echo "</td>";
+                      echo "<td>";
+                      echo $v1['comment'];
+                      echo "</td>";
+                      
+                     
+                     echo "</tr>";
+                     }  
+                              
+                ?>
+<tbody></table>
+
 
 @endsection
