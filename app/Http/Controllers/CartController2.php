@@ -37,7 +37,7 @@ class CartController2 extends Controller
         
        
      
-var_dump($_SESSION);
+
     }
     
     public function AddAction (){ 
@@ -83,7 +83,6 @@ var_dump($_SESSION);
     public function DeleteAllAction(){
         
         session_destroy();
-        
         return view('cart');
     }
     
