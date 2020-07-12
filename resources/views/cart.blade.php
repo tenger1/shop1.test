@@ -57,7 +57,7 @@
 	
 		<div class="table">
                     
-                    <table class="table">
+                    <table class="table ml-3">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -91,7 +91,7 @@ echo $summ;?>€</span></p>
     
            
            <form method="get" action="/uncart">
-               <div class="form-group col-md-2">
+               <div class="form-group col-md-2 ml-3">
                     <label for="id_to_delete">Input ID to delete:</label>
                     <select class="form-control" type="number" name="id_to_delete" id="id_to_delete">
                      <?php
@@ -101,16 +101,38 @@ echo $summ;?>€</span></p>
                         echo'<option value="'.$prices[$i].'">'.$prices[$i].'</option>';
                         }
                         ?>       
-                    </select><br>
+                    </select>
                </div>
-    <button class="btn btn-success ml-3" type="submit">Delete ID</button>  
+               <div class="form-row">
+    <button class="btn btn-success ml-3 mt-3" type="submit">Delete ID</button>  
 </form>
            
-           <form action="/delete_all_cart">
+           <form action="/delete_all_cart" method="get">
     <input class="btn btn-warning mt-3 ml-3" type="submit" value="Delete all" />
-</form>
-           <form action="/cart_continue">
-    <input class="btn-lg btn-danger mt-3 ml-3" type="submit" value="ORDERSUKA!" />
+           </form>
+</div>
+           <form class="ml-3" action="/cart_continue">
+               
+    <div class="form-group col-md-6">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Your name" required>
+    </div>
+    
+  <div class="form-group col-md-6">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" name="adress" placeholder="Raiņa bulvāris 19">
+  </div>
+
+    <div class="form-group col-md-6">
+      <label for="Phone">Phone</label>
+      <input type="tel" class="form-control" id="Phone" name="phone" placeholder="Your phone" required>
+    </div>
+    <div class="form-group col-md-6">
+    <label for="Textarea">Info</label>
+    <textarea class="form-control" id="Textarea" name="info" rows="5" placeholder="Extra info"></textarea>
+  </div>
+  
+    <input class="btn-lg btn-danger mt-3" type="submit" value="ORDERSUKA!" />
 </form>
           
 
