@@ -187,9 +187,17 @@
         <a class="nav-link bg-warning btn" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
         <a class="nav-link bg-warning btn" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
     </ul>
+      <?php 
+$prices2 = array_column($_SESSION, 'price');
+$counts2 = array_column($_SESSION, 'count');
+
+$summ2 = 0;
+for($i = 0; $i < count($prices2); ++$i) {
+  $summ2 += $prices2[$i]*$counts2[$i]; 
+}?>
       
       <div>
-          <a class="nav-link bg-warning btn" href="/cart2/" title="To Cart">To Cart</a>
+          <a class="nav-link bg-warning btn" href="/cart2/" title="Cart">Cart (<?php echo $summ2; ?> €)</a>
           <span id="cartCtnItems">
               
           </span>
@@ -199,7 +207,7 @@
         ?>
         <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
             
-            <p class="text-center">Hello, <?=$_COOKIE['user']?>! </p> 
+            <h5 class="text-center">Hello, <?=$_COOKIE['user']?>! </h5>
         
         </div>
         <div style="padding-top: 5px;">
@@ -253,7 +261,7 @@
                         <span style="left: 20px; top:20px; position: relative;">
                         <h1 style="text-align:center;" class="title">“A & A” Flowers shop</h1>
                         <img class="rounded center" src="/images/A&A.jpg" alt="Logo">
-                        <p class="font-weight-normal">Our shop “A & A” was created in 2020. year. 
+                        <p class="font-weight-normal text-center">Our shop “A & A” was created in 2020. year. 
                             <br> Its founders are professionals, florists <strong> Arthur </strong> and <strong> Artem. </strong> <br>
                             Having educated in the best universities in the world, they have decided to please the surrounding people with the beauty of flowers.
                             <br> <mark> <strong> We are a florist and ready to take your orders 24/7! </strong> </mark> <br> Every week we deliver goods from all over the world with the best flowers. Only with us you can buy the most beautiful, aromatic, long-lasting flowers that will melt any heart and delight your eyes for more than a week. <br> Place an order online or go to our store at 19 Raina Boulevard. <br> We offer our bouquets, sell them in pieces, and place orders according to your wishes. </p>

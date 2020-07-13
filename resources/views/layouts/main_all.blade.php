@@ -187,9 +187,17 @@
         <a class="nav-link bg-warning btn" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
         <a class="nav-link bg-warning btn" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
     </ul>
+      <?php 
+$prices2 = array_column($_SESSION, 'price');
+$counts2 = array_column($_SESSION, 'count');
+
+$summ2 = 0;
+for($i = 0; $i < count($prices2); ++$i) {
+  $summ2 += $prices2[$i]*$counts2[$i]; 
+}?>
       
       <div>
-          <a class="nav-link bg-warning btn" href="/cart2/" title="To Cart">To Cart</a>
+          <a class="nav-link bg-warning btn" href="/cart2/" title="Cart">Cart (<?php echo $summ2; ?> €)</a>
           <span id="cartCtnItems">
               
           </span>
@@ -199,7 +207,7 @@
         ?>
         <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
             
-            <p class="text-center">Hello, <?=$_COOKIE['user']?>! </p> 
+            <h5 class="text-center">Hello, <?=$_COOKIE['user']?>! </h5> 
         
         </div>
         <div style="padding-top: 5px;">
@@ -258,7 +266,7 @@
                         <span style="left: 20px; top:20px; position: relative;">
                         <h1 style="text-align:center;" class="title">“A & A” Ziedu veikals</h1>
                         <img class="rounded center" src="/images/A&A.jpg" alt="Logo">
-                        <p class="font-weight-normal">Mūsu veikals ieguva “A & A” nosaukumu 2020. gadā. 
+                        <p class="font-weight-normal text-center">Mūsu veikals ieguva “A & A” nosaukumu 2020. gadā. 
                             <br>Viņa dibinātāji ir sava darba profesionāļi, floristi <strong>Artūrs</strong> un <strong>Artems.</strong> <br>
                             Ieguvuši izglītību labākajās pasaules universitātēs, nolēmuši iepriecināt apkārtējos cilvēkus ar ziedu skaistumu.
                             <br> <mark><strong>Mēs nodarbojamies ar floristiku un esam gatavi veikt jūsu pasūtījumus 24/7!</strong></mark> <br>Katru nedēļu notiek preču piegāde no dažādām pasaules valstīm, ar vislabākajiem ziediem. Tikai pie mums var iegādāties visskaistākās, aromātiskās, ilgi dzīvojošās puķes, kas izkusīs jebkuru sirdi un priecāsies acis vairāk neka nedeļas garumā. <br>Noformējiet pasūtījumu tiešsaistē vai dodieties uz mūsu veikalu Raiņa bulvāris 19.<br><mark> Veikals strādā katru dienu no 8:00 līdz 22:00.</mark><br> Pasūtījumus veic un piegādā ārpus darba laikā par papildu samaksu.<br> Piedāvājam savus pušķus, pārdodam gabalos, kā arī veicam pasūtījumus pēc jūsu vēlmēm.</p>

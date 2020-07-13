@@ -182,8 +182,16 @@
         <a class="nav-link bg-warning btn" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
         
     </ul>
+      <?php 
+$prices2 = array_column($_SESSION, 'price');
+$counts2 = array_column($_SESSION, 'count');
+
+$summ2 = 0;
+for($i = 0; $i < count($prices2); ++$i) {
+  $summ2 += $prices2[$i]*$counts2[$i]; 
+}?>
       <div>
-          <a class="nav-link bg-warning btn" href="/cart2/" title="To Cart">To Cart</a>
+          <a class="nav-link bg-warning btn" href="/cart2/" title="Cart">Cart (<?php echo $summ2; ?> €)</a>
           <span id="cartCtnItems">
               
           </span>
@@ -193,7 +201,7 @@
         ?>
         <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
             
-            <p class="text-center">Hello, <?=$_COOKIE['user']?>! </p> 
+            <h5 class="text-center">Hello, <?=$_COOKIE['user']?>! </h5> 
         
         </div>
         <div style="padding-top: 5px;">
