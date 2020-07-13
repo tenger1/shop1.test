@@ -111,3 +111,6 @@ Route::get('/search_by_name', [
         'uses' => 'RedactorController@SearchByNameAction'
 ]);
 
+Route::get('/delivered/{id}', [
+        'uses' => 'RedactorController@DeliveredAction'
+]);
