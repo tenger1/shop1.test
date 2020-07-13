@@ -138,7 +138,7 @@ mysqli_close($conn);
         session_destroy();
 
 
-        
+        echo '<h1 style="color: red; text-align:center;">Veiksmīģi pasūtīts!</h1>';
         return view('cart');
      }
     

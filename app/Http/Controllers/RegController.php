@@ -28,12 +28,28 @@ $dbname = "shop";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
+$reg_check = mysqli_query($conn, "SELECT * FROM `login` WHERE `user` = '$rlogin'");
+if($reg_check->num_rows != 0){
+    echo "<h1>This user also exist!</h1>";
 
+    return view('register');
+    mysqli_close($conn);
+}
+else{
 $result = mysqli_query($conn, "INSERT INTO `login` (`name`, `user`, `password`, `role`) VALUES ('$rname', '$rlogin', '$rpass', '$rrole')");
-if ($result) echo "<h1>Added!</h1>";
-    else echo "<h1>Error!</h1>";   
+if ($result) {
+    
+    echo "<h1>Success!</h1>";
+    return view('register');
+}
+    else {
+        echo "<h1>DB Error!</h1>"; 
+        return view('register');
+    }
 
 mysqli_close($conn);
+
+}
 
     }
     

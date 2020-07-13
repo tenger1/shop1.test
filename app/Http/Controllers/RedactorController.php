@@ -19,6 +19,25 @@ class RedactorController extends Controller
        
         
    }
+   public function DeliveredAction($id){
+       $servername = "127.0.0.1:3308";
+        $username = "user1";
+        $password = "12345";
+        $dbname = "shop";
+        
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+       $result = mysqli_query($conn, "DELETE FROM orders WHERE order_id='$id'");
+       
+       if($result){ 
+           echo "<h1>Order deleted!</h1>";
+           return view ('redactor');
+       }
+       else {
+           echo "<h1>No such Order!</h1>";
+           return view ('redactor');
+           exit();
+       }
+   }
    
    public function SearchByNameAction (){
         $name = ($_GET["name_order"]); 
@@ -48,10 +67,16 @@ class RedactorController extends Controller
      //   if ($order) {
       //      return view('redactor', ['name' => $order]);
      //   }
-     return view('redactor', ["key"=>$data]);
+        if($result) return view('redactor', ["key"=>$data]);
+       else {
+           echo "<h1>No such Order!</h1>";
+           return view ('redactor');
+           exit();
+       }
+   }
+     
      //return view('redactor')->withTitle($data);
     }
    
    
    
-}

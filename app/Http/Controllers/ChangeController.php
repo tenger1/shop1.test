@@ -23,7 +23,7 @@ class ChangeController extends Controller
         $result = mysqli_query($conn, "UPDATE goods SET count = '$change' WHERE id = '$changeid'");
         if ($result) echo "<h1>Change good!</h1>";
         mysqli_close($conn);
-        return view('welcome');
+        return redirect('/goods/'.$changeid.'');
         
     }
     
