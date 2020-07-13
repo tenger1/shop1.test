@@ -66,6 +66,7 @@
                 echo '<table class="table">
 <thead class="thead-dark">
     <tr>
+      <th scope="col">Complete</th>
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Address</th>
@@ -80,6 +81,13 @@
                 foreach ($key ?? '' as $v1) {
                          echo "<tr>";
                     
+                    echo "<td>";
+                      echo '<form action="/delivered/';
+                      echo $v1['order_id'];
+                      echo'/" method="get" class="form-inline">
+  <button type="submit" class="btn btn-primary mb-2">Delivered</button>
+</form>';
+                      echo "</td>";
                       echo "<td>";
                       echo $v1['order_id'];
                       echo "</td>";
@@ -107,6 +115,8 @@
                       
                      
                      echo "</tr>";
+                     
+                     
                      }  
                 }
                               

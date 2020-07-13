@@ -57,7 +57,7 @@
 	
 		<div class="table">
                     
-                    <table class="table ml-3">
+                    <table class="table ml-4">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -90,10 +90,10 @@ echo $summ;?>€</span></p>
         
     
            
-           <form method="get" action="/uncart">
-               <div class="form-group col-md-2 ml-3">
+           <form class="form-inline ml-3" method="get" action="/uncart">
+               <div class="form-group mx-sm-3 mb-3">
                     <label for="id_to_delete">Input ID to delete:</label>
-                    <select class="form-control" type="number" name="id_to_delete" id="id_to_delete">
+                    <select class="form-control ml-3" type="number" name="id_to_delete" id="id_to_delete">
                      <?php
                         $prices = array_column($_SESSION, 'id');
                         print_r($prices);
@@ -103,15 +103,15 @@ echo $summ;?>€</span></p>
                         ?>       
                     </select>
                </div>
-               <div class="form-row">
-    <button class="btn btn-success ml-3 mt-3" type="submit">Delete ID</button>  
+               
+    <button class="btn btn-warning mb-3" type="submit">Delete ID</button>  
 </form>
-           
+           <div class="form-row">
            <form action="/delete_all_cart" method="get">
-    <input class="btn btn-warning mt-3 ml-3" type="submit" value="Delete all" />
+    <input class="btn-lg btn-danger ml-4" type="submit" value="Delete all cart" />
            </form>
 </div>
-           <form class="ml-3" action="/cart_continue">
+           <form class="ml-3 mt-3" action="/cart_continue">
                
     <div class="form-group col-md-6">
       <label for="name">Name</label>

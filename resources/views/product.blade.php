@@ -19,15 +19,13 @@
 }
 
  
-    .formorder{display:<?php $go = $good->count;
+    .formorder{<?php $go = $good->count;
                         if($go == 0){ 
                        $go= "Šī prece nav pieiejama!";
-                       //$formdisplay = "none";
+                       $formdisplay = "display:none;";
+                       echo $formdisplay;
                    }
-                   else $formdisplay = 'block';
-                   echo $formdisplay;
-                   
-                   ?>;}
+                   ?>}
 
     
 </style>
@@ -58,23 +56,23 @@
                     <?php elseif ($_COOKIE['userrole'] == 'admin'): ?> 
                     
                         <form class="form-inline" action="/change/" method="get">
-                            <div class="form-group mx-sm-3 mb-2"><p>Mainīt uz:</p>
-                            <input class="form-group col-md-4" type="number" name="change" id="change" class="form-control" min="0" />
+                            <div class="form-group mb-2">
+                            <input class="form-group col-md-4 form-control" placeholder="Daudzums" type="number" name="change" id="change" class="form-control" min="0" required/>
                             <input style="display:none" type="radio" id="good_id" name="good_id" value="{{$good->id}}" checked>
+                            <input class="btn btn-warning  ml-3" type="submit" value="Mainīt daudzumu" />
                             </div>
-                        <button class="btn btn-warning mb-2" type="submit">Change</button>
+                            
                         </form>
-                    
-                     
-                      
+                        
                      <?php endif; ?>
-                <form class="form-inline" action="/add_action/"> 
-                    <div class="form-group mx-sm-3 mb-2">
-                    <input type="number" class="form-control" name="daudzums" id="daudzums" placeholder="Cik daudz?" min="1"><br>
+                <form class="form-inline formorder" action="/add_action/"> 
+                    <div class="form-group mb-2">
+                        <label for="daudzums" style="color: #9c1402; font-size: 150%;">Cik daudz?</label>
+                        <input type="number" class="form-control ml-3" name="daudzums" id="daudzums" placeholder="Cik daudz?" min="1" max="{{$go}}" required/><br>
                     <input style="display:none" type="radio" id="good_id" name="good_id" value="{{$good->id}}" checked>
                     </div>
                     
-                    <input style="margin-bottom: 20px;" type="submit" class="btn btn-primary mb-2" value="Add to cart" />
+                    <input  type="submit" class="btn btn-primary mb-2 ml-3" value="Add to cart" />
 		</form>
                      
                      <div class="table">
