@@ -67,8 +67,6 @@ class RedactorController extends Controller
          * 
          */
         
-        if($id_from == '') echo 123;
-        
         if($name == '' && $id_from != '' && $id_to != ''){
            $conn = mysqli_connect($servername, $username, $password, $dbname);
         $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id BETWEEN '$id_from' AND '$id_to'");
@@ -82,7 +80,11 @@ class RedactorController extends Controller
 
         }
         
-        
+        if($name == '' && $id_from == '' && $id_to == ''){
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $result = mysqli_query($conn, "SELECT * FROM orders");
+
+        }
         
         if($name != '' && $id_from != '' && $id_to == ''){
             $id_from = ($_GET["id_from"]); 
