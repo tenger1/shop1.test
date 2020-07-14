@@ -50,16 +50,26 @@
 </form>
 </div>
 
-<div class="container ">
-    <h2 style="margin-left: 30px; color: #df5000; font-variant: small-caps;">Mēklēt pēc vārda:</h2>
+
+    <h2 style="margin-left: 30px; color: #df5000; font-variant: small-caps;">Mēklēt Pasūtījumus:</h2>
 <form action="/search_by_name/" method="get" class="form-inline">
 
-  <div class="form-group mx-sm-3 mb-2">
-      <input type="text" class="form-control ml-3" id="name_order" name="name_order" placeholder="name">
+  <div class="form-group mx-sm-3 mb-2 ml-3">
+      <input type="text" class="form-control" id="name_order" name="name_order" placeholder="Address">
   </div>
-  <button type="submit" class="btn btn-primary mb-2">Search</button>
-</form>
+<div class="form-group mx-sm-3 mb-2">
+    <input type="number" class="form-control" name="id_from" id="inputPassword2" min="1" placeholder="ID From">
 </div>
+<div class="form-group mx-sm-3 mb-2">
+    <input type="number" class="form-control" name="id_to" id="inputPassword2" min="1" placeholder="ID TO">
+</div>
+  <button type="submit" class="btn btn-primary mb-2 ml-3">Search</button>
+</div>
+</form>
+
+    
+
+
   
                 <?php if($key ?? ''){
                 
