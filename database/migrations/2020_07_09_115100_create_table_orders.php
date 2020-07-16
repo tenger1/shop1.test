@@ -13,13 +13,13 @@ class CreateTableOrders extends Migration
      */
     public function up()
     {
-        Schema::create('table_orders', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('customer_name');
 	    $table->text('city');
 	    $table->string('phone');
-	    $table->int('countf');
-	    $table->int('product_id');
+	    $table->integer('countf');
+	    $table->integer('product_id');
 	    $table->text('comment');
 	    $table->timestamps();
         });

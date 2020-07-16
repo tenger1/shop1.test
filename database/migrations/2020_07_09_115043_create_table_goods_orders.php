@@ -13,11 +13,11 @@ class CreateTableGoodsOrders extends Migration
      */
     public function up()
     {
-        Schema::create('table_goods_orders', function (Blueprint $table) {
-            $table->int('Gid');
+        Schema::create('goods_orders', function (Blueprint $table) {
+            $table->integer('Gid');
             $table->string('Gname');
 	    $table->float('Gprice');
-	    $table->int('Gamount');
+	    $table->integer('Gamount');
 	    $table->timestamps();
         });
     }

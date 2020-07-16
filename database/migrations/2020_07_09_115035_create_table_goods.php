@@ -13,15 +13,15 @@ class CreateTableGoods extends Migration
      */
     public function up()
     {
-        Schema::create('table_goods', function (Blueprint $table) {
+        Schema::create('goods', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
 	    $table->string('color');
 	    $table->string('country');
 	    $table->text('description');
 	    $table->float('price');
-	    $table->int('category_id');
-	    $table->int('count')->default(0);
+	    $table->integer('category_id');
+	    $table->integer('count')->default(0);
 	    $table->string('latin_url');
 	    $table->timestamps();
         });
