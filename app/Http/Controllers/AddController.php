@@ -7,11 +7,11 @@ use App\Goods;
 class AddController extends Controller
 {
     public function Addtodb (){
-        if($_COOKIE['userrole'] != 'admin'){
-            echo "<h1>You are admin!</h1>";
-            return view('welcome');
+        if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
+            echo "<h1>You are not Admin!</h1>";
+            return view ('welcome');  
         }
-        else{
+        else{   
         $name = ($_GET["name"]);
         $color = ($_GET["color"]);
         $country = ($_GET["country"]);

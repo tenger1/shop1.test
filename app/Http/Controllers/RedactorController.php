@@ -10,23 +10,26 @@ use Illuminate\Http\Request;
 class RedactorController extends Controller
 {
    public function Add(){
-      
-           if($_COOKIE['userrole'] == 'admin'){
-            return view('redactor');
-           
+      if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){  
+        echo "<h1>You are not Admin!</h1>";
+        return view ('welcome');
         }
-        else {echo "<h1>You are not Admin!</h1>"; return view('welcome');}
-       
-        
+        else return view('redactor');     
    }
+   
    public function DeliveredAction($id){
-       $servername = "127.0.0.1:3308";
+       if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){  
+        echo "<h1>You are not Admin!</h1>";
+        return view ('welcome');
+        }
+        else{ 
+        $servername = "127.0.0.1:3308";
         $username = "user1";
         $password = "12345";
         $dbname = "shop";
         
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-       $result = mysqli_query($conn, "DELETE FROM orders WHERE order_id='$id'");
+        $result = mysqli_query($conn, "DELETE FROM orders WHERE order_id='$id'");
        
        if($result){ 
            echo "<h1>Order deleted!</h1>";
@@ -38,9 +41,16 @@ class RedactorController extends Controller
            exit();
        }
    }
+   }
    
    public function SearchByNameAction (){
         $result = false;
+        
+   if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
+        echo "<h1>You are not Admin!</h1>";
+        return view ('welcome');
+        }
+        else{     
         
         $name = ($_GET["name_order"]); 
         $id_from = ($_GET["id_from"]); 
@@ -69,52 +79,52 @@ class RedactorController extends Controller
         
         if($name == '' && $id_from != '' && $id_to != ''){
            $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id BETWEEN '$id_from' AND '$id_to'");
+        $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id BETWEEN '$id_from' AND '$id_to' ORDER BY datums ASC");
         
         }
         
         
         if($name != '' && $id_from == '' && $id_to == ''){
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%'");
+        $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%' ORDER BY datums ASC");
 
         }
         
         if($name == '' && $id_from == '' && $id_to == ''){
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $result = mysqli_query($conn, "SELECT * FROM orders");
+        $result = mysqli_query($conn, "SELECT * FROM orders ORDER BY datums ASC");
 
         }
         
         if($name != '' && $id_from != '' && $id_to == ''){
             $id_from = ($_GET["id_from"]); 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%' AND order_id>='$id_from'");
+        $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%' AND order_id>='$id_from' ORDER BY datums ASC");
 
         }
         if($name != '' && $id_from == '' && $id_to != ''){
             $id_to = ($_GET["id_to"]); 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%' AND order_id<='$id_to'");
+        $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%' AND order_id<='$id_to' ORDER BY datums ASC");
 
         }
         if($name != '' && $id_from != '' && $id_to != ''){
             $id_to = ($_GET["id_to"]); 
             $id_from = ($_GET["id_from"]); 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%' AND order_id<='$id_to' AND order_id>='$id_from'");
+        $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%' AND order_id<='$id_to' AND order_id>='$id_from' ORDER BY datums ASC");
 
         }
         
         if($name == '' && $id_from == '' && $id_to != ''){
            $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id<='$id_to'");
+        $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id<='$id_to' ORDER BY datums ASC");
         
 
         }
         if($name == '' && $id_from != '' && $id_to == ''){
            $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id>='$id_from'");
+        $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id>='$id_from' ORDER BY datums ASC");
         
 
         }
@@ -136,16 +146,20 @@ class RedactorController extends Controller
      //   if ($order) {
       //      return view('redactor', ['name' => $order]);
      //   }
+         
+        
         if($result) return view('redactor', ["key"=>$data]);
        else {
            echo "<h1>No such Order!</h1>";
            return view ('redactor');
            exit();
        }
-   }
+   
      
      //return view('redactor')->withTitle($data);
     }
+}
+}
    
    
    

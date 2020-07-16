@@ -92,6 +92,8 @@ class CartController2 extends Controller
          $adress = ($_GET["adress"]);
          $phone = ($_GET["phone"]);
          $info = ($_GET["info"]);
+         $datums = ($_GET["datums"]);
+         echo $datums;
          
          $servername = "127.0.0.1:3308";
 $username = "user1";
@@ -108,7 +110,7 @@ $count_to_delete = array_column($_SESSION, 'count');
 $product_name_to_delete = array_column($_SESSION, 'name');
 
 for($i = 0; $i < count($count_to_delete); ++$i){
-    $query = "INSERT INTO orders ( customer_name, adress, phone, countf, ptoduct_id, product_name, comment) VALUES ('".$name."','".$adress."','".$phone."','".$count_to_delete[$i]."','".$id_to_delete[$i]."','".$product_name_to_delete[$i]."','".$info."')";
+    $query = "INSERT INTO orders ( customer_name, adress, phone, countf, ptoduct_id, product_name, comment, datums) VALUES ('".$name."','".$adress."','".$phone."','".$count_to_delete[$i]."','".$id_to_delete[$i]."','".$product_name_to_delete[$i]."','".$info."','".$datums."')";
 
     $result = mysqli_query($conn,$query);
     

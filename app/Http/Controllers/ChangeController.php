@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Input;
 class ChangeController extends Controller
 {
     public function change(){
+        if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
+            echo "<h1>You are not Admin!</h1>";
+            return view ('welcome');  
+        }
+        else{ 
 
         $change = ($_GET["change"]);  
         $changeid = ($_GET['good_id']);
@@ -27,5 +32,5 @@ class ChangeController extends Controller
         
     }
     
-    
+        } 
 }
