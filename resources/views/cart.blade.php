@@ -1,14 +1,15 @@
 @extends('layouts.main')
 
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	    <?php
         $summ = 0;
         
         ?>
 <h1 style="text-align:center;">Cart</h1>
 	    
-           
-           <style>
+          <style>
                .cat_g{
                    font-size: 25px;
                    
@@ -131,7 +132,14 @@ echo $summ;?>€</span></p>
     <label for="Textarea">Info</label>
     <textarea class="form-control" id="Textarea" name="info" rows="5" placeholder="Extra info"></textarea>
   </div>
-  
+               
+    
+
+               <div class="form-group col-md-6">
+               <label for="datums">Datums un laiks saņemšanai:</label>
+  <input class="form-control" type="datetime-local" id="datums" name="datums">
+               </div>
+
     <input class="btn-lg btn-danger mt-3" type="submit" value="ORDERSUKA!" />
 </form>
           

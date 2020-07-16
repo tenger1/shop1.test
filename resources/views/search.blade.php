@@ -4,9 +4,9 @@
 	   @foreach($good as $good)   
            
            <style>
-                           .cat_g{
+               .cat_g{
                    font-size: 25px;
-                   margin-left: 50px;
+                   
                    color: #c93200;
                    font-variant: small-caps;
                    transition: 0.4s;
@@ -18,6 +18,7 @@
                }
                .goods_image{
                    width: 250px;
+                   height: 250px;
                }
                .goods_border{
                   border: 5px solid;
@@ -26,43 +27,49 @@
                   
                }
                .good_content{
+                   margin-bottom: 50px;
+                   
                    left: 20px;
                    position: relative;
-                   //border: 3px solid #73AD21;
+                   width: 350px;
+                   height: 620px;
+                  // border: 3px solid red;
                }
                .goods_pamatojums{
-                   position: absolute;
+                   position: relative;
                    
                    top: 0px;
                    right: 0;
-                   width: 500px;
-                   height: 270px;
-                   //border: 3px solid #73AD21;
+                   width: 340px;
+                   height: 330px;
+                  // border: 3px solid #73AD21;
                }
+               
+               
            </style>
-                      <?php
+           
+           <?php
 $go = $good->count;
 if($go == 0) $go= "Šī prece nav pieejama!";
 
 
 ?>
+		    
 		<div class="good_content">
                     <p>
 					
-                    <img class= "goods_image goods_border"src="/images/{{$good->id}}.jpg" alt="Good image" href="/goods/{{$good->id}}">
+                        <a href="/goods/{{$good->id}}"><img class= "goods_image goods_border"src="/images/{{$good->id}}.jpg" alt="Good image" ></a>
                     </p>
                     <div class="goods_pamatojums">
                         
                         
           
-                    <p style="font-variant: small-caps"> <a class="cat_g" href="/goods/{{$good->id}}"> {{$good->name}} </a>
-					<br>Cena: <span style="font-size: 140%; color: purple">{{$good->price}}€</span><span style="font-variant: normal">/gb.</span></p>
+                    <p style="font-variant: small-caps; text-align: center;"> <a class="cat_g" href="/goods/{{$good->id}}"> {{$good->name}} </a>
+					<br>Cena: <span style="font-size: 140%; color: purple">{{$good->price}} €</span><span style="font-variant: normal">/gb.</span></p>
                     <p>Ražotājs: {{$good->country}}
                     <p> Piejamība gb.: <span class="cena" style="color:#cc6666">{{$go}}</span></p>
-                       
-                    </p>
-                                        
-                     </div>
+                    
+                    </div>
                 </div>
 	@endforeach
 	

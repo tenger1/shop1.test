@@ -85,6 +85,7 @@
       <th scope="col">Pcs.</th>
       <th scope="col">Product</th>
       <th scope="col">Comment</th>
+      <th scope="col">Datums</th>
     </tr>
   </thead>
   <tbody>';
@@ -121,6 +122,9 @@
                       echo "</td>";
                       echo "<td>";
                       echo $v1['comment'];
+                      echo "</td>";
+                      echo "<td>";
+                      echo $v1['datums'];
                       echo "</td>";
                       
                      
