@@ -7,7 +7,7 @@
         $summ = 0;
         
         ?>
-<h1 style="text-align:center;">Cart</h1>
+<h1 style="text-align:center;">Jūsu grozs</h1>
 	    
           <style>
                .cat_g{
@@ -62,9 +62,9 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Price, €</th>
-      <th scope="col">Quantity</th>
+      <th scope="col">Nosaukums</th>
+      <th scope="col">Cena, €</th>
+      <th scope="col">Daudzums</th>
     </tr>
   </thead>
   <tbody>
@@ -93,7 +93,7 @@ echo $summ;?>€</span></p>
            
            <form class="form-inline ml-3" method="get" action="/uncart">
                <div class="form-group mx-sm-3 mb-3">
-                    <label for="id_to_delete">Input ID to delete:</label>
+                    <label for="id_to_delete">Izdzēst pēc ID:</label>
                     <select class="form-control ml-3" type="number" name="id_to_delete" id="id_to_delete">
                      <?php
                         $prices = array_column($_SESSION, 'id');
@@ -116,23 +116,23 @@ echo $summ;?>€</span></p>
            <form class="ml-3 mt-3" action="/cart_continue">
                
     <div class="form-group col-md-6">
-      <label for="name">Name</label>
+      <label for="name">Jūsu vārds</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="Your name" value="<?php 
     if(isset($_COOKIE['user'])){
     echo $_COOKIE['user'];} ?>" required>
     </div>
     
   <div class="form-group col-md-6">
-    <label for="inputAddress">Address</label>
+    <label for="inputAddress">Adrese</label>
     <input type="text" class="form-control" id="inputAddress" name="adress" placeholder="Raiņa bulvāris 19">
   </div>
 
     <div class="form-group col-md-6">
-      <label for="Phone">Phone</label>
+      <label for="Phone">Telefona numurs</label>
       <input type="tel" class="form-control" id="Phone" name="phone" placeholder="Your phone">
     </div>
     <div class="form-group col-md-6">
-    <label for="Textarea">Info</label>
+    <label for="Textarea">Papildus infornācija</label>
     <textarea class="form-control" id="Textarea" name="info" rows="5" placeholder="Extra info"></textarea>
   </div>
                
@@ -143,7 +143,7 @@ echo $summ;?>€</span></p>
                <input class="form-control" type="datetime-local" id="datums" name="datums" required>
                </div>
 
-    <input class="btn-lg btn-danger mt-3" type="submit" value="ORDERSUKA!" />
+    <input class="btn-lg btn-danger mt-3" type="submit" value="Pasūtīt!" />
 </form>
           
 

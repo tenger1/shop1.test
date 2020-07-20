@@ -72,18 +72,18 @@
                     <input style="display:none" type="radio" id="good_id" name="good_id" value="{{$good->id}}" checked>
                     </div>
                     
-                    <input  type="submit" class="btn btn-primary mb-2 ml-3" value="Add to cart" />
+                    <input  type="submit" class="btn btn-primary mb-2 ml-3" value="Grozā" />
 		</form>
                      
                      <div class="table">
                      <table class="table">
-                         <h2 style="font-variant: small-caps;">In your cart:</h2>
+                         <h2 style="font-variant: small-caps;">Jūsu grozā:</h2>
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
+      <th scope="col">Nosaukums</th>
+      <th scope="col">Cena, €</th>
+      <th scope="col">Daudzums</th>
     </tr>
   </thead>
   <tbody>

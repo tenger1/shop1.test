@@ -3,7 +3,7 @@
 @section('content')  
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-<h1 style="text-align: center; font-variant: small-caps; margin-top: 30px;">Redactor</h1>
+<h1 style="text-align: center; font-variant: small-caps; margin-top: 30px;">Redactors</h1>
 <h2 style="margin-left: 40px; color: #df5000; font-variant: small-caps;">Pievienot ziedu:</h2>
 <form action="/add_final/" method="get" style="margin-left: 30px;">
   <div class="form-row">
@@ -34,7 +34,7 @@
   </div>
     </div>
     
-    <button style="margin:20px;" type="submit" class="btn btn-warning">Add</button>
+    <button style="margin:20px;" type="submit" class="btn btn-warning">Pievienot</button>
  
 </form>
 
@@ -57,7 +57,7 @@
     <lable for="del_id">Zieda ID:</lable><input type="number" name="del_id" id="del_id" class="form-control col-md-2" />
   </div>
         
-    <button style="margin:20px;" type="submit" class="btn btn-warning">Delete</button>
+    <button style="margin:20px;" type="submit" class="btn btn-warning">Dzēst</button>
   
 </form>
 </div>
@@ -75,7 +75,7 @@
 <div class="form-group mx-sm-3 mb-2">
     <input type="number" class="form-control" name="id_to" id="inputPassword2" min="1" placeholder="ID TO">
 </div>
-  <button type="submit" class="btn btn-primary mb-2 ml-3">Search</button>
+  <button type="submit" class="btn btn-primary mb-2 ml-3">Meklēt</button>
 </div>
 </form>
     
