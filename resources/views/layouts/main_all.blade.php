@@ -6,10 +6,14 @@
     <link rel="shortcut icon" href="/images/A&A.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
-    
-    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
 
+    <link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/google-translate.js"></script>
+<script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/starter-template/">
 
@@ -28,6 +32,7 @@
 
 
     <style>
+        
       .search{
     position:relative;
 }
@@ -91,7 +96,7 @@
 }
 .col-md-3 a:hover{
     text-decoration: none;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     color: #c93200;  
     border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%
 }
@@ -180,14 +185,13 @@
     <ul class="navbar-nav mr-auto">
       
       
-          <a class="nav-link bg-success btn" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">autor-ziedi</strong></a>
+        <a class="nav-link bg-success btn" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">autor-ziedi</strong></a>
          <a class="nav-link bg-danger btn" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">Login</strong></a>
           <a class="nav-link bg-danger btn" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">Register</strong></a>
         <a class="nav-link bg-warning btn" href="/cart2" style="text-align: center;"><strong style="font-variant:small-caps;">Grozs</strong></a>
         <a class="nav-link bg-warning btn" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
         <a class="nav-link bg-warning btn" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
-    </ul>
-      <?php 
+		<?php 
 $prices2 = array_column($_SESSION, 'price');
 $counts2 = array_column($_SESSION, 'count');
 
@@ -196,44 +200,38 @@ for($i = 0; $i < count($prices2); ++$i) {
   $summ2 += $prices2[$i]*$counts2[$i]; 
 }?>
       
-      <div>
+      
           <a class="nav-link bg-warning btn" href="/cart2/" title="Cart">Cart (<?php echo $summ2; ?> €)</a>
-          <span id="cartCtnItems">
-              
-          </span>
-      </div>
+          
         <?php 
         if(isset($_COOKIE['user'])):
         ?>
-        <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
+        
             
             <h5 class="text-center">Hello, <?=$_COOKIE['user']?>! </h5> 
         
-        </div>
-        <div style="padding-top: 5px;">
-            <ul class="navbar-nav mr-auto">
+        
+       
+            
         <a class="btn btn-outline-danger" href="/redactor" style="text-align: center;"><strong style="font-variant:small-caps;">Redactor</strong></a>
         <a class="btn btn-outline-danger" href="/exit">EXIT</a>
-            </ul>
-        </div>
+            
+        
         <?php else: ?>
         
-        <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
+        
             
         <h5 class="text-center">Hello, Guest</h5>
         
-        </div>
+        
         <?php endif; ?>
-   
-        <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
+          <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
             
             <input type="text" id="search" placeholder="Prece..." class="form-control bg-light border-0" small name="id">
     
     <input type="button" id="GFG_Button" class="btn btn-primary" value="Meklēt" onclick="location.href='/search/'+escape(document.forms['idform'].elements['id'].value)">
     
-    
         </form> 
-        
           <script>  
         $("#search").keypress(function(event) { 
             if (event.keyCode === 13) { 
@@ -242,10 +240,10 @@ for($i = 0; $i < count($prices2); ++$i) {
         }); 
    
         $("#GFG_Button").click(function() { 
-            alert("Mēklēšana tiek izpildīta!"); 
+            alert("Mēklēšana tiek izpilīta!"); 
         }); 
     </script>
-       
+     </ul>  
   </div>
 </nav>
 
@@ -266,7 +264,7 @@ for($i = 0; $i < count($prices2); ++$i) {
                         <span style="left: 20px; top:20px; position: relative;">
                         <h1 style="text-align:center;" class="title">“A & A” Ziedu veikals</h1>
                         <img class="rounded center" src="/images/A&A.jpg" alt="Logo">
-                        <p class="font-weight-normal text-center">Mūsu veikals ieguva “A & A” nosaukumu 2020. gadā. 
+                        <p class="font-weight-normal">Mūsu veikals ieguva “A & A” nosaukumu 2020. gadā. 
                             <br>Viņa dibinātāji ir sava darba profesionāļi, floristi <strong>Artūrs</strong> un <strong>Artems.</strong> <br>
                             Ieguvuši izglītību labākajās pasaules universitātēs, nolēmuši iepriecināt apkārtējos cilvēkus ar ziedu skaistumu.
                             <br> <mark><strong>Mēs nodarbojamies ar floristiku un esam gatavi veikt jūsu pasūtījumus 24/7!</strong></mark> <br>Katru nedēļu notiek preču piegāde no dažādām pasaules valstīm, ar vislabākajiem ziediem. Tikai pie mums var iegādāties visskaistākās, aromātiskās, ilgi dzīvojošās puķes, kas izkusīs jebkuru sirdi un priecāsies acis vairāk neka nedeļas garumā. <br>Noformējiet pasūtījumu tiešsaistē vai dodieties uz mūsu veikalu Raiņa bulvāris 19.<br><mark> Veikals strādā katru dienu no 8:00 līdz 22:00.</mark><br> Pasūtījumus veic un piegādā ārpus darba laikā par papildu samaksu.<br> Piedāvājam savus pušķus, pārdodam gabalos, kā arī veicam pasūtījumus pēc jūsu vēlmēm.</p>

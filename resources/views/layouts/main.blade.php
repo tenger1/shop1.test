@@ -6,11 +6,8 @@
     <link rel="shortcut icon" href="/images/A&A.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
-    
-    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
 
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/starter-template/">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -91,7 +88,7 @@
 }
 .col-md-3 a:hover{
     text-decoration: none;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     color: #c93200;  
     border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%
 }
@@ -155,9 +152,10 @@
        
        
    }
- 
     </style>
-    
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> 
+    </script>
     <!-- <link href="css/starter-template.css" rel="stylesheet"> -->
     
   </head>
@@ -172,17 +170,15 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault" >
     <ul class="navbar-nav mr-auto">
-      
-      
+     
           <a class="nav-link bg-success btn" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">autor-ziedi</strong></a>
          <a class="nav-link bg-danger btn" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">Login</strong></a>
           <a class="nav-link bg-danger btn" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">Register</strong></a>
         <a class="nav-link bg-warning btn" href="/cart2" style="text-align: center;"><strong style="font-variant:small-caps;">Grozs</strong></a>
         <a class="nav-link bg-warning btn" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
         <a class="nav-link bg-warning btn" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
-        
-    </ul>
-      <?php 
+          
+		  <?php 
 $prices2 = array_column($_SESSION, 'price');
 $counts2 = array_column($_SESSION, 'count');
 
@@ -190,44 +186,37 @@ $summ2 = 0;
 for($i = 0; $i < count($prices2); ++$i) {
   $summ2 += $prices2[$i]*$counts2[$i]; 
 }?>
-      <div>
+      
           <a class="nav-link bg-warning btn" href="/cart2/" title="Cart">Cart (<?php echo $summ2; ?> €)</a>
-          <span id="cartCtnItems">
-              
-          </span>
-      </div>
+          
         <?php 
         if(isset($_COOKIE['user'])):
         ?>
-        <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
-            
+             
             <h5 class="text-center">Hello, <?=$_COOKIE['user']?>! </h5> 
         
-        </div>
-        <div style="padding-top: 5px;">
-            <ul class="navbar-nav mr-auto">
+       
         <a class="btn btn-outline-danger" href="/redactor" style="text-align: center;"><strong style="font-variant:small-caps;">Redactor</strong></a>
         <a class="btn btn-outline-danger" href="/exit">EXIT</a>
-            </ul>
-        </div>
+        
+        
         <?php else: ?>
         
-        <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
+        
             
         <h5 class="text-center">Hello, Guest</h5>
         
-        </div>
+        
         <?php endif; ?>
    
+		  
         <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
             
             <input type="text" id="search" placeholder="Prece..." class="form-control bg-light border-0" small name="id">
     
     <input type="button" id="GFG_Button" class="btn btn-primary" value="Meklēt" onclick="location.href='/search/'+escape(document.forms['idform'].elements['id'].value)">
     
-    
         </form> 
-       
        <script>  
         $("#search").keypress(function(event) { 
             if (event.keyCode === 13) { 
@@ -240,8 +229,6 @@ for($i = 0; $i < count($prices2); ++$i) {
         }); 
     </script>
     
-        
-   
     
   </div>
 </nav>

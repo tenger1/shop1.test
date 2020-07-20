@@ -6,10 +6,8 @@
     <link rel="shortcut icon" href="/images/A&A.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
-    
-    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/starter-template/">
 
@@ -91,7 +89,7 @@
 }
 .col-md-3 a:hover{
     text-decoration: none;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     color: #c93200;  
     border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%
 }
@@ -180,14 +178,14 @@
     <ul class="navbar-nav mr-auto">
       
       
-          <a class="nav-link bg-success btn" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">autor-ziedi</strong></a>
+        <a class="nav-link bg-success btn" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">autor-ziedi</strong></a>
          <a class="nav-link bg-danger btn" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">Login</strong></a>
           <a class="nav-link bg-danger btn" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">Register</strong></a>
         <a class="nav-link bg-warning btn" href="/cart2" style="text-align: center;"><strong style="font-variant:small-caps;">Grozs</strong></a>
         <a class="nav-link bg-warning btn" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
         <a class="nav-link bg-warning btn" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
-    </ul>
-      <?php 
+		
+		<?php 
 $prices2 = array_column($_SESSION, 'price');
 $counts2 = array_column($_SESSION, 'count');
 
@@ -196,43 +194,39 @@ for($i = 0; $i < count($prices2); ++$i) {
   $summ2 += $prices2[$i]*$counts2[$i]; 
 }?>
       
-      <div>
+     
           <a class="nav-link bg-warning btn" href="/cart2/" title="Cart">Cart (<?php echo $summ2; ?> €)</a>
-          <span id="cartCtnItems">
-              
-          </span>
-      </div>
+          
+      
         <?php 
         if(isset($_COOKIE['user'])):
         ?>
-        <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
-            
+   
             <h5 class="text-center">Hello, <?=$_COOKIE['user']?>! </h5>
         
-        </div>
-        <div style="padding-top: 5px;">
-            <ul class="navbar-nav mr-auto">
+        
+        
+            
         <a class="btn btn-outline-danger" href="/redactor" style="text-align: center;"><strong style="font-variant:small-caps;">Redactor</strong></a>
         <a class="btn btn-outline-danger" href="/exit">EXIT</a>
-            </ul>
-        </div>
+            
+        
         <?php else: ?>
         
-        <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
+        
             
         <h5 class="text-center">Hello, Guest</h5>
         
-        </div>
         <?php endif; ?>
    
-        <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
+		
+          <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
             
             <input type="text" id="search" placeholder="Prece..." class="form-control bg-light border-0" small name="id">
     
     <input type="button" id="GFG_Button" class="btn btn-primary" value="Meklēt" onclick="location.href='/search/'+escape(document.forms['idform'].elements['id'].value)">
     
         </form> 
-        
           <script>  
         $("#search").keypress(function(event) { 
             if (event.keyCode === 13) { 
@@ -244,7 +238,7 @@ for($i = 0; $i < count($prices2); ++$i) {
             alert("Mēklēšana tiek izpilīta!"); 
         }); 
     </script>
-       
+     </ul> 
   </div>
 </nav>
 
@@ -261,7 +255,7 @@ for($i = 0; $i < count($prices2); ++$i) {
                         <span style="left: 20px; top:20px; position: relative;">
                         <h1 style="text-align:center;" class="title">“A & A” Flowers shop</h1>
                         <img class="rounded center" src="/images/A&A.jpg" alt="Logo">
-                        <p class="font-weight-normal text-center">Our shop “A & A” was created in 2020. year. 
+                        <p class="font-weight-normal">Our shop “A & A” was created in 2020. year. 
                             <br> Its founders are professionals, florists <strong> Arthur </strong> and <strong> Artem. </strong> <br>
                             Having educated in the best universities in the world, they have decided to please the surrounding people with the beauty of flowers.
                             <br> <mark> <strong> We are a florist and ready to take your orders 24/7! </strong> </mark> <br> Every week we deliver goods from all over the world with the best flowers. Only with us you can buy the most beautiful, aromatic, long-lasting flowers that will melt any heart and delight your eyes for more than a week. <br> Place an order online or go to our store at 19 Raina Boulevard. <br> We offer our bouquets, sell them in pieces, and place orders according to your wishes. </p>
