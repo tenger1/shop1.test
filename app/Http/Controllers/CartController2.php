@@ -93,7 +93,7 @@ class CartController2 extends Controller
          $phone = ($_GET["phone"]);
          $info = ($_GET["info"]);
          $datums = ($_GET["datums"]);
-         echo $datums;
+        
          
          $servername = "127.0.0.1:3308";
 $username = "user1";
