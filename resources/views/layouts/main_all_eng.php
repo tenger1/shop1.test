@@ -2,7 +2,7 @@
 <html lang="lv">
   <head id="up">
     <meta charset="utf-8">
-    <title>Mūsu ziedu veikals</title>
+    <title>Mūsu ziedu bāze</title>
     <link rel="shortcut icon" href="/images/A&A.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
@@ -253,9 +253,9 @@ for($i = 0; $i < count($prices2); ++$i) {
             <div class="col-md-9">
 			
                         <span style="left: 20px; top:20px; position: relative;">
-                        <h1 style="text-align:center;" class="title">“A & A” Flowers shop</h1>
+                        <h1 style="text-align:center;" class="title">“A & A” Flowers base</h1>
                         <img class="rounded center" src="/images/A&A.jpg" alt="Logo">
-                        <p class="font-weight-normal">Our shop “A & A” was created in 2020. year. 
+                        <p class="font-weight-normal">Our base “A & A” was created in 2020. year. 
                             <br> Its founders are professionals, florists <strong> Arthur </strong> and <strong> Artem. </strong> <br>
                             Having educated in the best universities in the world, they have decided to please the surrounding people with the beauty of flowers.
                             <br> <mark> <strong> We are a florist and ready to take your orders 24/7! </strong> </mark> <br> Every week we deliver goods from all over the world with the best flowers. Only with us you can buy the most beautiful, aromatic, long-lasting flowers that will melt any heart and delight your eyes for more than a week. <br> Place an order online or go to our store at 19 Raina Boulevard. <br> We offer our bouquets, sell them in pieces, and place orders according to your wishes. </p>

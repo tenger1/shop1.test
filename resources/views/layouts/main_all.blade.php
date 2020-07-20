@@ -261,12 +261,12 @@ for($i = 0; $i < count($prices2); ++$i) {
             <div class="col-md-9">
 			@yield('content')
                         <span style="left: 20px; top:20px; position: relative;">
-                        <h1 style="text-align:center;" class="title">“A & A” Ziedu veikals</h1>
+                        <h1 style="text-align:center;" class="title">“A & A” Ziedu bāze</h1>
                         <img class="rounded center" src="/images/A&A.jpg" alt="Logo">
-                        <p class="font-weight-normal">Mūsu veikals ieguva “A & A” nosaukumu 2020. gadā. 
+                        <p class="font-weight-normal">Mūsu bāze ieguva “A & A” nosaukumu 2020. gadā. 
                             <br>Viņa dibinātāji ir sava darba profesionāļi, floristi <strong>Artūrs</strong> un <strong>Artems.</strong> <br>
                             Ieguvuši izglītību labākajās pasaules universitātēs, nolēmuši iepriecināt apkārtējos cilvēkus ar ziedu skaistumu.
-                            <br> <mark><strong>Mēs nodarbojamies ar floristiku un esam gatavi veikt jūsu pasūtījumus 24/7!</strong></mark> <br>Katru nedēļu notiek preču piegāde no dažādām pasaules valstīm, ar vislabākajiem ziediem. Tikai pie mums var iegādāties visskaistākās, aromātiskās, ilgi dzīvojošās puķes, kas izkusīs jebkuru sirdi un priecāsies acis vairāk neka nedeļas garumā. <br>Noformējiet pasūtījumu tiešsaistē vai dodieties uz mūsu veikalu Raiņa bulvāris 19.<br><mark> Veikals strādā katru dienu no 8:00 līdz 22:00.</mark><br> Pasūtījumus veic un piegādā ārpus darba laikā par papildu samaksu.<br> Piedāvājam savus pušķus, pārdodam gabalos, kā arī veicam pasūtījumus pēc jūsu vēlmēm.</p>
+                            <br> <mark><strong>Mēs nodarbojamies ar floristiku un esam gatavi veikt jūsu pasūtījumus 24/7!</strong></mark> <br>Katru nedēļu notiek preču piegāde no dažādām pasaules valstīm, ar vislabākajiem ziediem. Tikai pie mums var iegādāties visskaistākās, aromātiskās, ilgi dzīvojošās puķes, kas izkusīs jebkuru sirdi un priecāsies acis vairāk neka nedeļas garumā. <br>Noformējiet pasūtījumu tiešsaistē vai dodieties uz mūsu bāzi Raiņa bulvāris 19.<br><mark> Bāze strādā katru dienu no 8:00 līdz 22:00.</mark><br> Pasūtījumus veic un piegādā ārpus darba laikā par papildu samaksu.<br> Piedāvājam savus pušķus, pārdodam gabalos, kā arī veicam pasūtījumus pēc jūsu vēlmēm.</p>
                         
                         <table class="table table-striped">
   <thead>
