@@ -68,7 +68,7 @@ span.psw {
 </head>
 
 
-<h2>Login in Shop</h2>
+<h2>Ieiet mūsu veikalā</h2>
 
 
   <div class="imgcontainer">
@@ -76,13 +76,13 @@ span.psw {
   </div>
 <form action="/login_final/" method="get">
   <div class="container">
-    <p>Username:</p><input type="text" name="ulogin" id="ulogin" class="form-control" />
+      <p>Username:</p><input type="text" name="ulogin" id="ulogin" class="form-control" required/>
   </div>
   <div class="container">
-    <p>Password:</p><input type="password" name="upsw" id="upsw" class="form-control" />
+    <p>Password:</p><input type="password" name="upsw" id="upsw" class="form-control" required/>
   </div>
         
-    <button type="submit">Login</button>
+    <button type="submit">Ieiet</button>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
@@ -93,7 +93,7 @@ span.psw {
 
 <div>
 <form method="get" action="/home">
-    <button type="submit" class="cancelbtn">Cancel</button>
+    <button type="submit" class="cancelbtn">Arpakaļ</button>
     </form>
 </div>
 </html>

@@ -186,9 +186,8 @@
       
       
         <a class="nav-link bg-success btn" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">autor-ziedi</strong></a>
-         <a class="nav-link bg-danger btn" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">Login</strong></a>
-          <a class="nav-link bg-danger btn" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">Register</strong></a>
-        <a class="nav-link bg-warning btn" href="/cart2" style="text-align: center;"><strong style="font-variant:small-caps;">Grozs</strong></a>
+         <a class="nav-link bg-danger btn" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">Ieiet</strong></a>
+          <a class="nav-link bg-danger btn" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">Registrēties</strong></a>
         <a class="nav-link bg-warning btn" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
         <a class="nav-link bg-warning btn" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
 		<?php 
@@ -201,7 +200,7 @@ for($i = 0; $i < count($prices2); ++$i) {
 }?>
       
       
-          <a class="nav-link bg-warning btn" href="/cart2/" title="Cart">Cart (<?php echo $summ2; ?> €)</a>
+          <a class="nav-link bg-warning btn" href="/cart2/" title="Cart">Grozs (<?php echo $summ2; ?> €)</a>
           
         <?php 
         if(isset($_COOKIE['user'])):

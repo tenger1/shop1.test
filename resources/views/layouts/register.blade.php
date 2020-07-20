@@ -75,34 +75,33 @@ span.psw {
 
   <div class="imgcontainer">
     <img class="rounded center" src="/images/A&A.jpg" alt="Avatar" class="avatar">
-  <h2>Register in <a href="/home" class="">Shop</a></h2>
+  <h2>Reģisterēties <a href="/home" class="">Mūsu veikalā</a></h2>
   </div>
 <form action="/register_final/" method="get" id="regform">
     <div class="container">
-    <p>Name <sup style="font-size: 150%; color: #f44336">*</sup>:</p><input type="text" name="reguname" id="reguname" class="form-control" />
+    <p>Name<span style="font-size: 150%; color: #f44336">*</span>:</p><input type="text" name="reguname" id="reguname" class="form-control" />
   </div>
   <div class="container">
-      <p>Username <sup style="font-size: 150%; color: #f44336">*</sup>:</p><input type="text" name="regulogin" id="regulogin" class="form-control" />
+      <p>Username<span style="font-size: 150%; color: #f44336">*</span>:</p><input type="text" name="regulogin" id="regulogin" class="form-control" />
   </div>
   <div class="container">
-      <p>Password <sup style="font-size: 150%; color: #f44336">*</sup>:</p><input type="password" name="regupsw" id="regupsw" class="form-control" />
+      <p>Password<span style="font-size: 150%; color: #f44336">*</span>:</p><input type="password" name="regupsw" id="regupsw" class="form-control" />
   </div>
   
     <div class="container form-group col-md-2">
-        <label for="roles">Who you are?</label>
+        <label for="roles">Kurš Jūs esat?</label>
 <select class="form-control" id="roles" name="regurole" form="regform">
   <option value="user">User</option>
   <option value="admin">Admin</option>
   <option value="loxs">Loxs</option>
-  <option value="audi">Ауди валит!</option>
 </select>
-        <button type="submit" class="btn btn-success ">Register</button>
+        <button type="submit" class="btn btn-success ">Reģistrēties</button>
         
     </div>
     
 </form>
  <div class="container ">
-     <a href="/home" class="btn btn-warning col-md-2">Cancel</a>
+     <a href="/home" class="btn btn-warning col-md-2">Atpakaļ</a>
  </div>
   <div class="container-md">
       <p style="padding-left: 20px;"><span style="font-size: 150%; color: #f44336">*</span> - Obligātie lauķi</p> 
