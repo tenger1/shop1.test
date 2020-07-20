@@ -28,7 +28,7 @@
                }
                .good_content{
                    margin-bottom: 50px;
-                   
+                   margin-top: 30px;
                    left: 20px;
                    position: relative;
                    width: 350px;

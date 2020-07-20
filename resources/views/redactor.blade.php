@@ -3,7 +3,7 @@
 @section('content')  
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-<h1 style="text-align: center; font-variant: small-caps;">Redactor</h1>
+<h1 style="text-align: center; font-variant: small-caps; margin-top: 30px;">Redactor</h1>
 <h2 style="margin-left: 40px; color: #df5000; font-variant: small-caps;">Pievienot ziedu:</h2>
 <form action="/add_final/" method="get" style="margin-left: 30px;">
   <div class="form-row">
@@ -37,6 +37,18 @@
     <button style="margin:20px;" type="submit" class="btn btn-warning">Add</button>
  
 </form>
+
+
+<div class="container">
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name="picture">
+        <input type="submit">
+    </form>
+    
+</div>
+
+
+
   <div class="container ">
 
 <h2 style="margin-left: 30px; color: #df5000; font-variant: small-caps;">Dzēst ziedu pēc ID:</h2>
@@ -66,6 +78,7 @@
   <button type="submit" class="btn btn-primary mb-2 ml-3">Search</button>
 </div>
 </form>
+    
 
     
 
@@ -90,8 +103,21 @@
   </thead>
   <tbody>';
                 foreach ($key ?? '' as $v1) {
-                         echo "<tr>";
-                    
+                      $d=strtotime("now +3 hours");
+                      $date_now = date("Y-m-d H:i:s", $d);
+                      $d3=strtotime("now +3 hours");
+                      $date_now_plus_3h = date("Y-m-d H:i:s", $d3);
+                      $d2=strtotime("now +3 hours +1 day");
+                      $date_now_plus_day = date("Y-m-d H:i:s", $d2);
+                      
+                      if ($v1['datums'] < $date_now){
+                         echo '<tr class="table-danger">'; 
+                      }
+                      elseif ($v1['datums'] < $date_now_plus_day) {
+                      echo '<tr class="table-warning">'; 
+                  }
+                      
+                      else echo '<tr>';
                     echo "<td>";
                       echo '<form action="/delivered/';
                       echo $v1['order_id'];
@@ -126,6 +152,7 @@
                       echo "<td>";
                       echo $v1['datums'];
                       echo "</td>";
+                      
                       
                      
                      echo "</tr>";

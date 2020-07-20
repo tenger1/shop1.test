@@ -87,7 +87,8 @@
     </tr>
   </thead>
   <tbody>
-                     <?php  foreach ($_SESSION as $v1) {
+                     <?php  
+                     foreach ($_SESSION as $v1) {
                          echo "<tr>";
                     foreach ($v1 as $v2) {
                       echo "<td>$v2</td>";

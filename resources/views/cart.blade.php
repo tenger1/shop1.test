@@ -63,7 +63,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Price</th>
+      <th scope="col">Price, €</th>
       <th scope="col">Quantity</th>
     </tr>
   </thead>
@@ -105,7 +105,8 @@ echo $summ;?>€</span></p>
                     </select>
                </div>
                
-    <button class="btn btn-warning mb-3" type="submit">Delete ID</button>  
+
+    <input class="form-control btn btn-warning mb-3" type="submit" value="Delete ID" />
 </form>
            <div class="form-row">
            <form action="/delete_all_cart" method="get">
@@ -116,7 +117,9 @@ echo $summ;?>€</span></p>
                
     <div class="form-group col-md-6">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Your name" required>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Your name" value="<?php 
+    if(isset($_COOKIE['user'])){
+    echo $_COOKIE['user'];} ?>" required>
     </div>
     
   <div class="form-group col-md-6">
@@ -126,7 +129,7 @@ echo $summ;?>€</span></p>
 
     <div class="form-group col-md-6">
       <label for="Phone">Phone</label>
-      <input type="tel" class="form-control" id="Phone" name="phone" placeholder="Your phone" required>
+      <input type="tel" class="form-control" id="Phone" name="phone" placeholder="Your phone">
     </div>
     <div class="form-group col-md-6">
     <label for="Textarea">Info</label>
@@ -137,7 +140,7 @@ echo $summ;?>€</span></p>
 
                <div class="form-group col-md-6">
                <label for="datums">Datums un laiks saņemšanai:</label>
-  <input class="form-control" type="datetime-local" id="datums" name="datums">
+               <input class="form-control" type="datetime-local" id="datums" name="datums" required>
                </div>
 
     <input class="btn-lg btn-danger mt-3" type="submit" value="ORDERSUKA!" />

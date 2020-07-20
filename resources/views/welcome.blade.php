@@ -6,11 +6,8 @@
     <link rel="shortcut icon" href="/images/A&A.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
-    
-    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
 
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/starter-template/">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -91,7 +88,7 @@
 }
 .col-md-3 a:hover{
     text-decoration: none;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     color: #c93200;  
     border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%
 }
@@ -130,8 +127,7 @@
         -ms-user-select: none;
         user-select: none;
       }
-
-     
+  
       .topNubex {
 	position: fixed;
 	right: 45px;
@@ -156,21 +152,17 @@
        
        
    }
-   
-   .center{
-       display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-   }
     </style>
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> 
+    </script>
     <!-- <link href="css/starter-template.css" rel="stylesheet"> -->
     
   </head>
   <body>
 
       <nav class="navbar navbar-expand-md navbar-light bg-teal-light fixed-top" style="background-color:#2492ad">
-  <a class="navbar-brand" href="/">HOME</a>
+  <a class="navbar-brand" href="/home">HOME</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -178,17 +170,15 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault" >
     <ul class="navbar-nav mr-auto">
-      
-      
+     
           <a class="nav-link bg-success btn" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">autor-ziedi</strong></a>
          <a class="nav-link bg-danger btn" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">Login</strong></a>
           <a class="nav-link bg-danger btn" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">Register</strong></a>
         <a class="nav-link bg-warning btn" href="/cart2" style="text-align: center;"><strong style="font-variant:small-caps;">Grozs</strong></a>
         <a class="nav-link bg-warning btn" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
         <a class="nav-link bg-warning btn" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
-    </ul>
-      
-      <?php 
+          
+		  <?php 
 $prices2 = array_column($_SESSION, 'price');
 $counts2 = array_column($_SESSION, 'count');
 
@@ -197,45 +187,37 @@ for($i = 0; $i < count($prices2); ++$i) {
   $summ2 += $prices2[$i]*$counts2[$i]; 
 }?>
       
-      <div>
           <a class="nav-link bg-warning btn" href="/cart2/" title="Cart">Cart (<?php echo $summ2; ?> €)</a>
-          <span id="cartCtnItems">
-              
-          </span>
-      </div>
+          
         <?php 
         if(isset($_COOKIE['user'])):
         ?>
-        <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
-            
+             
             <h5 class="text-center">Hello, <?=$_COOKIE['user']?>! </h5> 
         
-        </div>
-        <div style="padding-top: 5px;">
-            <ul class="navbar-nav mr-auto">
+       
         <a class="btn btn-outline-danger" href="/redactor" style="text-align: center;"><strong style="font-variant:small-caps;">Redactor</strong></a>
         <a class="btn btn-outline-danger" href="/exit">EXIT</a>
-            </ul>
-        </div>
+        
+        
         <?php else: ?>
         
-        <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
+        
             
         <h5 class="text-center">Hello, Guest</h5>
         
-        </div>
+        
         <?php endif; ?>
    
+		  
         <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
             
             <input type="text" id="search" placeholder="Prece..." class="form-control bg-light border-0" small name="id">
     
     <input type="button" id="GFG_Button" class="btn btn-primary" value="Meklēt" onclick="location.href='/search/'+escape(document.forms['idform'].elements['id'].value)">
     
-    
         </form> 
-        
-          <script>  
+       <script>  
         $("#search").keypress(function(event) { 
             if (event.keyCode === 13) { 
                 $("#GFG_Button").click(); 
@@ -243,10 +225,11 @@ for($i = 0; $i < count($prices2); ++$i) {
         }); 
    
         $("#GFG_Button").click(function() { 
-            alert("Mēklēšana tiek izpildīta!"); 
+            alert("Mēklēšana tiek izpilīta!"); 
         }); 
     </script>
-       
+    
+    
   </div>
 </nav>
 
@@ -264,63 +247,7 @@ for($i = 0; $i < count($prices2); ++$i) {
 		
             <div class="col-md-9">
 			@yield('content')
-                        <span style="left: 20px; top:20px; position: relative;">
-                        <h1 style="text-align:center;" class="title">“A & A” Ziedu veikals</h1>
-                        <img class="rounded center" src="/images/A&A.jpg" alt="Logo">
-                        <p class="font-weight-normal">Mūsu veikals ieguva “A & A” nosaukumu 2020. gadā. 
-                            <br>Viņa dibinātāji ir sava darba profesionāļi, floristi <strong>Artūrs</strong> un <strong>Artems.</strong> <br>
-                            Ieguvuši izglītību labākajās pasaules universitātēs, nolēmuši iepriecināt apkārtējos cilvēkus ar ziedu skaistumu.
-                            <br> <mark><strong>Mēs nodarbojamies ar floristiku un esam gatavi veikt jūsu pasūtījumus 24/7!</strong></mark> <br>Katru nedēļu notiek preču piegāde no dažādām pasaules valstīm, ar vislabākajiem ziediem. Tikai pie mums var iegādāties visskaistākās, aromātiskās, ilgi dzīvojošās puķes, kas izkusīs jebkuru sirdi un priecāsies acis vairāk neka nedeļas garumā. <br>Noformējiet pasūtījumu tiešsaistē vai dodieties uz mūsu veikalu Raiņa bulvāris 19.<br><mark> Veikals strādā katru dienu no 8:00 līdz 22:00.</mark><br> Pasūtījumus veic un piegādā ārpus darba laikā par papildu samaksu.<br> Piedāvājam savus pušķus, pārdodam gabalos, kā arī veicam pasūtījumus pēc jūsu vēlmēm.</p>
                         
-                        <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Pakalpojums</th>
-      <th scope="col">Cena, €</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Lentīte</td>
-      <td>0.70</td>
-    </tr>
-       <tr>
-      <td>Apsveikuma kartīte</td>
-      <td>1.60</td>
-    </tr>
-     <tr>
-      <td>Iesaiņojums</td>
-      <td>2.10</td>
-    </tr>
-     <tr>
-      <td class="table-danger">Saņēmšana veikalā</td>
-      <td class="table-danger">0.00</td>
-    </tr>
-     <tr>
-      <td>Piegāde Rīgā</td>
-      <td>3.99</td>
-    </tr>
-     <tr>
-      <td>Piegāde ārpus Rīgas</td>
-      <td>5.99</td>
-    </tr>
-     <tr>
-      <td>Piegāde ārpus darba laika</td>
-      <td>8.99</td>
-    </tr>
-      <tr>
-          <td>Atlaide ar klienta karti<sup>*</sup></td>
-      <td class="bg-danger">10%</td>
-    </tr>
- 
-  </tbody>
-  
-</table>
-                        <p class="font-weight-light" style="font-size: 70%;"><sup>*</sup> Atlaide neatiecās uz papildus pakalpojumiem</p>
-                        
-                        </span>
-                  
-                          
             </div>
 		
    </div>
@@ -330,7 +257,7 @@ for($i = 0; $i < count($prices2); ++$i) {
       <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
   
       
-    <a href="#" class="btn btn-warning topNubex" style="z-index: 10;">Uz augšu</a>
+      <a href="#" class="btn btn-warning topNubex" style="z-index: 10;">Uz augšu</a>
   </body>
 <footer class="page-footer font-small mdb-color lighten-3 pt-4">
 
@@ -392,13 +319,13 @@ for($i = 0; $i < count($prices2); ++$i) {
 
 
         <h5 class="font-weight-bold text-uppercase mb-4">Sekot ziņam</h5>
-        
-       <ol>
+        <ol>
             <a href="http://instagram.com"><img src="/images/Insta.svg.png" width="82" height="86" title="Instagram" alt="Instagram"></a>
         </ol>
         <ol>
             <a href="http://facebook.com"><img src="/images/Facebook.svg.png" width="82" height="86" title="Facebook" alt="Facebook"></a>
         </ol>
+       
       </div>     
     </div>
   </div>
