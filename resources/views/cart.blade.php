@@ -7,7 +7,7 @@
         $summ = 0;
         
         ?>
-<h1 style="text-align:center;">Jūsu grozs</h1>
+<h1 style="text-align:center;">@lang('main.your_cart')</h1>
 	    
           <style>
                .cat_g{
@@ -62,9 +62,9 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nosaukums</th>
-      <th scope="col">Cena, €</th>
-      <th scope="col">Daudzums</th>
+      <th scope="col">@lang('main.nos')</th>
+      <th scope="col">@lang('main.Cena'), €</th>
+      <th scope="col">@lang('main.Daudz')</th>
     </tr>
   </thead>
   <tbody>
@@ -76,7 +76,7 @@
                      echo "</tr>";
                      }  ?>
                      </table>
-                    <p class="text-right">Jusu pasūtījuma summa ir: <span class="text-uppercase" style="color: #c93200; font-size: 150%;"><?php 
+                    <p class="text-right">@lang('main.jps') <span class="text-uppercase" style="color: #c93200; font-size: 150%;"><?php 
 $prices = array_column($_SESSION, 'price');
 $counts = array_column($_SESSION, 'count');
 
@@ -93,7 +93,7 @@ echo $summ;?>€</span></p>
            
            <form class="form-inline ml-3" method="get" action="/uncart">
                <div class="form-group mx-sm-3 mb-3">
-                    <label for="id_to_delete">Izdzēst pēc ID:</label>
+                    <label for="id_to_delete">@lang('main.delid')</label>
                     <select class="form-control ml-3" type="number" name="id_to_delete" id="id_to_delete">
                      <?php
                         $prices = array_column($_SESSION, 'id');
@@ -106,44 +106,44 @@ echo $summ;?>€</span></p>
                </div>
                
 
-    <input class="form-control btn btn-warning mb-3" type="submit" value="Delete ID" />
+    <input class="form-control btn btn-warning mb-3" type="submit" value="@lang('main.del') ID" />
 </form>
            <div class="form-row">
            <form action="/delete_all_cart" method="get">
-    <input class="btn-lg btn-danger ml-4" type="submit" value="Delete all cart" />
+    <input class="btn-lg btn-danger ml-4" type="submit" value="@lang('main.del') @lang('main.allcart') " />
            </form>
 </div>
            <form class="ml-3 mt-3" action="/cart_continue">
                
     <div class="form-group col-md-6">
-      <label for="name">Jūsu vārds</label>
+      <label for="name">@lang('main.your_name'):</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="Your name" value="<?php 
     if(isset($_COOKIE['user'])){
     echo $_COOKIE['user'];} ?>" required>
     </div>
     
   <div class="form-group col-md-6">
-    <label for="inputAddress">Adrese</label>
+    <label for="inputAddress">@lang('main.ya')</label>
     <input type="text" class="form-control" id="inputAddress" name="adress" placeholder="Raiņa bulvāris 19">
   </div>
 
     <div class="form-group col-md-6">
-      <label for="Phone">Telefona numurs</label>
-      <input type="tel" class="form-control" id="Phone" name="phone" placeholder="Your phone">
+      <label for="Phone">@lang('main.tnum')</label>
+      <input type="tel" class="form-control" id="Phone" name="phone" placeholder="@lang('main.tnum')">
     </div>
     <div class="form-group col-md-6">
-    <label for="Textarea">Papildus infornācija</label>
-    <textarea class="form-control" id="Textarea" name="info" rows="5" placeholder="Extra info"></textarea>
+    <label for="Textarea">@lang('main.papinfo')</label>
+    <textarea class="form-control" id="Textarea" name="info" rows="5" placeholder="@lang('main.papinfo')"></textarea>
   </div>
                
     
 
                <div class="form-group col-md-6">
-               <label for="datums">Datums un laiks saņemšanai:</label>
+               <label for="datums">@lang('main.sanl'):</label>
                <input class="form-control" type="datetime-local" id="datums" name="datums" required>
                </div>
 
-    <input class="btn-lg btn-danger mt-3" type="submit" value="Pasūtīt!" />
+    <input class="btn-lg btn-danger mt-3" type="submit" value="@lang('main.pas')!" />
 </form>
           
 

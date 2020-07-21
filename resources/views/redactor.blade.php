@@ -49,20 +49,6 @@
 
 
 
-  <div class="container ">
-
-<h2 style="margin-left: 30px; color: #df5000; font-variant: small-caps;">Dzēst ziedu pēc ID:</h2>
-<form action="/delete_by_id/" method="get" style="margin-left: 20px;">
-<div class="container">
-    <lable for="del_id">Zieda ID:</lable><input type="number" name="del_id" id="del_id" class="form-control col-md-2" />
-  </div>
-        
-    <button style="margin:20px;" type="submit" class="btn btn-warning">Dzēst</button>
-  
-</form>
-</div>
-
-
     <h2 style="margin-left: 30px; color: #df5000; font-variant: small-caps;">Mēklēt Pasūtījumus:</h2>
 <form action="/search_by_name/" method="get" class="form-inline">
 
@@ -122,7 +108,12 @@
                       echo '<form action="/delivered/';
                       echo $v1['order_id'];
                       echo'/" method="get" class="form-inline">
-  <button type="submit" class="btn btn-primary mb-2">Delivered</button>
+  <button type="submit" class="btn btn-primary mb-2">Delete</button>
+</form>';
+                      echo '<form action="/deliverchange/';
+                      echo $v1['order_id'];
+                      echo'/" method="get" class="form-inline">
+  <button type="submit" class="btn btn-warning mb-2">Change</button>
 </form>';
                       echo "</td>";
                       echo "<td>";

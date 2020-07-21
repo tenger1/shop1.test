@@ -50,7 +50,7 @@
            
            <?php
 $go = $good->count;
-if($go == 0) $go= "Šī prece nav pieejama!";
+if($go == 0) $go= "-";
 
 
 ?>
@@ -65,9 +65,9 @@ if($go == 0) $go= "Šī prece nav pieejama!";
                         
           
                     <p style="font-variant: small-caps; text-align: center;"> <a class="cat_g" href="/goods/{{$good->id}}"> {{$good->name}} </a>
-					<br>Cena: <span style="font-size: 140%; color: purple">{{$good->price}} €</span><span style="font-variant: normal">/gb.</span></p>
-                    <p>Ražotājs: {{$good->country}}
-                    <p> Piejamība gb.: <span class="cena" style="color:#cc6666">{{$go}}</span></p>
+					<br>@lang('main.Cena'): <span style="font-size: 140%; color: purple">{{$good->price}} €</span><span style="font-variant: normal">/@lang('main.prece').</span></p>
+                    <p>@lang('main.Valsts'): {{$good->country}}
+                    <p> @lang('main.prece'): <span class="cena" style="color:#cc6666">{{$go}}</span></p>
                     
                     </div>
                 </div>

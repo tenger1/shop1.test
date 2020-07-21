@@ -2,7 +2,7 @@
 <html lang="lv">
   <head id="up">
     <meta charset="utf-8">
-    <title>Mūsu ziedu veikals</title>
+    <title>@lang('main.our_flowers_base')</title>
     <link rel="shortcut icon" href="/images/A&A.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
@@ -88,7 +88,7 @@
 }
 .col-md-3 a:hover{
     text-decoration: none;
-    letter-spacing: 8px;
+    letter-spacing: 5px;
     color: #c93200;  
     border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%
 }
@@ -152,18 +152,16 @@
        
        
    }
+   .user{
+       <?php if(isset($_COOKIE['user'])) echo 'display: none;';?>
+   }
     </style>
-    <script src= 
-"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> 
-    </script>
     <!-- <link href="css/starter-template.css" rel="stylesheet"> -->
     
   </head>
   <body>
 
-      <nav class="navbar navbar-expand-md navbar-light bg-teal-light fixed-top" style="background-color:#2492ad">
-  <a class="navbar-brand" href="/home">HOME</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -172,11 +170,10 @@
     <ul class="navbar-nav mr-auto">
      
                
-        <a class="nav-link bg-success btn" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">autor-ziedi</strong></a>
-         <a class="nav-link bg-danger btn" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">Ieiet</strong></a>
-          <a class="nav-link bg-danger btn" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">Registrēties</strong></a>
-        <a class="nav-link bg-warning btn" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
-        <a class="nav-link bg-warning btn" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
+        <a class="nav-link bg-success btn mx-1 mb-2" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">@lang('main.autor-ziedi')</strong></a>
+         <a class="user nav-link bg-danger btn mx-1 mb-2" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">@lang('main.ieiet')</strong></a>
+          <a class="user nav-link bg-danger btn mx-1 mb-2" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">@lang('main.Reg')</strong></a>
+
 		<?php 
 $prices2 = array_column($_SESSION, 'price');
 $counts2 = array_column($_SESSION, 'count');
@@ -187,37 +184,36 @@ for($i = 0; $i < count($prices2); ++$i) {
 }?>
       
       
-          <a class="nav-link bg-warning btn" href="/cart2/" title="Cart">Grozs (<?php echo $summ2; ?> €)</a>
+          <a class="nav-link bg-warning btn mb-2" href="/cart2/" title="Cart">@lang('main.Grozs') (<?php echo $summ2; ?> €)</a>
           
         <?php 
         if(isset($_COOKIE['user'])):
         ?>
              
-            <h5 class="text-center">Hello, <?=$_COOKIE['user']?>! </h5> 
+            <h5 class="text-center">@lang('main.Hello'), <?=$_COOKIE['user']?>! </h5> 
         
        
-        <a class="btn btn-outline-danger" href="/redactor" style="text-align: center;"><strong style="font-variant:small-caps;">Redactor</strong></a>
-        <a class="btn btn-outline-danger" href="/exit">EXIT</a>
+        <a class="btn btn-outline-danger mx-1 mb-2" href="/exit">EXIT</a>
+        <a class="btn btn-outline-danger mb-2" href="/redactor" style="text-align: center;"><strong style="font-variant:small-caps;">@lang('main.Redactor')</strong></a>
         
         
         <?php else: ?>
         
         
             
-        <h5 class="text-center">Hello, Guest</h5>
+        <h5 class="text-center mx-3 mb-2">@lang('main.Hello'), @lang('main.viesis')</h5>
         
         
         <?php endif; ?>
-   
-		  
+        
         <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
             
-            <input type="text" id="search" placeholder="Prece..." class="form-control bg-light border-0" small name="id">
+            <input type="text" id="search" placeholder="@lang('main.prece')..." class="form-control bg-light border-0 mb-2" small name="id">
     
-    <input type="button" id="GFG_Button" class="btn btn-primary" value="Meklēt" onclick="location.href='/search/'+escape(document.forms['idform'].elements['id'].value)">
-    
+    <input type="button" id="GFG_Button" class="btn btn-primary mx-1 mb-2" value="@lang('main.Search')" onclick="location.href='/search/'+escape(document.forms['idform'].elements['id'].value)">
+  
         </form> 
-       <script>  
+          <script>  
         $("#search").keypress(function(event) { 
             if (event.keyCode === 13) { 
                 $("#GFG_Button").click(); 
@@ -228,8 +224,7 @@ for($i = 0; $i < count($prices2); ++$i) {
             alert("Mēklēšana tiek izpilīta!"); 
         }); 
     </script>
-    
-    
+     </ul>  
   </div>
 </nav>
 
@@ -257,7 +252,7 @@ for($i = 0; $i < count($prices2); ++$i) {
       <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
   
       
-      <a href="#" class="btn btn-warning topNubex" style="z-index: 10;">Uz augšu</a>
+      <a href="#" class="btn btn-warning topNubex" style="z-index: 10;">@lang('main.up')</a>
   </body>
 <footer class="page-footer font-small mdb-color lighten-3 pt-4">
 
@@ -271,7 +266,7 @@ for($i = 0; $i < count($prices2); ++$i) {
       <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
 
         <!-- Content -->
-        <h5 class="font-weight-bold text-uppercase mb-4">Kur mēs esam?</h5>
+        <h5 class="font-weight-bold text-uppercase mb-4">@lang('main.kur')</h5>
         
         <iframe class='mape' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1256.9589487022274!2d24.11603977696689!3d56.95071908093513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecfd3cdaa69c7%3A0x16a2b44d483ec349!2sUniversity%20of%20Latvia!5e0!3m2!1sru!2slv!4v1589490516939!5m2!1sru!2slv" width="300" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
       </div>
@@ -288,12 +283,12 @@ for($i = 0; $i < count($prices2); ++$i) {
 
       <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
 
-        <h5 class="font-weight-bold text-uppercase mb-4">Kā sazināties?</h5>
+        <h5 class="font-weight-bold text-uppercase mb-4">@lang('main.sazin')</h5>
 
         <ul class="list-unstyled">
           <li>
             <p>
-              <i class="fas fa-home mr-3"></i>Raiņa bulvāris 19, Centra rajons, Rīga, LV-1586</p>
+              <i class="fas fa-home mr-3"></i>@lang('main.address')</p>
           </li>
           <li>
             <p>
@@ -318,7 +313,7 @@ for($i = 0; $i < count($prices2); ++$i) {
       <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
 
 
-        <h5 class="font-weight-bold text-uppercase mb-4">Sekot ziņam</h5>
+        <h5 class="font-weight-bold text-uppercase mb-4">@lang('main.sekot')</h5>
         <ol>
             <a href="http://instagram.com"><img src="/images/Insta.svg.png" width="82" height="86" title="Instagram" alt="Instagram"></a>
         </ol>
