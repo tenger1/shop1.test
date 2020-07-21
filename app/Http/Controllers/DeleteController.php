@@ -27,7 +27,9 @@ class DeleteController extends Controller
         $result = mysqli_query($conn, "DELETE FROM goods WHERE id='$del_id'");
         mysqli_close($conn);
         if ($result) echo "<h1>Delete good!</h1>";
-        
+        echo '<script type="text/javascript">'
+			   , 'history.go(-2);'
+			   , '</script>';
     }
     }
 }

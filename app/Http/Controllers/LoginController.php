@@ -31,8 +31,12 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 $result = mysqli_query($conn, "SELECT * FROM `login` WHERE `user` = '$login' AND `password` = '$pass'");
 mysqli_close($conn);
 //var_dump($result);
-$user = $result->fetch_assoc();
 
+$user = $result->fetch_assoc();
+if(!$user) {
+    echo "<h1>Error!</h1>";
+    return view('welcome');
+}
 
 if(count($user) == 0){
     echo "<h1>No such user!</h1>";

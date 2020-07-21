@@ -33,11 +33,11 @@ class RedactorController extends Controller
        
        if($result){ 
            echo "<h1>Order deleted!</h1>";
-           return view ('redactor');
+           return redirect()->back();
        }
        else {
            echo "<h1>No such Order!</h1>";
-           return view ('redactor');
+           return redirect()->back();
            exit();
        }
    }
@@ -159,6 +159,65 @@ class RedactorController extends Controller
      //return view('redactor')->withTitle($data);
     }
 }
+    public function DeliverchangeAction($id){
+        if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
+        echo "<h1>You are not Admin!</h1>";
+        return view ('welcome');
+        }
+        else{
+        $servername = "127.0.0.1:3308";
+        $username = "user1";
+        $password = "12345";
+        $dbname = "shop";
+        
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id= $id");
+        
+        if($result)for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
+        
+        if($result) {
+            
+            return view('deliverchange', ["order"=>$data]);
+        }
+        
+        }
+    }
+    
+    public function Deliverchange_finalAction(){
+        
+        $result = false;
+        
+   if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
+        echo "<h1>You are not Admin!</h1>";
+        return view ('welcome');
+        }
+        else{     
+        
+        $name = ($_GET["vards"]); 
+        $adress = ($_GET["adrese"]); 
+        $phone = ($_GET["telefons"]); 
+        $countf  = ($_GET["daudzums"]); 
+        $id = ($_GET["order_id"]); 
+        
+        $servername = "127.0.0.1:3308";
+        $username = "user1";
+        $password = "12345";
+        $dbname = "shop";
+        
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $result = mysqli_query($conn, "UPDATE orders SET customer_name = '$name', adress= '$adress', phone = '$phone', countf = '$countf' WHERE order_id = $id;");
+        
+        if($result){
+           // return redirect()->back();
+            
+            echo '<script type="text/javascript">'
+			   , 'history.go(-2);'
+			   , '</script>';
+        
+        }
+        }
+        
+    }
 }
    
    
