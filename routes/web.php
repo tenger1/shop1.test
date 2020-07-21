@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts/main');
+Route::get('locale/{locale}', 'MainController@changeLocale')->name('locale');
+
+Route::middleware(['set_locale'])->group( function(){
+    
+    Route::get('/', function () {
+    return view('layouts/main_all');
 });
 
 Route::get('/categories/{id}',[
@@ -114,3 +118,18 @@ Route::get('/search_by_name', [
 Route::get('/delivered/{id}', [
         'uses' => 'RedactorController@DeliveredAction'
 ]);
+Route::get('/deliverchange/{id}', [
+        'uses' => 'RedactorController@DeliverchangeAction'
+]);
+
+Route::get('/deliverchange_final/', [
+        'uses' => 'RedactorController@Deliverchange_finalAction'
+]);
+
+Route::post('/add_image_final', 'AddController@AddImage');
+
+
+    
+});
+
+
