@@ -68,7 +68,7 @@ span.psw {
 </head>
 
 
-<h2>Ieiet mūsu veikalā</h2>
+<h2>@lang('main.in')</h2>
 
 
   <div class="imgcontainer">
@@ -82,7 +82,7 @@ span.psw {
     <p>Password:</p><input type="password" name="upsw" id="upsw" class="form-control" required/>
   </div>
         
-    <button type="submit">Ieiet</button>
+    <button type="submit">@lang('main.ieiet')</button>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
@@ -93,7 +93,7 @@ span.psw {
 
 <div>
 <form method="get" action="/home">
-    <button type="submit" class="cancelbtn">Arpakaļ</button>
+    <button type="submit" class="cancelbtn">@lang('main.Atp')</button>
     </form>
 </div>
 </html>

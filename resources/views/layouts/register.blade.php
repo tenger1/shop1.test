@@ -75,7 +75,7 @@ span.psw {
 
   <div class="imgcontainer">
     <img class="rounded center" src="/images/A&A.jpg" alt="Avatar" class="avatar">
-  <h2>Reģisterēties <a href="/home" class="">Mūsu veikalā</a></h2>
+  <h2>@lang('main.Reg')<a href="/home" class=""> @lang('main.our_flowers_base')</a></h2>
   </div>
 <form action="/register_final/" method="get" id="regform">
     <div class="container">
@@ -89,22 +89,22 @@ span.psw {
   </div>
   
     <div class="container form-group col-md-2">
-        <label for="roles">Kurš Jūs esat?</label>
+        <label for="roles">@lang('main.Kurš')</label>
 <select class="form-control" id="roles" name="regurole" form="regform">
   <option value="user">User</option>
   <option value="admin">Admin</option>
   <option value="loxs">Loxs</option>
 </select>
-        <button type="submit" class="btn btn-success ">Reģistrēties</button>
+        <button type="submit" class="btn btn-success ">@lang('main.Reg')</button>
         
     </div>
     
 </form>
  <div class="container ">
-     <a href="/home" class="btn btn-warning col-md-2">Atpakaļ</a>
+     <a href="/home" class="btn btn-warning col-md-2">@lang('main.Atp')</a>
  </div>
   <div class="container-md">
-      <p style="padding-left: 20px;"><span style="font-size: 150%; color: #f44336">*</span> - Obligātie lauķi</p> 
+      <p style="padding-left: 20px;"><span style="font-size: 150%; color: #f44336">*</span> - @lang('main.obl')</p> 
 
   </div>
 
