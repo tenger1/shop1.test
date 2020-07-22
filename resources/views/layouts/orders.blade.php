@@ -289,78 +289,19 @@ for($i = 0; $i < count($prices2); ++$i) {
 	
 	<div class="row">
 	
-		<div class="col-md-3">
-			@include('categories')
-                        
-
-		</div>
 		
-            <div class="col-md-9">
 			@yield('content')
-                        <span style="left: 20px; top:20px; position: relative;">
-                        <h1 style="text-align:center;" class="title">@lang('main.our_flowers_base')</h1>
-                        <img class="rounded center" src="/images/A&A.jpg" alt="Logo">
-                        <p class="font-weight-normal"> @lang('main.info')</p>
                         
-                        <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">@lang('main.Pakalpojums')</th>
-      <th scope="col">@lang('main.Cena'), €</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>@lang('main.Lentīte')</td>
-      <td>0.70</td>
-    </tr>
-       <tr>
-      <td>@lang('main.Apsv')</td>
-      <td>1.60</td>
-    </tr>
-     <tr>
-      <td>@lang('main.Iesaiņojums')</td>
-      <td>2.10</td>
-    </tr>
-     <tr>
-      <td class="table-danger">@lang('main.san')</td>
-      <td class="table-danger">0.00</td>
-    </tr>
-     <tr>
-      <td>@lang('main.piegr')</td>
-      <td>3.99</td>
-    </tr>
-     <tr>
-      <td>@lang('main.piegarp')</td>
-      <td>5.99</td>
-    </tr>
-     <tr>
-      <td>@lang('main.piegarpdl')</td>
-      <td>8.99</td>
-    </tr>
-      <tr>
-          <td>@lang('main.atl')<sup>*</sup></td>
-      <td class="bg-danger">10%</td>
-    </tr>
- 
-  </tbody>
-  
-</table>
-                        <p class="font-weight-light" style="font-size: 70%;"><sup>*</sup> @lang('main.atln')</p>
-                        
-                        </span>
-                  
-                          
-            </div>
+            
 		
-   </div>
+   
 </div>
 </main><!-- /.container -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
   
       
-    <a href="#" class="btn btn-warning topNubex" style="z-index: 10;">Uz augšu</a>
+      <a href="#" class="btn btn-warning topNubex" style="z-index: 10;">@lang('main.up')</a>
   </body>
 <footer class="page-footer font-small mdb-color lighten-3 pt-4">
 
