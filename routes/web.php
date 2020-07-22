@@ -126,6 +126,10 @@ Route::get('/deliverchange_final/', [
         'uses' => 'RedactorController@Deliverchange_finalAction'
 ]);
 
+Route::get('/my_orders', [
+        'uses' => 'CartController@MyOrders'
+]);
+
 Route::post('/add_image_final', 'AddController@AddImage');
 
 
