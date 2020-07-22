@@ -32,7 +32,7 @@ $reg_check = mysqli_query($conn, "SELECT * FROM `login` WHERE `user` = '$rlogin'
 if($reg_check->num_rows != 0){
     echo "<h1>This user also exist!</h1>";
 
-    return view('register');
+    return redirect()->to('/register');
     mysqli_close($conn);
 }
 else{
@@ -40,11 +40,11 @@ $result = mysqli_query($conn, "INSERT INTO `login` (`name`, `user`, `password`, 
 if ($result) {
     
     echo "<h1>Success!</h1>";
-    return view('register');
+    return redirect()->to('/register');
 }
     else {
         echo "<h1>DB Error!</h1>"; 
-        return view('register');
+        return redirect()->to('/register');
     }
 
 mysqli_close($conn);

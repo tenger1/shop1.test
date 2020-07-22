@@ -109,11 +109,20 @@ $id_to_delete = array_column($_SESSION, 'id');
 $count_to_delete = array_column($_SESSION, 'count');
 $product_name_to_delete = array_column($_SESSION, 'name');
 
+if(isset($_COOKIE['userid'])){
 for($i = 0; $i < count($count_to_delete); ++$i){
-    $query = "INSERT INTO orders ( customer_name, adress, phone, countf, ptoduct_id, product_name, comment, datums) VALUES ('".$name."','".$adress."','".$phone."','".$count_to_delete[$i]."','".$id_to_delete[$i]."','".$product_name_to_delete[$i]."','".$info."','".$datums."')";
-
+    $query = "INSERT INTO orders ( customer_name, adress, phone, countf, ptoduct_id, product_name, comment, datums, customer_id) VALUES ('".$name."','".$adress."','".$phone."','".$count_to_delete[$i]."','".$id_to_delete[$i]."','".$product_name_to_delete[$i]."','".$info."','".$datums."','".$_COOKIE['userid']."')";
+    //echo $query;
     $result = mysqli_query($conn,$query);
     
+}
+}
+if(!isset($_COOKIE['userid'])){
+    for($i = 0; $i < count($count_to_delete); ++$i){
+   $query = "INSERT INTO orders ( customer_name, adress, phone, countf, ptoduct_id, product_name, comment, datums) VALUES ('".$name."','".$adress."','".$phone."','".$count_to_delete[$i]."','".$id_to_delete[$i]."','".$product_name_to_delete[$i]."','".$info."','".$datums."')";
+
+    $result = mysqli_query($conn,$query);
+    }
 }
 /*
 echo "<br>";
@@ -136,7 +145,7 @@ for($i = 0; $i < count($count_to_delete); ++$i){
     // Тут не знаю куда складывать заказы после того как пользователь нажимает купить типа. 
     // В $_SESSION как видищь массив с данными из карзины. 
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-mysqli_close($conn);
+        mysqli_close($conn);
         session_destroy();
 
 

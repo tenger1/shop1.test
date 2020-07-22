@@ -29,8 +29,23 @@ class RedactorController extends Controller
         $dbname = "shop";
         
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $result = mysqli_query($conn, "DELETE FROM orders WHERE order_id='$id'");
+        $move = mysqli_query($conn, "SELECT * FROM orders WHERE order_id= $id");    
+        if($move){
+        for ($data = []; $row = mysqli_fetch_assoc($move); $data[] = $row);
+        echo $data[0]['customer_name'];
+        //var_dump($data);
+        
+        }
+        mysqli_close($conn);
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        
+        $query = "INSERT INTO orders_complited (order_id, customer_name, adress, phone, countf, ptoduct_id, product_name, comment, datums, customer_id) VALUES ('".$data[0]['order_id']."','".$data[0]['customer_name']."','".$data[0]['adress']."','".$data[0]['phone']."','".$data[0]['countf']."','".$data[0]['ptoduct_id']."','".$data[0]['product_name']."','".$data[0]['comment']."','".$data[0]['datums']."','".$data[0]['customer_id']."')";
+        $result2 = mysqli_query($conn,$query);
+        
        
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $result = mysqli_query($conn, "DELETE FROM orders WHERE order_id='$id'");
+        mysqli_close($conn);
        if($result){ 
            echo "<h1>Order deleted!</h1>";
            return redirect()->back();
@@ -38,8 +53,9 @@ class RedactorController extends Controller
        else {
            echo "<h1>No such Order!</h1>";
            return redirect()->back();
-           exit();
+           
        }
+      
    }
    }
    
@@ -155,7 +171,7 @@ class RedactorController extends Controller
            exit();
        }
    
-     
+     mysqli_close($conn);
      //return view('redactor')->withTitle($data);
     }
 }
@@ -187,7 +203,7 @@ class RedactorController extends Controller
         
         $result = false;
         
-   if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
+     if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
         echo "<h1>You are not Admin!</h1>";
         return view ('welcome');
         }
@@ -215,6 +231,7 @@ class RedactorController extends Controller
 			   , '</script>';
         
         }
+        mysqli_close($conn);
         }
         
     }

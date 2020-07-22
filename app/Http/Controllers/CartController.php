@@ -70,6 +70,30 @@ mysqli_close($conn);
         
         */
     
+    public function MyOrders(){
+       $id = $_COOKIE['userid'];
+
+       $servername = "127.0.0.1:3308";
+$username = "user1";
+$password = "12345";
+$dbname = "shop";
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$query = "SELECT * FROM orders WHERE customer_id = $id";
+
+$result = mysqli_query($conn, $query);
+for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
+
+//print_r($data);
+
+$query = "SELECT * FROM orders_complited WHERE customer_id = $id";
+
+$result = mysqli_query($conn, $query);
+for ($data2 = []; $row = mysqli_fetch_assoc($result); $data2[] = $row);
+
+mysqli_close($conn);
+
+return view('myorders', ["key"=>$data], ["key2"=>$data2]);
+    }
 }
 
 

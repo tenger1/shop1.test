@@ -35,7 +35,7 @@ mysqli_close($conn);
 $user = $result->fetch_assoc();
 if(!$user) {
     echo "<h1>Error!</h1>";
-    return view('welcome');
+    return redirect()->to('/home');
 }
 
 if(count($user) == 0){
@@ -47,15 +47,16 @@ setcookie('user', $user['name'], time() + 3600, "/");
 
 $urole = $user["role"];
 $uname = $user["name"];
+$uid = $user["id"];
 //echo "<h1>Hello, $uname!</h1>";
 //echo "<h1>You are $urole!</h1>";
 setcookie('userrole', $user['role'], time() + 3600, "/");
-
+setcookie('userid', $user['id'], time() + 3600, "/");
 //if ($result) echo "<h1>Login good!</h1>";
 if($urole == "admin"){
-    return view('redactor');
+    return redirect()->to('/redactor');
 }
-else return view('welcome');
+else return redirect()->to('/home');
 
 // $result=mysqli_query($conn, "SELECT * FROM login WHERE 'user'=".$_GET["uname"]." AND 'pass'=".$_GET["upsw"]."") ;
 
@@ -66,7 +67,12 @@ public function loginExit(){
    // setcookie('user', $user['name'], time() - 3600, "/");
     setcookie("user", "", time() - 3600);
     setcookie("userrole", "", time() - 3600);
-    return view('welcome');
+    
+   // return view('welcome');
+    return redirect()->to('/home');
+
+
+
     
     
 }
