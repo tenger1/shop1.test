@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Input;
 class LoginController extends Controller
 {
 
-    public function finishLogin(){
-        
+    public function finishLogin(Request $request){
+   // $login = htmlspecialchars($_POST['ulogin']);   
+  // $pass = htmlspecialchars($_POST['ulogin']);
+//$login = $_POST["ulogin"];
+//$pass = $_POST["ulogin"];
 
         $login = ($_GET["ulogin"]);
         $pass = ($_GET["upsw"]);
@@ -31,11 +34,18 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 $result = mysqli_query($conn, "SELECT * FROM `login` WHERE `user` = '$login' AND `password` = '$pass'");
 mysqli_close($conn);
 //var_dump($result);
+if(!$result) {
+    echo "<h1>Error!</h1>";
+    exit();
+    
+}
+else{
 
 $user = $result->fetch_assoc();
 if(!$user) {
     echo "<h1>Error!</h1>";
-    return redirect()->to('/home');
+    exit();
+    
 }
 
 if(count($user) == 0){
@@ -57,6 +67,7 @@ if($urole == "admin"){
     return redirect()->to('/redactor');
 }
 else return redirect()->to('/home');
+}
 
 // $result=mysqli_query($conn, "SELECT * FROM login WHERE 'user'=".$_GET["uname"]." AND 'pass'=".$_GET["upsw"]."") ;
 
