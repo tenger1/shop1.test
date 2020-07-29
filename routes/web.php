@@ -72,6 +72,7 @@ Route::get('/login', function(){
 Route::get('/login_final', [
         'uses' => 'LoginController@finishLogin'
 ]);
+//Route::post('/login_final','LoginController@finishLogin');
 
 
 Route::get('/register', function(){
@@ -136,4 +137,8 @@ Route::post('/add_image_final', 'AddController@AddImage');
     
 });
 
+Route::get('/uploadfile','UploadFileController@index');
+Route::post('/uploadfile','UploadFileController@showUploadFile');
 
+Route::get('/image_change','UploadFileController@index2');
+Route::post('/image_change','UploadFileController@ChangeImage');
