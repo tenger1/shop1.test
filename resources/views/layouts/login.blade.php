@@ -74,6 +74,7 @@ span.psw {
   <div class="imgcontainer">
     <img class="rounded center" src="/images/A&A.jpg" alt="Avatar" class="avatar">
   </div>
+ 
 <form action="/login_final/" method="get">
   <div class="container">
       <p>Username:</p><input type="text" name="ulogin" id="ulogin" class="form-control" required/>
