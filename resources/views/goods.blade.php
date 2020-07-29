@@ -18,7 +18,7 @@
                }
                .goods_image{
                    width: 250px;
-                   height: 250px;
+                  
                }
                .goods_border{
                   border: 5px solid;
@@ -49,6 +49,7 @@
            </style>
            
            <?php
+           header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 $go = $good->count;
 if($go == 0) $go= "-";
 
@@ -58,7 +59,7 @@ if($go == 0) $go= "-";
 		<div class="good_content">
                     <p>
 					
-                        <a href="/goods/{{$good->id}}"><img class= "goods_image goods_border"src="/images/{{$good->id}}.jpg" alt="Good image" ></a>
+                        <a href="/goods/{{$good->id}}"><img class= "goods_image goods_border"src="/images/{{$good->id}}.jpg"  alt="Good image" [B]nocache[/B]></a>
                     </p>
                     <div class="goods_pamatojums">
                         

@@ -5,7 +5,15 @@
 
 <h1 style="text-align: center; font-variant: small-caps; margin-top: 30px;">Redactors</h1>
 <h2 style="margin-left: 40px; color: #df5000; font-variant: small-caps;">Pievienot ziedu:</h2>
-<form action="/add_final/" method="get" style="margin-left: 30px;">
+
+
+
+    
+     <?php
+         echo Form::open(array('url' => '/uploadfile','files'=>'true'));
+         ?>
+<div class="container mx-1">
+    
   <div class="form-row">
   <div class="form-group col-md-4">
     <lable>Nosaukums:</lable><input type="text" name="name" id="name" class="form-control" />
@@ -24,35 +32,87 @@
     
     <div class="form-row">
   <div class="form-group col-md-4">
-    <lable>Cena:</lable><input type=number step=0.01 name="price" id="price" class="form-control " />
+    <lable>Cena:</lable><input type="number" step="0.01" name="price" id="price" class="form-control " min="0.01" />
   </div>
   <div class="form-group col-md-4">
-    <lable>Kategorijas Numurs:</lable><input type="number" name="category_id" id="category_id" class="form-control " />
+      <lable>Kategorijas Numurs:</lable><input type="number" name="category_id" id="category_id" class="form-control " min="1" />
   </div>
   <div class="form-group col-md-4">
-    <lable>Daudzums:</lable><input type="number" name="count" id="count" class="form-control" />
+    <lable>Daudzums:</lable><input type="number" name="count" id="count" class="form-control" min="0" />
   </div>
     </div>
     
-    <button style="margin:20px;" type="submit" class="btn btn-warning">Pievienot</button>
+</div> 
  
-</form>
 
 
-<div class="container">
-    <form action="" method="post" enctype="multipart/form-data">
-        <input type="file" name="picture">
-        <input type="submit">
-    </form>
-    
+
+<div class="container mx-1">
+    <?php
+         echo Form::open(array('url' => '/uploadfile','files'=>'true', 'class'=>'form-inline mx-1'));
+         /*
+         echo '<div class="form-row">';
+         
+         echo '<div class="form-group col-md-4">';
+         echo Form::label('name', 'Nosaukums');
+         echo Form::text('name', ['class' => 'form-control', 'id' => 'name']);
+         echo '</div>';
+         
+         echo '<div class="form-group col-md-4">';
+         echo Form::label('color', 'Krāsa');
+         echo Form::text('color', ['class' => 'form-control', 'id' => 'color']);
+         echo '</div>';
+         
+         echo '<div class="form-group col-md-4">';
+         echo Form::label('country', 'Valsts');
+         echo Form::text('country',['class' => 'form-control', 'id' => 'country']);
+         echo '</div>';
+         echo '</div>';
+         
+         echo '<div class="container">';
+         echo Form::label('description', 'Pamatojums' );
+         echo Form::text('description', ['class' => 'form-control', 'id' => 'description', 'rows' => '7']);
+         echo '</div>';
+         
+         
+         
+         
+         echo '<div class="form-row">';
+         
+         echo '<div class="form-group col-md-4">';
+         echo Form::label('price', 'Cena');
+         echo Form::text('price', ['class' => 'form-control', 'id' => 'price']);
+         echo '</div>';
+         
+         echo '<div class="form-group col-md-4">';
+         echo Form::label('color', 'Krāsa');
+         echo Form::text('color', ['class' => 'form-control', 'id' => 'color']);
+         echo '</div>';
+         
+         echo '<div class="form-group col-md-4">';
+         echo Form::label('country', 'Valsts');
+         echo Form::text('country',['class' => 'form-control', 'id' => 'country']);
+         echo '</div>';
+         echo '</div>';
+         
+          
+          */
+         echo 'Izvēlēties failu:';
+        // echo '<input type="radio" name="name" value="male" class="form-control" checked/>';
+         echo Form::file('image',['class' => 'btn btn-primary btn-sm mx-1 form-group mx-sm-3 mb-2 mx-1', 'accept' => '.jpg']);
+         //echo Form::button('Open Image', ['class' => 'btn btn-large btn-primary openbutton']);
+         echo Form::reset('Dzēst', array('class' => 'btn btn-secondary mx-1 form-group mx-sm-3 mb-2 mx-1'));
+         echo Form::submit('Submit', ['class' => 'btn btn-warning mx-1 form-group mx-sm-3 mb-2 mx-1']);
+         echo Form::close();
+      ?>   
 </div>
 
-
+<div class="container mx-1">
 
     <h2 style="margin-left: 30px; color: #df5000; font-variant: small-caps;">Mēklēt Pasūtījumus:</h2>
 <form action="/search_by_name/" method="get" class="form-inline">
 
-  <div class="form-group mx-sm-3 mb-2 ml-3">
+  <div class="form-group mx-sm-3 mb-2">
       <input type="text" class="form-control" id="name_order" name="name_order" placeholder="Address">
   </div>
 <div class="form-group mx-sm-3 mb-2">
@@ -61,8 +121,9 @@
 <div class="form-group mx-sm-3 mb-2">
     <input type="number" class="form-control" name="id_to" id="inputPassword2" min="1" placeholder="ID TO">
 </div>
+    <div class="form-group mx-sm-3 mb-2">
   <button type="submit" class="btn btn-primary mb-2 ml-3">Meklēt</button>
-</div>
+    </div>
 </form>
     
 
@@ -154,6 +215,7 @@
                               
                 ?>
 <tbody></table>
+</div>
 
 
 @endsection
