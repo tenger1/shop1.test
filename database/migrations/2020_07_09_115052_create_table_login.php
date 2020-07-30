@@ -13,7 +13,7 @@ class CreateTableLogin extends Migration
      */
     public function up()
     {
-        Schema::create('login', function (Blueprint $table) {
+        Schema::create('login1', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
 	    $table->string('user');

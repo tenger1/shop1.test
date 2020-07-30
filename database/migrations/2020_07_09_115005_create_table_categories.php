@@ -13,7 +13,7 @@ class CreateTableCategories extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('categories1', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
 	    $table->string('latin_url');

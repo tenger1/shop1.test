@@ -13,7 +13,7 @@ class CreateTableOrders extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('orders1', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('customer_name');
 	    $table->text('city');

@@ -13,7 +13,7 @@ class CreateTableGoods extends Migration
      */
     public function up()
     {
-        Schema::create('goods', function (Blueprint $table) {
+        Schema::create('goods1', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
 	    $table->string('color');
