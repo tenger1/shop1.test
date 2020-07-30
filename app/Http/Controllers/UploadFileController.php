@@ -38,12 +38,12 @@ class UploadFileController extends Controller {
       
       
       
-      $servername = "127.0.0.1:3308";
-$username = "user1";
-$password = "12345";
-$dbname = "shop";
+        define('DB_HOST', '127.0.0.1:3308');
+        define('DB_USER', 'user1');
+        define('DB_PASSWORD', '12345');
+        define('DB_NAME', 'shop');
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);

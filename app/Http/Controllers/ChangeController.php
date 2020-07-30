@@ -18,12 +18,12 @@ class ChangeController extends Controller
         $changeid = ($_GET['good_id']);
         
         
-        $servername = "127.0.0.1:3308";
-        $username = "user1";
-        $password = "12345";
-        $dbname = "shop";
-        
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        define('DB_HOST', '127.0.0.1:3308');
+        define('DB_USER', 'user1');
+        define('DB_PASSWORD', '12345');
+        define('DB_NAME', 'shop');
+
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
  
         $result = mysqli_query($conn, "UPDATE goods SET count = '$change' WHERE id = '$changeid'");
         if ($result) echo "<h1>Change good!</h1>";

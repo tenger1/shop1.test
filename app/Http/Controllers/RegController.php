@@ -21,12 +21,12 @@ class RegController extends Controller
       }
       $rpass = md5($rpass."uyfvhsfias");
       
-$servername = "127.0.0.1:3308";
-$username = "user1";
-$password = "12345";
-$dbname = "shop";  
+define('DB_HOST', '127.0.0.1:3308');
+define('DB_USER', 'user1');
+define('DB_PASSWORD', '12345');
+define('DB_NAME', 'shop');
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 $reg_check = mysqli_query($conn, "SELECT * FROM `login` WHERE `user` = '$rlogin'");
 if($reg_check->num_rows != 0){

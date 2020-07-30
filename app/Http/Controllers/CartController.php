@@ -16,18 +16,20 @@ class CartController extends Controller
 	
     public function CartClear (){
         echo 123;
-        $servername = "127.0.0.1:3308";
-$username = "user1";
-$password = "12345";
-$dbname = "shop";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+        
+    define('DB_HOST', '127.0.0.1:3308');
+    define('DB_USER', 'user1');
+    define('DB_PASSWORD', '12345');
+    define('DB_NAME', 'shop');
 
-$result = mysqli_query($conn, "SELECT orders.ptoduct_id, goods_orders.Gid  FROM goods_orders, orders WHERE goods_orders.Gid = orders.ptoduct_id");
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASWWORD, DB_NAME);
 
-//print_r($result);
-mysqli_close($conn);
-//$table = 'goods';
-//$result = mysqli_query($conn, "SELECT * x`FROM ".$table." WHERE id= ".$product_id."");
+    $result = mysqli_query($conn, "SELECT orders.ptoduct_id, goods_orders.Gid  FROM goods_orders, orders WHERE goods_orders.Gid = orders.ptoduct_id");
+
+    //print_r($result);
+    mysqli_close($conn);
+    //$table = 'goods';
+    //$result = mysqli_query($conn, "SELECT * x`FROM ".$table." WHERE id= ".$product_id."");
 
     }
     

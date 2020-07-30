@@ -95,13 +95,14 @@ class CartController2 extends Controller
          $datums = ($_GET["datums"]);
         
          
-         $servername = "127.0.0.1:3308";
-$username = "user1";
-$password = "12345";
-$dbname = "shop";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+    define('DB_HOST', '127.0.0.1:3308');
+    define('DB_USER', 'user1');
+    define('DB_PASSWORD', '12345');
+    define('DB_NAME', 'shop');
 
-//print_r($_SESSION);
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+    //print_r($_SESSION);
 
 
 

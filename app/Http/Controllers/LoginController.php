@@ -18,17 +18,16 @@ class LoginController extends Controller
         $login = ($_GET["ulogin"]);
         $pass = ($_GET["upsw"]);
         
-      //echo"Login: $login <br> Pass: $pass"; 
-      
-$servername = "127.0.0.1:3308";
-$username = "user1";
-$password = "12345";
-$dbname = "shop";  
+      //echo"Login: $login <br> Pass: $pass";  
 
+define('DB_HOST', '127.0.0.1:3308');
+define('DB_USER', 'user1');
+define('DB_PASSWORD', '12345');
+define('DB_NAME', 'shop');
 
 $pass = md5($pass."uyfvhsfias");
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
  
 $result = mysqli_query($conn, "SELECT * FROM `login` WHERE `user` = '$login' AND `password` = '$pass'");
