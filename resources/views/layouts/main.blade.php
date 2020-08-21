@@ -6,6 +6,12 @@
     <link rel="shortcut icon" href="/images/A&A.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
+	
+	<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
 
     <link rel="stylesheet" href="css/style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -171,7 +177,14 @@
    
     </style>
     <!-- <link href="css/starter-template.css" rel="stylesheet"> -->
-    
+    <?php 
+$prices2 = array_column($_SESSION, 'price');
+$counts2 = array_column($_SESSION, 'count');
+
+$summ2 = 0;
+for($i = 0; $i < count($prices2); ++$i) {
+  $summ2 += $prices2[$i]*$counts2[$i]; 
+}?>
   </head>
   <body>
 
@@ -201,57 +214,55 @@
   ES
 </a>
   </div>
-</div>
   
+</div>
+<ul class="navbar list-inline mx-auto text-right">
+  <li class="list-inline-item"><a class="nav-link bg-warning btn mb-2" href="/cart2/" title="Cart"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+</svg><?php echo $summ2; ?> €</a></li>
+</ul>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault" >
-    <ul class="navbar-nav mr-auto">
+     <ul class="list-inline mx-auto justify-content-center mt-2">
      
                
-        <a class="nav-link bg-success btn mx-1 mb-2" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">@lang('main.autor-ziedi')</strong></a>
-         <a class="user nav-link bg-danger btn mx-1 mb-2" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">@lang('main.ieiet')</strong></a>
-          <a class="user nav-link bg-danger btn mx-1 mb-2" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">@lang('main.Reg')</strong></a>
+        <li class="list-inline-item"><a class="nav-link bg-success btn mx-1 mb-2" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">@lang('main.autor-ziedi')</strong></a></li>
+         <li class="list-inline-item"><a class="user nav-link bg-danger btn mx-1 mb-2" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;">@lang('main.ieiet')</strong></a></li>
+          <li class="list-inline-item"><a class="user nav-link bg-danger btn mx-1 mb-2" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;">@lang('main.Reg')</strong></a></li>
 
-		<?php 
-$prices2 = array_column($_SESSION, 'price');
-$counts2 = array_column($_SESSION, 'count');
 
-$summ2 = 0;
-for($i = 0; $i < count($prices2); ++$i) {
-  $summ2 += $prices2[$i]*$counts2[$i]; 
-}?>
-      
-      
-          <a class="nav-link bg-warning btn mb-2" href="/cart2/" title="Cart"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-</svg><?php echo $summ2; ?> €</a>
-          
+   </ul>
         <?php 
         if(isset($_COOKIE['user'])):
         ?>
              
-            <h5 class="text-center pt-2 mx-2 mb-2">@lang('main.Hello'), <?=$_COOKIE['user']?>! </h5> 
-        
-       <a class="btn btn-outline-danger mx-1 mb-2" href="/my_orders"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-truck" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <h5 class="text-center mx-auto">@lang('main.Hello'), <?=$_COOKIE['user']?>! </h5> 
+			
+        <ul class="list-inline mx-auto justify-content-center">
+       <li class="list-inline-item"><a class="btn btn-outline-danger mx-1 mb-2" href="/my_orders"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-truck" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5v7h-1v-7a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5v1A1.5 1.5 0 0 1 0 10.5v-7zM4.5 11h6v1h-6v-1z"/>
   <path fill-rule="evenodd" d="M11 5h2.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5h-1v-1h1a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4.5h-1V5zm-8 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
   <path fill-rule="evenodd" d="M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
-</svg></a>
-        <a class="btn btn-outline-danger mx-1 mb-2" href="/exit"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-door-open" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+</svg></a></li>
+        
+        <li class="list-inline-item"><a class="btn btn-outline-danger mb-2" href="/redactor" style="text-align: center;"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
+  <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
+</svg></a></li>
+
+		<li class="list-inline-item"><a class="btn btn-outline-danger mx-1 mb-2" href="/exit"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-door-open" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z"/>
   <path fill-rule="evenodd" d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z"/>
   <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z"/>
-</svg></a>
-        <a class="btn btn-outline-danger mb-2" href="/redactor" style="text-align: center;"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
-  <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
-</svg></a>
+</svg></a></li>
         
         
+</ul>
+
         <?php else: ?>
         
         
@@ -261,11 +272,11 @@ for($i = 0; $i < count($prices2); ++$i) {
         
         <?php endif; ?>
         
-        <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
+        <form name="idform" class="form-inline text-center mx-auto" >
             
-            <input type="text" id="search" placeholder="@lang('main.prece')..." class="form-control bg-light border-0 mb-2" small name="id">
+            <input type="text" id="search" placeholder="@lang('main.prece')..." class="form-control bg-light border-0" small name="id">
     
-    <input type="button" id="GFG_Button" class="btn btn-primary mx-1 mb-2" value="@lang('main.Search')" onclick="location.href='/search/'+escape(document.forms['idform'].elements['id'].value)">
+    <input type="button" id="GFG_Button" class="btn btn-primary mx-2" value="@lang('main.Search')" onclick="location.href='/search/'+escape(document.forms['idform'].elements['id'].value)">
     
         </form> 
           <script>  
@@ -297,11 +308,70 @@ for($i = 0; $i < count($prices2); ++$i) {
 		
             <div class="col-md-9">
 			@yield('content')
-                        
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  
+  
+                        <style type="text/css">
+   .box{
+    width:600px;
+    margin:0 auto;
+    
+   }
+   .has-error
+   {
+    border-color:#cc0000;
+    background-color:#ffff99;
+   }
+  </style>
+
+  <br />
+  <br />
+  <br />
+  <div class="container box">
+   <h3 align="center">Email</h3><br />
+   @if (count($errors) > 0)
+    <div class="alert alert-danger">
+     <button type="button" class="close" data-dismiss="alert">×</button>
+     <ul>
+      @foreach ($errors->all() as $error)
+       <li>{{ $error }}</li>
+      @endforeach
+     </ul>
+    </div>
+   @endif
+   @if ($message = Session::get('success'))
+   <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+           <strong>{{ $message }}</strong>
+   </div>
+   @endif
+   <form method="post" action="{{url('sendemail/send')}}">
+    {{ csrf_field() }}
+    <div class="form-group">
+     <label>Enter Your Name</label>
+     <input type="text" name="name" class="form-control" value="" />
+
+    </div>
+    <div class="form-group">
+     <label>Enter Your Email</label>
+     <input type="text" name="email" class="form-control" value="" />
+    </div>
+    <div class="form-group">
+     <label>Enter Your Message</label>
+     <textarea name="message" class="form-control" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+     <input type="submit" name="send" class="btn btn-info" value="Send" />
+    </div>
+   </form>
+   
+  </div>
             </div>
 		
    </div>
-</div>
+
+
+  </div>
 </main><!-- /.container -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
