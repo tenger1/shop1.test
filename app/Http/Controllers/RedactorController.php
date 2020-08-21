@@ -23,7 +23,7 @@ class RedactorController extends Controller
         return view ('welcome');
         }
         else{ 
-        define('DB_HOST', '127.0.0.1:3308');
+        define('DB_HOST', '127.0.0.1:3306');
         define('DB_USER', 'user1');
         define('DB_PASSWORD', '12345');
         define('DB_NAME', 'shop');
@@ -37,13 +37,13 @@ class RedactorController extends Controller
         
         }
         mysqli_close($conn);
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         
         $query = "INSERT INTO orders_complited (order_id, customer_name, adress, phone, countf, ptoduct_id, product_name, comment, datums, customer_id) VALUES ('".$data[0]['order_id']."','".$data[0]['customer_name']."','".$data[0]['adress']."','".$data[0]['phone']."','".$data[0]['countf']."','".$data[0]['ptoduct_id']."','".$data[0]['product_name']."','".$data[0]['comment']."','".$data[0]['datums']."','".$data[0]['customer_id']."')";
         $result2 = mysqli_query($conn,$query);
         
        
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "DELETE FROM orders WHERE order_id='$id'");
         mysqli_close($conn);
        if($result){ 
@@ -72,10 +72,10 @@ class RedactorController extends Controller
         $id_from = ($_GET["id_from"]); 
         $id_to = ($_GET["id_to"]); 
         
-        $servername = "127.0.0.1:3308";
-        $username = "user1";
-        $password = "12345";
-        $dbname = "shop";
+      define('DB_HOST', '127.0.0.1:3306');
+        define('DB_USER', 'user1');
+        define('DB_PASSWORD', '12345');
+        define('DB_NAME', 'shop');
        /* 
         if($name == '' && ($id_from != '' || $id_to != '')){
             echo "GOOD FROM!";
@@ -94,52 +94,52 @@ class RedactorController extends Controller
          */
         
         if($name == '' && $id_from != '' && $id_to != ''){
-           $conn = mysqli_connect($servername, $username, $password, $dbname);
+           $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id BETWEEN '$id_from' AND '$id_to' ORDER BY datums ASC");
         
         }
         
         
         if($name != '' && $id_from == '' && $id_to == ''){
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%' ORDER BY datums ASC");
 
         }
         
         if($name == '' && $id_from == '' && $id_to == ''){
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "SELECT * FROM orders ORDER BY datums ASC");
 
         }
         
         if($name != '' && $id_from != '' && $id_to == ''){
             $id_from = ($_GET["id_from"]); 
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%' AND order_id>='$id_from' ORDER BY datums ASC");
 
         }
         if($name != '' && $id_from == '' && $id_to != ''){
             $id_to = ($_GET["id_to"]); 
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%' AND order_id<='$id_to' ORDER BY datums ASC");
 
         }
         if($name != '' && $id_from != '' && $id_to != ''){
             $id_to = ($_GET["id_to"]); 
             $id_from = ($_GET["id_from"]); 
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "SELECT * FROM orders WHERE adress LIKE '%$name%' AND order_id<='$id_to' AND order_id>='$id_from' ORDER BY datums ASC");
 
         }
         
         if($name == '' && $id_from == '' && $id_to != ''){
-           $conn = mysqli_connect($servername, $username, $password, $dbname);
+           $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id<='$id_to' ORDER BY datums ASC");
         
 
         }
         if($name == '' && $id_from != '' && $id_to == ''){
-           $conn = mysqli_connect($servername, $username, $password, $dbname);
+           $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id>='$id_from' ORDER BY datums ASC");
         
 
@@ -176,17 +176,17 @@ class RedactorController extends Controller
     }
 }
     public function DeliverchangeAction($id){
+		
         if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
         echo "<h1>You are not Admin!</h1>";
         return view ('welcome');
         }
         else{
-        $servername = "127.0.0.1:3308";
-        $username = "user1";
-        $password = "12345";
-        $dbname = "shop";
-        
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        define('DB_HOST', '127.0.0.1:3306');
+        define('DB_USER', 'user1');
+        define('DB_PASSWORD', '12345');
+        define('DB_NAME', 'shop');
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id= $id");
         
         if($result)for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
@@ -214,13 +214,13 @@ class RedactorController extends Controller
         $phone = ($_GET["telefons"]); 
         $countf  = ($_GET["daudzums"]); 
         $id = ($_GET["order_id"]); 
+		
+        define('DB_HOST', '127.0.0.1:3306');
+        define('DB_USER', 'user1');
+        define('DB_PASSWORD', '12345');
+        define('DB_NAME', 'shop');
         
-        $servername = "127.0.0.1:3308";
-        $username = "user1";
-        $password = "12345";
-        $dbname = "shop";
-        
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "UPDATE orders SET customer_name = '$name', adress= '$adress', phone = '$phone', countf = '$countf' WHERE order_id = $id;");
         
         if($result){

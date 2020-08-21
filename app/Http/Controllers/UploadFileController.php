@@ -36,9 +36,7 @@ class UploadFileController extends Controller {
       $description = $_POST["description"];
       $price = $_POST["price"];
       
-      
-      
-        define('DB_HOST', '127.0.0.1:3308');
+        define('DB_HOST', '127.0.0.1:3306');
         define('DB_USER', 'user1');
         define('DB_PASSWORD', '12345');
         define('DB_NAME', 'shop');

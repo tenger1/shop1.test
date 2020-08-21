@@ -20,7 +20,7 @@ class LoginController extends Controller
         
       //echo"Login: $login <br> Pass: $pass";  
 
-define('DB_HOST', '127.0.0.1:3308');
+define('DB_HOST', '127.0.0.1:3306');
 define('DB_USER', 'user1');
 define('DB_PASSWORD', '12345');
 define('DB_NAME', 'shop');
