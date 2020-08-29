@@ -31,18 +31,16 @@
                    margin-top: 30px;
                    left: 20px;
                    position: relative;
-                   width: 350px;
-                   height: 620px;
-                  // border: 3px solid red;
+                   
+                   //border: 3px solid red;
                }
                .goods_pamatojums{
                    position: relative;
                    
                    top: 0px;
                    right: 0;
-                   width: 340px;
-                   height: 330px;
-                  // border: 3px solid #73AD21;
+                   
+                   //border: 3px solid #73AD21;
                }
                
                
@@ -65,7 +63,7 @@ if($go == 0) $go= "-";
                         
                         
           
-                    <p style="font-variant: small-caps; text-align: center;"> <a class="cat_g" href="/goods/{{$good->id}}"> {{$good->name}} </a>
+                    <p style="font-variant: small-caps; "> <a class="cat_g" href="/goods/{{$good->id}}"> {{$good->name}} </a>
 					<br>@lang('main.Cena'): <span style="font-size: 140%; color: purple">{{$good->price}} €</span><span style="font-variant: normal">/@lang('main.prece').</span></p>
                     <p>@lang('main.Valsts'): {{$good->country}}
                     <p> @lang('main.prece'): <span class="cena" style="color:#cc6666">{{$go}}</span></p>

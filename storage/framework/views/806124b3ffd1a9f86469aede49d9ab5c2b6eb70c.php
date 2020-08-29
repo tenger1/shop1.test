@@ -7,7 +7,7 @@
 </style>
 	<p>
 	<a class= "cat_c" href="/categories/<?php echo e($category->id); ?>">
-		<?php echo e($category->name); ?>
+		 <?php echo e($category->name); ?>
 
 		</a>
 		

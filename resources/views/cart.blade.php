@@ -58,21 +58,54 @@
 	
 		<div class="table">
                     
-                    <table class="table ml-4">
+                    <table class="table ml-4 text-center">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
       <th scope="col">@lang('main.nos')</th>
-      <th scope="col">@lang('main.Cena'), €</th>
+      <th scope="col">@lang('main.Cena') (@lang('main.prece'))</th>
       <th scope="col">@lang('main.Daudz')</th>
+	  <th scope="col">@lang('main.Cena')</th>
     </tr>
   </thead>
   <tbody>
-                     <?php  foreach ($_SESSION as $v1) {
+                     <?php  
+					 foreach ($_SESSION as $v1) {
                          echo "<tr>";
-                    foreach ($v1 as $v2) {
-                      echo "<td>$v2</td>";
-                     }
+						 
+                   // foreach ($v1 as $v2) {
+                     // echo "<td>$v2</td>";
+					  echo "<td>";
+					  
+					  echo '<form class="form-inline mx-auto" method="get" action="/uncart">
+					  <input type="radio" style="display: none;" id="id_to_delete" name="id_to_delete" value="';
+					  echo $v1["id"];
+					  echo '" checked>
+					  <input class="form-control btn btn-warning mx-auto" type="submit" value="';
+					  echo Lang::get('main.del');
+				      echo '" /></form>';
+					  
+					  echo "</td>";
+					  
+					  echo "<td>";
+					  echo '<a style="color: #91040b; font-variant: small-caps; font-size: 120%;" href="/goods/';
+					  echo $v1["id"];
+					  echo '">';
+					  echo $v1["name"];
+					  echo "</a>";
+					  echo "</td>";
+					  
+					  echo "<td>";
+					  echo $v1["price"];
+					  echo "€</td>";
+					  echo "<td>";
+					  echo $v1["count"];
+					  echo "</td>";
+					  
+					  echo "<td>";
+					  echo $v1["count"]*$v1["price"];
+					  echo "€</td>";
+                    // }
                      echo "</tr>";
                      }  ?>
                      </table>
@@ -88,26 +121,7 @@ for($i = 0; $i < count($prices); ++$i) {
 echo $summ;?>€</span></p>
                     
                 </div>
-        
-    
-           
-           <form class="form-inline ml-3" method="get" action="/uncart">
-               <div class="form-group mx-sm-3 mb-3">
-                    <label for="id_to_delete">@lang('main.delid')</label>
-                    <select class="form-control ml-3" type="number" name="id_to_delete" id="id_to_delete">
-                     <?php
-                        $prices = array_column($_SESSION, 'id');
-                        print_r($prices);
-                        for($i = 0; $i < count($prices); ++$i) {
-                        echo'<option value="'.$prices[$i].'">'.$prices[$i].'</option>';
-                        }
-                        ?>       
-                    </select>
-               </div>
-               
 
-    <input class="form-control btn btn-warning mb-3" type="submit" value="@lang('main.del') ID" />
-</form>
            <div class="form-row">
            <form action="/delete_all_cart" method="get">
     <input class="btn-lg btn-danger ml-4" type="submit" value="@lang('main.del') @lang('main.allcart') " />
@@ -117,7 +131,7 @@ echo $summ;?>€</span></p>
                
     <div class="form-group col-md-6">
       <label for="name">@lang('main.your_name'):</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Your name" value="<?php 
+      <input type="text" class="form-control" id="name" name="name" placeholder="@lang('main.your_name')" value="<?php 
     if(isset($_COOKIE['user'])){
     echo $_COOKIE['user'];} ?>" required>
     </div>

@@ -19,7 +19,7 @@
 <script src="js/google-translate.js"></script>
 <script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
     
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/starter-template/">
 
@@ -294,7 +294,7 @@ for($i = 0; $i < count($prices2); ++$i) {
   </div>
 </nav>
 
-<main role="main" class="container">
+<main role="main" class="container mt-3">
 
   <div class="starter-template">
 	

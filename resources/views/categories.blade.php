@@ -7,7 +7,7 @@
 </style>
 	<p>
 	<a class= "cat_c" href="/categories/{{$category->id}}">
-		{{$category->id}}. {{$category->name}}
+		 {{$category->name}}
 		</a>
 		
 	</p>

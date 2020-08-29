@@ -4,6 +4,49 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
 <h1 style="text-align: center; font-variant: small-caps; margin-top: 30px;">Redactors</h1>
+<h2 style="margin-left: 40px; color: #df5000; font-variant: small-caps;">Pievienot kategoriju:</h2>
+<div class="container">
+		 
+		 <form class="form-inline" method="get" action="/addcat/">
+  
+  <div class="form-group mx-sm-3 mb-2">
+    
+    <input type="text" class="form-control" id="catname" name="catname">
+  </div>
+  <button type="submit" class="btn btn-warning mb-2">Pievienot</button>
+</form>
+		 
+		 </div>
+		 
+		 <h2 style="margin-left: 40px; color: #df5000; font-variant: small-caps;">Dzest kategoriju:</h2>
+<div class="container">
+		 
+		 <form class="form-inline" method="get" action="/delcat/">
+  
+  <div class="form-group mx-sm-3 mb-2">
+  <select class="browser-default custom-select" name="categorydel" id="categorydel" placeholder="Select">
+  <option value="" disabled selected>Select</option>
+    <?php 
+	 $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$sql = mysqli_query($conn, "SELECT * FROM `categories`");
+while ($row = $sql->fetch_assoc()){
+echo '<option class="form-control "  value="'. $row['id'] .'">' . $row['name'] . '</option>';
+}
+mysqli_close($conn);
+?>
+  </select>
+  </div>
+  <button type="submit" class="btn btn-warning mb-2">Dzest</button>
+</form>
+		 
+		 </div>
+		 
 <h2 style="margin-left: 40px; color: #df5000; font-variant: small-caps;">Pievienot ziedu:</h2>
 
 
@@ -12,6 +55,7 @@
      <?php
          echo Form::open(array('url' => '/uploadfile','files'=>'true'));
          ?>
+		 
 <div class="container mx-1">
     
   <div class="form-row">
@@ -30,13 +74,30 @@
       <lable>Pamatojums:</lable><textarea type="text" name="description" id="description" class="form-control" rows="7"></textarea>
   </div>
     
-    <div class="form-row">
+    <div class="form-row mt-3">
   <div class="form-group col-md-4">
     <lable>Cena:</lable><input type="number" step="0.01" name="price" id="price" class="form-control " min="0.01" />
   </div>
-  <div class="form-group col-md-4">
-      <lable>Kategorijas Numurs:</lable><input type="number" name="category_id" id="category_id" class="form-control " min="1" />
+  
+  
+  <div class="form-group col-md-4"><lable>Kategorija:</lable>
+  <select class="browser-default custom-select" name="category_id" id="category_id">
+    <?php 
+	if (!defined('DB_HOST'))define('DB_HOST', getenv('DB_HOST'));
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$sql = mysqli_query($conn, "SELECT * FROM `categories`");
+while ($row = $sql->fetch_assoc()){
+echo '<option class="form-control "  value="'. $row['id'] .'">' . $row['name'] . '</option>';
+}
+mysqli_close($conn);
+?>
+  </select>
   </div>
+  
   <div class="form-group col-md-4">
     <lable>Daudzums:</lable><input type="number" name="count" id="count" class="form-control" min="0" />
   </div>
@@ -106,7 +167,18 @@
          echo Form::close();
       ?>   
 </div>
-
+<div class="container">
+        <h2 style="margin-left: 30px; color: #df5000; font-variant: small-caps;">Dzest ziedu pec ID:</h2>                       
+                        <form action="/delete_by_id/" method="get" class="form-inline">
+						<div class="form-group mx-sm-3 mb-2">
+                            <input type="number" class="form-control" name="del_id" id="del_id" min="1">
+						</div>
+						    <div class="form-group mx-sm-3 mb-2">
+                            <button type="submit" class="btn btn-danger">Dzēst ziedu</button>
+						</div>
+						
+                        </form>
+                        </div>
 <div class="container mx-1">
 
     <h2 style="margin-left: 30px; color: #df5000; font-variant: small-caps;">Mēklēt Pasūtījumus:</h2>

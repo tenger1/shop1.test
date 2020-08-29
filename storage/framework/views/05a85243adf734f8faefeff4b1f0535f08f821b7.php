@@ -2,12 +2,24 @@
 <html lang="lv">
   <head id="up">
     <meta charset="utf-8">
-    <title>Mūsu ziedu veikals</title>
+    <title><?php echo app('translator')->get('main.our_flowers_base'); ?></title>
     <link rel="shortcut icon" href="/images/A&A.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
+	
+	<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
 
-
+    <link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/google-translate.js"></script>
+<script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/starter-template/">
 
@@ -26,6 +38,7 @@
 
 
     <style>
+        
       .search{
     position:relative;
 }
@@ -89,7 +102,7 @@
 }
 .col-md-3 a:hover{
     text-decoration: none;
-    letter-spacing: 8px;
+    letter-spacing: 5px;
     color: #c93200;  
     border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%
 }
@@ -161,36 +174,109 @@
   margin-right: auto;
   width: 40%;
    }
+   
     </style>
     <!-- <link href="css/starter-template.css" rel="stylesheet"> -->
-    
+    <?php 
+$prices2 = array_column($_SESSION, 'price');
+$counts2 = array_column($_SESSION, 'count');
+
+$summ2 = 0;
+for($i = 0; $i < count($prices2); ++$i) {
+  $summ2 += $prices2[$i]*$counts2[$i]; 
+}?>
   </head>
   <body>
 
       <nav class="navbar navbar-expand-md navbar-light bg-teal-light fixed-top" style="background-color:#2492ad">
-  <a class="navbar-brand" href="/">HOME</a>
+    <a class="navbar-brand" href="/home"><?php echo app('translator')->get('main.home'); ?></a>
+  
+<div class="dropdown">
+  <button class="btn navbar-brand" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-globe2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M1.018 7.5h2.49c.037-1.07.189-2.087.437-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5zM3.05 3.049c.362.184.763.349 1.198.49.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05zM8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm-.5 1.077c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.473.257 2.282.287V1.077zm0 4.014c-.91-.03-1.783-.145-2.591-.332a12.344 12.344 0 0 0-.4 2.741H7.5V5.091zm1 2.409V5.091c.91-.03 1.783-.145 2.591-.332.223.827.364 1.754.4 2.741H8.5zm-1 1H4.51c.035.987.176 1.914.399 2.741A13.596 13.596 0 0 1 7.5 10.91V8.5zm1 2.409V8.5h2.99a12.343 12.343 0 0 1-.399 2.741A13.596 13.596 0 0 0 8.5 10.91zm-1 1c-.81.03-1.577.13-2.282.287.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91zm-2.173 2.563a6.695 6.695 0 0 1-.597-.933 8.857 8.857 0 0 1-.481-1.078 8.356 8.356 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.52zM2.38 12.175c.47-.258.995-.482 1.565-.667A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.964 6.964 0 0 0 1.362 3.675zm8.293 2.297a7.01 7.01 0 0 0 2.275-1.521 8.353 8.353 0 0 0-1.197-.49 8.859 8.859 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zm.11-2.276A12.63 12.63 0 0 0 8.5 11.91v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872zm1.272-.688c.57.185 1.095.409 1.565.667A6.964 6.964 0 0 0 14.982 8.5h-2.49a13.355 13.355 0 0 1-.437 3.008zm.437-4.008h2.49a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008zm-.74-3.96a8.854 8.854 0 0 0-.482-1.079 6.692 6.692 0 0 0-.597-.933c.857.355 1.63.875 2.275 1.521a8.368 8.368 0 0 1-1.197.49zm-.97.264c-.705.157-1.473.257-2.282.287V1.077c.67.204 1.335.82 1.887 1.855.143.268.276.56.395.872z"/>
+</svg>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="btn" href="/locale/en">
+  EN
+</a>
+  <a class="btn" href="/locale/lv">
+  LV
+</a>
+  <a class="btn" href="/locale/de">
+  DE
+</a>
+    <a class="btn" href="/locale/it">
+  IT
+</a>
+  <a class="btn" href="/locale/es">
+  ES
+</a>
+  </div>
+  
+</div>
+<ul class="navbar list-inline mx-auto text-right">
+  <li class="list-inline-item"><a class="nav-link bg-warning btn mb-2" href="/cart2/" title="Cart"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+</svg><?php echo $summ2; ?> €</a></li>
+</ul>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault" >
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-       
-      </li>
-      
-        <a class="nav-link bg-success" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;">autor-ziedi</strong></a>
-          <a class="nav-link bg-info" href="http://facebook.com" style="text-align: center;"><strong style="font-variant:small-caps;">Facebook lapa</strong></a>
-          <a class="nav-link bg-info" href="http://instagram.com" style="text-align: center;"><strong style="font-variant:small-caps;">Instagram lapa</strong></a>
-        <a class="nav-link bg-warning" href="/cart" style="text-align: center;"><strong style="font-variant:small-caps;">Grozs</strong></a>
-        <a class="nav-link bg-warning" href="/home" style="text-align: center;"><strong style="font-variant:small-caps;">LV</strong></a>
-        <a class="nav-link bg-warning" href="/home_eng" style="text-align: center;"><strong style="font-variant:small-caps;">ENG</strong></a>
-          <form name="idform" class="form-inline mt-2 mt-md-0" style=" position: relative; left:10px;">
+     <ul class="list-inline mx-auto justify-content-center mt-2">
+     
+               
+        <li class="list-inline-item"><a class="nav-link bg-success btn mx-1 mb-2" href="/categories/11" style="text-align: center;"><strong style="font-variant:small-caps;"><?php echo app('translator')->get('main.autor-ziedi'); ?></strong></a></li>
+         <li class="list-inline-item"><a class="user nav-link bg-danger btn mx-1 mb-2" href="/login" style="text-align: center;"><strong style="font-variant:small-caps;"><?php echo app('translator')->get('main.ieiet'); ?></strong></a></li>
+          <li class="list-inline-item"><a class="user nav-link bg-danger btn mx-1 mb-2" href="/register" style="text-align: center;"><strong style="font-variant:small-caps;"><?php echo app('translator')->get('main.Reg'); ?></strong></a></li>
+
+
+   </ul>
+        <?php 
+        if(isset($_COOKIE['user'])):
+        ?>
+             
+            <h5 class="text-center mx-auto"><?php echo app('translator')->get('main.Hello'); ?>, <?=$_COOKIE['user']?>! </h5> 
+			
+        <ul class="list-inline mx-auto justify-content-center">
+       <li class="list-inline-item"><a class="btn btn-outline-danger mx-1 mb-2" href="/my_orders"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-truck" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5v7h-1v-7a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5v1A1.5 1.5 0 0 1 0 10.5v-7zM4.5 11h6v1h-6v-1z"/>
+  <path fill-rule="evenodd" d="M11 5h2.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5h-1v-1h1a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4.5h-1V5zm-8 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+  <path fill-rule="evenodd" d="M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+</svg></a></li>
+        
+        <li class="list-inline-item"><a class="btn btn-outline-danger mb-2" href="/redactor" style="text-align: center;"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
+  <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
+</svg></a></li>
+
+		<li class="list-inline-item"><a class="btn btn-outline-danger mx-1 mb-2" href="/exit"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-door-open" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z"/>
+  <path fill-rule="evenodd" d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z"/>
+  <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z"/>
+</svg></a></li>
+        
+        
+</ul>
+
+        <?php else: ?>
+        
+        
             
-            <input type="text" id="search" placeholder="Prece..." class="form-control bg-light border-0" small name="id">
+        <h5 class="text-center mx-3 mb-2"><?php echo app('translator')->get('main.Hello'); ?>, <?php echo app('translator')->get('main.viesis'); ?></h5>
+        
+        
+        <?php endif; ?>
+        
+        <form name="idform" class="form-inline text-center mx-auto" >
+            
+            <input type="text" id="search" placeholder="<?php echo app('translator')->get('main.prece'); ?>..." class="form-control bg-light border-0" small name="id">
     
-    <input type="button" id="GFG_Button" class="btn btn-primary" value="Meklēt" onclick="location.href='/search/'+escape(document.forms['idform'].elements['id'].value)">
+    <input type="button" id="GFG_Button" class="btn btn-primary mx-2" value="<?php echo app('translator')->get('main.Search'); ?>" onclick="location.href='/search/'+escape(document.forms['idform'].elements['id'].value)">
     
         </form> 
           <script>  
@@ -204,11 +290,11 @@
             alert("Mēklēšana tiek izpilīta!"); 
         }); 
     </script>
-       
+     </ul>  
   </div>
 </nav>
 
-<main role="main" class="container">
+<main role="main" class="container mt-3">
 
   <div class="starter-template">
 	
@@ -221,68 +307,124 @@
 		</div>
 		
             <div class="col-md-9">
-			<?php echo $__env->yieldContent('content'); ?>
+			
                         <span style="left: 20px; top:20px; position: relative;">
-                        <h1 style="text-align:center;" class="title">“A & A” Ziedu veikals</h1>
+                        <h1 style="text-align:center;" class="title"><?php echo app('translator')->get('main.our_flowers_base'); ?></h1>
                         <img class="rounded center" src="/images/A&A.jpg" alt="Logo">
-                        <p class="font-weight-normal">Mūsu veikals ieguva “A & A” nosaukumu 2020. gadā. 
-                            <br>Viņa dibinātāji ir sava darba profesionāļi, floristi <strong>Artūrs</strong> un <strong>Artems.</strong> <br>
-                            Ieguvuši izglītību labākajās pasaules universitātēs, nolēmuši iepriecināt apkārtējos cilvēkus ar ziedu skaistumu.
-                            <br> <mark><strong>Mēs nodarbojamies ar floristiku un esam gatavi veikt jūsu pasūtījumus 24/7!</strong></mark> <br>Katru nedēļu notiek preču piegāde no dažādām pasaules valstīm, ar vislabākajiem ziediem. Tikai pie mums var iegādāties visskaistākās, aromātiskās, ilgi dzīvojošās puķes, kas izkusīs jebkuru sirdi un priecāsies acis vairāk neka nedeļas garumā. <br>Noformējiet pasūtījumu tiešsaistē vai dodieties uz mūsu veikalu Raiņa bulvāris 19.<br><mark> Veikals strādā katru dienu no 8:00 līdz 22:00.</mark><br> Pasūtījumus veic un piegādā ārpus darba laikā par papildu samaksu.<br> Piedāvājam savus pušķus, pārdodam gabalos, kā arī veicam pasūtījumus pēc jūsu vēlmēm.</p>
+                        <p class="font-weight-normal"> <?php echo app('translator')->get('main.info'); ?></p>
                         
                         <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Pakalpojums</th>
-      <th scope="col">Cena, €</th>
+      <th scope="col"><?php echo app('translator')->get('main.Pakalpojums'); ?></th>
+      <th scope="col"><?php echo app('translator')->get('main.Cena'); ?>, €</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Lentīte</td>
+      <td><?php echo app('translator')->get('main.Lentīte'); ?></td>
       <td>0.70</td>
     </tr>
        <tr>
-      <td>Apsveikuma kartīte</td>
+      <td><?php echo app('translator')->get('main.Apsv'); ?></td>
       <td>1.60</td>
     </tr>
      <tr>
-      <td>Iesaiņojums</td>
+      <td><?php echo app('translator')->get('main.Iesaiņojums'); ?></td>
       <td>2.10</td>
     </tr>
      <tr>
-      <td class="table-danger">Saņēmšana veikalā</td>
+      <td class="table-danger"><?php echo app('translator')->get('main.san'); ?></td>
       <td class="table-danger">0.00</td>
     </tr>
      <tr>
-      <td>Piegāde Rīgā</td>
+      <td><?php echo app('translator')->get('main.piegr'); ?></td>
       <td>3.99</td>
     </tr>
      <tr>
-      <td>Piegāde ārpus Rīgas</td>
+      <td><?php echo app('translator')->get('main.piegarp'); ?></td>
       <td>5.99</td>
     </tr>
      <tr>
-      <td>Piegāde ārpus darba laika</td>
+      <td><?php echo app('translator')->get('main.piegarpdl'); ?></td>
       <td>8.99</td>
     </tr>
       <tr>
-          <td>Atlaide ar klienta karti<sup>*</sup></td>
+          <td><?php echo app('translator')->get('main.atl'); ?><sup>*</sup></td>
       <td class="bg-danger">10%</td>
     </tr>
  
   </tbody>
   
 </table>
-                        <p class="font-weight-light" style="font-size: 70%;"><sup>*</sup> Atlaide neatiecās uz papildus pakalpojumiem</p>
+                        <p class="font-weight-light" style="font-size: 70%;"><sup>*</sup> <?php echo app('translator')->get('main.atln'); ?></p>
                         
                         </span>
                   
-                          
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  
+  
+                        <style type="text/css">
+   .box{
+    width:600px;
+    margin:0 auto;
+    
+   }
+   .has-error
+   {
+    border-color:#cc0000;
+    background-color:#ffff99;
+   }
+  </style>
+
+  <br />
+  <br />
+  <br />
+  <div class=" container box">
+   <h3 align="center">Email</h3><br />
+   <?php if(count($errors) > 0): ?>
+    <div class="alert alert-danger">
+     <button type="button" class="close" data-dismiss="alert">×</button>
+     <ul>
+      <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+       <li><?php echo e($error); ?></li>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+     </ul>
+    </div>
+   <?php endif; ?>
+   <?php if($message = Session::get('success')): ?>
+   <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+           <strong><?php echo e($message); ?></strong>
+   </div>
+   <?php endif; ?>
+   <form method="post" action="<?php echo e(url('sendemail/send')); ?>">
+    <?php echo e(csrf_field()); ?>
+
+    <div class="form-group">
+     <label>Enter Your Name</label>
+     <input type="text" name="name" class="form-control" value="" />
+
+    </div>
+    <div class="form-group">
+     <label>Enter Your Email</label>
+     <input type="text" name="email" class="form-control" value="" />
+    </div>
+    <div class="form-group">
+     <label>Enter Your Message</label>
+     <textarea name="message" class="form-control" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+     <input type="submit" name="send" class="btn btn-info" value="Send" />
+    </div>
+   </form>
+   
+  </div>      
             </div>
 		
    </div>
 </div>
+
 </main><!-- /.container -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
@@ -302,7 +444,7 @@
       <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
 
         <!-- Content -->
-        <h5 class="font-weight-bold text-uppercase mb-4">Kur mēs esam?</h5>
+        <h5 class="font-weight-bold text-uppercase mb-4"><?php echo app('translator')->get('main.kur'); ?></h5>
         
         <iframe class='mape' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1256.9589487022274!2d24.11603977696689!3d56.95071908093513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eecfd3cdaa69c7%3A0x16a2b44d483ec349!2sUniversity%20of%20Latvia!5e0!3m2!1sru!2slv!4v1589490516939!5m2!1sru!2slv" width="300" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
       </div>
@@ -319,24 +461,30 @@
 
       <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
 
-        <h5 class="font-weight-bold text-uppercase mb-4">Kā sazināties?</h5>
+        <h5 class="font-weight-bold text-uppercase mb-4"><?php echo app('translator')->get('main.sazin'); ?></h5>
 
         <ul class="list-unstyled">
           <li>
             <p>
-              <i class="fas fa-home mr-3"></i>Raiņa bulvāris 19, Centra rajons, Rīga, LV-1586</p>
+              <i class="fas fa-home mr-3"></i><?php echo app('translator')->get('main.address'); ?></p>
           </li>
           <li>
             <p>
-              <i class="fas fa-envelope mr-3"></i> <a href="mailto:ar19111@students.lu.lv">ar19111@students.lu.lv</a></p>
+              <i class="fas fa-envelope mr-3"><a href="mailto:ar19111@students.lu.lv"></i> <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-envelope" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+</svg></a></p>
           </li>
-          <li>
-            <p>
-              <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-          </li>
-          <li>
-            <p>
-              <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+          <li><p>
+              <i class="fas fa-envelope mr-3">
+            <a href="tel:123-456-7890"></i> <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-telephone" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M3.925 1.745a.636.636 0 0 0-.951-.059l-.97.97c-.453.453-.62 1.095-.421 1.658A16.47 16.47 0 0 0 5.49 10.51a16.471 16.471 0 0 0 6.196 3.907c.563.198 1.205.032 1.658-.421l.97-.97a.636.636 0 0 0-.06-.951l-2.162-1.682a.636.636 0 0 0-.544-.115l-2.052.513a1.636 1.636 0 0 1-1.554-.43L5.64 8.058a1.636 1.636 0 0 1-.43-1.554l.513-2.052a.636.636 0 0 0-.115-.544L3.925 1.745zM2.267.98a1.636 1.636 0 0 1 2.448.153l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z"/>
+  </svg></a> </p>
+  </li>
+  <li><p>
+      <i class="fas fa-envelope mr-3"><a href="sms:+37120080918?body=Labdien, man ir jautājums par Jūsu pakalpojumiem!"></i><svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-chat-dots" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
+  <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+</svg></a></p>
           </li>
         </ul>
 
@@ -349,14 +497,14 @@
       <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
 
 
-        <h5 class="font-weight-bold text-uppercase mb-4">Sekot ziņam</h5>
-        
-       <ol>
+        <h5 class="font-weight-bold text-uppercase mb-4"><?php echo app('translator')->get('main.sekot'); ?></h5>
+        <ol>
             <a href="http://instagram.com"><img src="/images/Insta.svg.png" width="82" height="86" title="Instagram" alt="Instagram"></a>
         </ol>
         <ol>
             <a href="http://facebook.com"><img src="/images/Facebook.svg.png" width="82" height="86" title="Facebook" alt="Facebook"></a>
         </ol>
+       
       </div>     
     </div>
   </div>

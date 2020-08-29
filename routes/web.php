@@ -127,6 +127,14 @@ Route::get('/deliverchange_final/', [
         'uses' => 'RedactorController@Deliverchange_finalAction'
 ]);
 
+Route::get('/addcat', [
+        'uses' => 'RedactorController@AddCategory'
+]);
+
+Route::get('/delcat', [
+        'uses' => 'RedactorController@DelCategory'
+]);
+
 Route::get('/my_orders', [
         'uses' => 'CartController@MyOrders'
 ]);
@@ -142,3 +150,5 @@ Route::post('/uploadfile','UploadFileController@showUploadFile');
 
 Route::get('/image_change','UploadFileController@index2');
 Route::post('/image_change','UploadFileController@ChangeImage');
+
+Route::post('/sendemail/send', 'SendEmailController@send');
