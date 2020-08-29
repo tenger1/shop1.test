@@ -17,10 +17,12 @@ class CartController extends Controller
     public function CartClear (){
         echo 123;
         
-    define('DB_HOST', '127.0.0.1:3306');
-    define('DB_USER', 'user1');
-    define('DB_PASSWORD', '12345');
-    define('DB_NAME', 'shop');
+    $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
 
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASWWORD, DB_NAME);
 
@@ -75,27 +77,43 @@ class CartController extends Controller
     public function MyOrders(){
        $id = $_COOKIE['userid'];
 
-		define('DB_HOST', '127.0.0.1:3306');
-        define('DB_USER', 'user1');
-        define('DB_PASSWORD', '12345');
-        define('DB_NAME', 'shop');
+		 $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
 
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 $query = "SELECT * FROM orders WHERE customer_id = $id";
 
-$result = mysqli_query($conn, $query);
-for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
 
+$result = mysqli_query($conn, $query);
+if($result){
+for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
+}
 //print_r($data);
 
 $query = "SELECT * FROM orders_complited WHERE customer_id = $id";
 
 $result = mysqli_query($conn, $query);
+if($result){
 for ($data2 = []; $row = mysqli_fetch_assoc($result); $data2[] = $row);
-
+}
 mysqli_close($conn);
 
+if (isset($data) && isset($data2)){
 return view('myorders', ["key"=>$data], ["key2"=>$data2]);
+}
+
+if (isset($data) && !isset($data2)){
+return view('myorders', ["key"=>$data]);
+}
+
+if (isset($data2) && !isset($data)){
+return view('myorders', ["key2"=>$data2]);
+}
+
     }
 }
 

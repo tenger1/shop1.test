@@ -18,10 +18,12 @@ class ChangeController extends Controller
         $changeid = ($_GET['good_id']);
         
         
-        define('DB_HOST', '127.0.0.1:3306');
-        define('DB_USER', 'user1');
-        define('DB_PASSWORD', '12345');
-        define('DB_NAME', 'shop');
+         $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
 
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
  

@@ -22,17 +22,18 @@ class RedactorController extends Controller
         echo "<h1>You are not Admin!</h1>";
         return view ('welcome');
         }
-        else{ 
-        define('DB_HOST', '127.0.0.1:3306');
-        define('DB_USER', 'user1');
-        define('DB_PASSWORD', '12345');
-        define('DB_NAME', 'shop');
+         $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
 
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $move = mysqli_query($conn, "SELECT * FROM orders WHERE order_id= $id");    
         if($move){
         for ($data = []; $row = mysqli_fetch_assoc($move); $data[] = $row);
-        echo $data[0]['customer_name'];
+		//echo $data[0]['customer_name'];
         //var_dump($data);
         
         }
@@ -57,9 +58,9 @@ class RedactorController extends Controller
        }
       
    }
-   }
+  
    
-   public function SearchByNameAction (){
+   function SearchByNameAction (){
         $result = false;
         
    if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
@@ -72,10 +73,12 @@ class RedactorController extends Controller
         $id_from = ($_GET["id_from"]); 
         $id_to = ($_GET["id_to"]); 
         
-      define('DB_HOST', '127.0.0.1:3306');
-        define('DB_USER', 'user1');
-        define('DB_PASSWORD', '12345');
-        define('DB_NAME', 'shop');
+       $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
        /* 
         if($name == '' && ($id_from != '' || $id_to != '')){
             echo "GOOD FROM!";
@@ -175,17 +178,20 @@ class RedactorController extends Controller
      //return view('redactor')->withTitle($data);
     }
 }
-    public function DeliverchangeAction($id){
+    function DeliverchangeAction($id){
 		
         if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
         echo "<h1>You are not Admin!</h1>";
         return view ('welcome');
         }
         else{
-        define('DB_HOST', '127.0.0.1:3306');
-        define('DB_USER', 'user1');
-        define('DB_PASSWORD', '12345');
-        define('DB_NAME', 'shop');
+         $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
+		
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id= $id");
         
@@ -199,7 +205,7 @@ class RedactorController extends Controller
         }
     }
     
-    public function Deliverchange_finalAction(){
+     function Deliverchange_finalAction(){
         
         $result = false;
         
@@ -215,10 +221,12 @@ class RedactorController extends Controller
         $countf  = ($_GET["daudzums"]); 
         $id = ($_GET["order_id"]); 
 		
-        define('DB_HOST', '127.0.0.1:3306');
-        define('DB_USER', 'user1');
-        define('DB_PASSWORD', '12345');
-        define('DB_NAME', 'shop');
+         $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
         
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         $result = mysqli_query($conn, "UPDATE orders SET customer_name = '$name', adress= '$adress', phone = '$phone', countf = '$countf' WHERE order_id = $id;");
@@ -235,7 +243,57 @@ class RedactorController extends Controller
         }
         
     }
+	
+	function AddCategory (){
+        $result = false;
+        
+   if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
+        echo "<h1>You are not Admin!</h1>";
+        return view ('welcome');
+        }
+        else{     
+        
+        $catname = ($_GET["catname"]); 
+        
+       $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
+		
+		$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+		$result = mysqli_query($conn, "INSERT INTO categories (name) VALUES ('$catname');");
+        
+		if ($result) return redirect()->back();
+		else echo "ERROR!";
+		}
 }
    
-   
+	function DelCategory (){
+        $result = false;
+        
+   if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
+        echo "<h1>You are not Admin!</h1>";
+        return view ('welcome');
+        }
+        else{     
+        
+        $categorydel = ($_GET["categorydel"]); 
+        
+       $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
+		
+		$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+		$result = mysqli_query($conn, "DELETE FROM categories WHERE id= $categorydel;");
+        
+		if ($result) return redirect()->back();
+		else echo "ERROR!";
+		}
+}
+}  
    

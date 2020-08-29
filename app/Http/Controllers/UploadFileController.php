@@ -36,10 +36,12 @@ class UploadFileController extends Controller {
       $description = $_POST["description"];
       $price = $_POST["price"];
       
-        define('DB_HOST', '127.0.0.1:3306');
-        define('DB_USER', 'user1');
-        define('DB_PASSWORD', '12345');
-        define('DB_NAME', 'shop');
+         $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
 
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 // Check connection
@@ -112,22 +114,7 @@ $conn->close();
    }
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+
    
    public function showUploadFile(Request $request) {
       if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
@@ -137,11 +124,14 @@ $conn->close();
         else{
             
             
-$servername = "127.0.0.1:3308";
-$username = "user1";
-$password = "12345";
-$dbname = "shop";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+ $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
+
+
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 $query = "SELECT MAX(id) AS MAX FROM goods";
 
 $result = mysqli_query($conn, $query);
@@ -166,7 +156,7 @@ $last = $data[0]['MAX']+1;
       $category_id = $request->input('category_id');
       $count = $request->input('count');
       
-      echo "{$name},{$color},{$country},{$description},{$price},{$category_id},{$count}";
+      //echo "{$name},{$color},{$country},{$description},{$price},{$category_id},{$count}";
     
       //echo $radio->getClientOriginalName();
       //Display File Name
@@ -174,7 +164,7 @@ $last = $data[0]['MAX']+1;
       //echo '<br>';
    
       //Display File Extension
-      echo 'File Extension: '.$file->getClientOriginalExtension();
+      //echo 'File Extension: '.$file->getClientOriginalExtension();
       //echo '<br>';
    
       //Display File Real Path
@@ -197,7 +187,7 @@ $last = $data[0]['MAX']+1;
       
       $result = mysqli_query($conn, "INSERT INTO goods (id, name, color, country, description, price, category_id, count) VALUES ('$last','$name', '$color', '$country', '$description', '$price','$category_id', '$count')");
         mysqli_close($conn);
-        if ($result) echo "<h1>Add good!</h1>";
+        if ($result) echo "<br><h1>Add good!</h1>";
 
         
         $file->move($destinationPath,$newname);

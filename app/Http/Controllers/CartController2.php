@@ -95,11 +95,13 @@ class CartController2 extends Controller
          $datums = ($_GET["datums"]);
         
          
-    define('DB_HOST', '127.0.0.1:3306');
-    define('DB_USER', 'user1');
-    define('DB_PASSWORD', '12345');
-    define('DB_NAME', 'shop');
+     $address = getenv('DB_HOST'). ':' .getenv('DB_PORT');    
+if (!defined('DB_HOST'))define('DB_HOST', $address);
+       if (!defined('DB_USER')) define('DB_USER', getenv('DB_USERNAME'));
+       if (!defined('DB_PASSWORD')) define('DB_PASSWORD', getenv('DB_PASSWORD'));
+        if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_DATABASE'));
 
+		
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
     //print_r($_SESSION);
@@ -115,14 +117,15 @@ for($i = 0; $i < count($count_to_delete); ++$i){
     $query = "INSERT INTO orders ( customer_name, adress, phone, countf, ptoduct_id, product_name, comment, datums, customer_id) VALUES ('".$name."','".$adress."','".$phone."','".$count_to_delete[$i]."','".$id_to_delete[$i]."','".$product_name_to_delete[$i]."','".$info."','".$datums."','".$_COOKIE['userid']."')";
     //echo $query;
     $result = mysqli_query($conn,$query);
-    
+    if(!$result) echo "ERROR1";
 }
 }
 if(!isset($_COOKIE['userid'])){
     for($i = 0; $i < count($count_to_delete); ++$i){
-   $query = "INSERT INTO orders ( customer_name, adress, phone, countf, ptoduct_id, product_name, comment, datums) VALUES ('".$name."','".$adress."','".$phone."','".$count_to_delete[$i]."','".$id_to_delete[$i]."','".$product_name_to_delete[$i]."','".$info."','".$datums."')";
+    $query = "INSERT INTO orders ( customer_name, adress, phone, countf, ptoduct_id, product_name, comment, datums) VALUES ('".$name."','".$adress."','".$phone."','".$count_to_delete[$i]."','".$id_to_delete[$i]."','".$product_name_to_delete[$i]."','".$info."','".$datums."')";
 
     $result = mysqli_query($conn,$query);
+	if(!$result) echo "ERROR2";
     }
 }
 /*
@@ -142,14 +145,11 @@ for($i = 0; $i < count($count_to_delete); ++$i){
 }
 
  
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // Тут не знаю куда складывать заказы после того как пользователь нажимает купить типа. 
-    // В $_SESSION как видищь массив с данными из карзины. 
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   
         mysqli_close($conn);
         session_destroy();
 
-
+echo "<br>";
         echo '<h1 style="color: red; text-align:center;">Veiksmīģi pasūtīts!</h1>';
         return view('cart');
      }
