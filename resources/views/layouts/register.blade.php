@@ -77,7 +77,19 @@ span.psw {
     <img class="rounded center" src="/images/A&A.jpg" alt="Avatar" class="avatar">
   <h2>@lang('main.Reg')<a href="/home" class=""> @lang('main.our_flowers_base')</a></h2>
   </div>
-<form action="/register_final/" method="get" id="regform">
+  <?php echo Form::open(array('url' => '/register_final/', 'class'=>'form', 'id'=>'regform')); ?>
+
+@if(session()->has('message-error'))
+    <div class="alert alert-danger">
+        {{ session()->get('message-error') }}
+    </div>
+@endif
+
+@if(session()->has('message-success'))
+    <div class="alert alert-success">
+        {{ session()->get('message-success') }}
+    </div>
+@endif
     <div class="container">
     <p>Name<span style="font-size: 150%; color: #f44336">*</span>:</p><input type="text" name="reguname" id="reguname" class="form-control" />
   </div>
@@ -89,17 +101,16 @@ span.psw {
   </div>
   
     <div class="container form-group col-md-2">
-        <label for="roles">@lang('main.Kurš')</label>
-<select class="form-control" id="roles" name="regurole" form="regform">
+        <label for="regurole">@lang('main.Kurš')</label>
+<select class="form-control" id="regurole" name="regurole" form="regform">
   <option value="user">User</option>
   <option value="admin">Admin</option>
-  <option value="loxs">Loxs</option>
 </select>
         <button type="submit" class="btn btn-success ">@lang('main.Reg')</button>
         
     </div>
     
-</form>
+<?php echo Form::close(); ?>
  <div class="container ">
      <a href="/home" class="btn btn-warning col-md-2">@lang('main.Atp')</a>
  </div>

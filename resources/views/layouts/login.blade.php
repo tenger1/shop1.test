@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -68,29 +69,28 @@ span.psw {
 </head>
 
 
-<h2>@lang('main.in')</h2>
-
-
   <div class="imgcontainer">
     <img class="rounded center" src="/images/A&A.jpg" alt="Avatar" class="avatar">
+	<br><h2>@lang('main.in')</h2>
   </div>
- 
-<form action="/login_final/" method="get">
+ <?php echo Form::open(array('url' => '/login_final/', 'class'=>'form')); ?>
+
+@if(session()->has('message-error'))
+    <div class="alert alert-danger">
+        {{ session()->get('message-error') }}
+    </div>
+@endif 
   <div class="container">
       <p>Username:</p><input type="text" name="ulogin" id="ulogin" class="form-control" required/>
   </div>
   <div class="container">
     <p>Password:</p><input type="password" name="upsw" id="upsw" class="form-control" required/>
   </div>
-        
+       
     <button type="submit">@lang('main.ieiet')</button>
   </div>
 
-  <div class="container" style="background-color:#f1f1f1">
-    
-
-  </div>
-</form>
+<?php echo Form::close(); ?>
 
 <div>
 <form method="get" action="/home">
