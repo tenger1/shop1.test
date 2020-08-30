@@ -149,9 +149,9 @@ for($i = 0; $i < count($count_to_delete); ++$i){
         mysqli_close($conn);
         session_destroy();
 
-echo "<br>";
-        echo '<h1 style="color: red; text-align:center;">Veiksmīģi pasūtīts!</h1>';
-        return view('cart');
+
+        return redirect()->back()->with('message-success', 'Veiksmiģi pasūtīts!');
+        
      }
     
     

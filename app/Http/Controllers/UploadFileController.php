@@ -15,6 +15,9 @@ class UploadFileController extends Controller {
    public function index2() {
       return redirect()->back();
    }
+   public function index3() {
+      return view('myorders');
+   }
    
    public function ChangeImage(Request $request) {
       if(empty($_COOKIE['userrole']) || $_COOKIE['userrole'] != 'admin'){
@@ -181,16 +184,19 @@ $last = $data[0]['MAX']+1;
       
       //echo 'File extension: '.$file->guessExtension();
       //Move Uploaded File
+	  if($file){
       $ext = $file->getClientOriginalExtension();
       $newname = "$last.$ext";
       $destinationPath = 'images';
-      
+      $file->move($destinationPath,$newname);
+	  }
+	  
       $result = mysqli_query($conn, "INSERT INTO goods (id, name, color, country, description, price, category_id, count) VALUES ('$last','$name', '$color', '$country', '$description', '$price','$category_id', '$count')");
         mysqli_close($conn);
-        if ($result) echo "<br><h1>Add good!</h1>";
+        if ($result) return redirect()->back()->with('message-success', 'Product added!');
 
         
-        $file->move($destinationPath,$newname);
+        //$file->move($destinationPath,$newname);
       
       
       return view('redactor');

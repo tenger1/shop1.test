@@ -12,11 +12,11 @@ class LoginController extends Controller
     public function finishLogin(Request $request){
    // $login = htmlspecialchars($_POST['ulogin']);   
   // $pass = htmlspecialchars($_POST['ulogin']);
-//$login = $_POST["ulogin"];
-//$pass = $_POST["ulogin"];
+$login = $_POST["ulogin"];
+$pass = $_POST["ulogin"];
 
-        $login = ($_GET["ulogin"]);
-        $pass = ($_GET["upsw"]);
+      //  $login = ($_GET["ulogin"]);
+      //  $pass = ($_GET["upsw"]);
         
       //echo"Login: $login <br> Pass: $pass";  
 
@@ -36,16 +36,16 @@ $result = mysqli_query($conn, "SELECT * FROM `login` WHERE `user` = '$login' AND
 mysqli_close($conn);
 //var_dump($result);
 if(!$result) {
-    echo "<h1>Error!</h1>";
-    exit();
+	return redirect()->back()->with('message-error', 'DB Error!');
+    
     
 }
 else{
 
 $user = $result->fetch_assoc();
 if(!$user) {
-    echo "<h1>Error!</h1>";
-    exit();
+	return redirect()->back()->with('message-error', 'Wrong password or username!');
+    
     
 }
 
