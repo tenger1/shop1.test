@@ -64,7 +64,7 @@ if($go == 0) $go= "-";
                         
           
                     <p style="font-variant: small-caps; "> <a class="cat_g" href="/goods/{{$good->id}}"> {{$good->name}} </a>
-					<br>@lang('main.Cena'): <span style="font-size: 140%; color: purple">{{$good->price}} €</span><span style="font-variant: normal">/@lang('main.prece').</span></p>
+					<br>@lang('main.Cena'): <span style="font-size: 140%; color: purple">{{number_format($good->price, 2, '.',' ')}} €</span><span style="font-variant: normal">/@lang('main.prece').</span></p>
                     <p>@lang('main.Valsts'): {{$good->country}}
                     <p> @lang('main.prece'): <span class="cena" style="color:#cc6666">{{$go}}</span></p>
                     
