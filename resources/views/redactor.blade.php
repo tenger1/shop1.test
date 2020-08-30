@@ -4,6 +4,17 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
 <h1 style="text-align: center; font-variant: small-caps; margin-top: 30px;">Redactors</h1>
+@if(session()->has('message-error'))
+    <div class="alert alert-danger">
+        {{ session()->get('message-error') }}
+    </div>
+@endif
+
+@if(session()->has('message-success'))
+    <div class="alert alert-success">
+        {{ session()->get('message-success') }}
+    </div>
+@endif
 <h2 style="margin-left: 40px; color: #df5000; font-variant: small-caps;">Pievienot kategoriju:</h2>
 <div class="container">
 		 

@@ -55,7 +55,18 @@
                
            </style>
            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	
+		   
+	@if(session()->has('message-error'))
+    <div class="alert alert-danger">
+        {{ session()->get('message-error') }}
+    </div>
+@endif
+
+@if(session()->has('message-success'))
+    <div class="alert alert-success">
+        {{ session()->get('message-success') }}
+    </div>
+@endif
 		<div class="table">
                     
                     <table class="table ml-4 text-center">
@@ -96,15 +107,18 @@
 					  echo "</td>";
 					  
 					  echo "<td>";
-					  echo $v1["price"];
-					  echo "€</td>";
+					  echo '<span class="text-uppercase" style="color: #91040b;">';
+					  echo number_format($v1["price"], 2, '.',' ');
+					  echo "€</span></td>";
 					  echo "<td>";
+					  
 					  echo $v1["count"];
 					  echo "</td>";
 					  
 					  echo "<td>";
-					  echo $v1["count"]*$v1["price"];
-					  echo "€</td>";
+					  echo '<span class="text-uppercase" style="color: #c93200; font-size: 130%;">';
+					  echo number_format($v1["count"]*$v1["price"], 2, '.',' ');
+					  echo "€</span></td>";
                     // }
                      echo "</tr>";
                      }  ?>
@@ -118,7 +132,7 @@ for($i = 0; $i < count($prices); ++$i) {
   $summ += $prices[$i]*$counts[$i];
 }
 
-echo $summ;?>€</span></p>
+echo number_format($summ, 2, '.',' ');?>€</span></p>
                     
                 </div>
 

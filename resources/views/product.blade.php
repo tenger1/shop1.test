@@ -38,7 +38,7 @@
                    <p> @lang('main.Krāsa'): <span class="krasa">{{$good->color}}</span> </p>
                    <p> @lang('main.Valsts'): <span class="valsts">{{$good->country}}</span> </p>
                    <p> @lang('main.Apraksts'): <span class="apraksts">{{$good->description}}</span> </p>
-                   <p> @lang('main.Cena'): <span class="cena" style="color:purple">{{$good->price}}€</span>/gb. </p> 
+                   <p> @lang('main.Cena'): <span class="cena" style="color:purple">{{number_format($good->price, 2, '.',' ')}} €</span>/gb. </p> 
                    <p> Produkta kods (ID): {{$good->id}} </p>
 				   
                    <form class="form-inline formorder" action="/add_action/"> 
