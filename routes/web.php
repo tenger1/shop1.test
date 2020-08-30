@@ -69,16 +69,14 @@ Route::get('/home_eng', function () {
 Route::get('/login', function(){
         return view('layouts/login');
 });
-Route::get('/login_final', [
-        'uses' => 'LoginController@finishLogin'
-]);
-//Route::post('/login_final','LoginController@finishLogin');
+//Route::get('/login_final', 'LoginController@finishLogin');
+Route::post('/login_final','LoginController@finishLogin');
 
 
 Route::get('/register', function(){
         return view('layouts/register');
 });
-Route::get('/register_final', [
+Route::post('/register_final', [
         'uses' => 'RegController@finishReg'
 ]);
 
@@ -152,3 +150,9 @@ Route::get('/image_change','UploadFileController@index2');
 Route::post('/image_change','UploadFileController@ChangeImage');
 
 Route::post('/sendemail/send', 'SendEmailController@send');
+
+Route::get('/change_name', [
+        'uses' => 'ChangeController@ChangeName'
+]);
+//Route::get('/change_pass','UploadFileController@index2');
+Route::post('/change_pass', 'ChangeController@ChangePass');
