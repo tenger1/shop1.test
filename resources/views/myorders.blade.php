@@ -1,32 +1,9 @@
 @extends('layouts.orders')
 
 @section('content')
-
+<div class="container" style="width: 70vw;">
 		<div class="container mx-auto mt-4 mb-4">
-					<form class="form-inline" method="get" action="/change_name/">
-						<div class="form-group mx-sm-3 mb-2">
-							<input class="form-control" type="text" name="change_name" id="change_name" value="{{$_COOKIE['user']}}">
-						</div>
-						<button type="submit" class="btn btn-warning mb-2">Change name</button>
-					</form>
-				</div>
-				
-				<div class="form-group mx-auto mt-4 mb-4">
-				<?php echo Form::open(array('url' => '/change_pass/', 'class'=>'form-inline')); ?>
-					
-						<div class="form-group mr-2 mb-2 col-xs-4">
-						<label class="formGroupExampleInput" for="change_pass_old">Old password:</label>
-							<input class="form-control mx-1" type="password" name="change_pass_old" id="change_pass_old" required>
-						</div>
-						
-						<div class="form-group mr-2 mb-2 col-xs-4">
-						<label class="formGroupExampleInput" for="change_pass_new">New password:</label>
-							<input class="form-control mx-1" type="password" name="change_pass_new" id="change_pass_new" required>
-						</div>
-						
-						<button type="submit" class="btn btn-warning mb-2 mx-2">Change password</button>
-					<?php echo Form::close(); ?>
-					@if(session()->has('message-error'))
+		@if(session()->has('message-error'))
     <div class="alert alert-danger">
         {{ session()->get('message-error') }}
     </div>
@@ -37,12 +14,38 @@
         {{ session()->get('message-success') }}
     </div>
 @endif
+					
+					<form class="form-inline" method="get" action="/change_name/">
+						<div class="form-group mx-sm-3 mb-2">
+							<input class="form-control" type="text" name="change_name" id="change_name" value="{{$_COOKIE['user']}}">
+						</div>
+						<button type="submit" class="btn btn-warning mb-2">Change name</button>
+					</form>
+				</div>
+				
+				<div>
+				<?php echo Form::open(array('url' => '/change_pass/', 'class'=>'form-inline')); ?>
+					
+						<div class="form-group  mb-2 mx-sm-3 col-xs-4">
+						<label class="formGroupExampleInput" for="change_pass_old">Old password:</label>
+							<input class="form-control mx-1" type="password" name="change_pass_old" id="change_pass_old" required>
+						</div>
+						
+						<div class="form-group  mb-2 mx-sm-3 col-xs-4">
+						<label class="formGroupExampleInput" for="change_pass_new">New password:</label>
+							<input class="form-control mx-1" type="password" name="change_pass_new" id="change_pass_new" required>
+						</div>
+						
+						<button type="submit" class="btn btn-warning mb-2 mx-2">Change password</button>
+					<?php echo Form::close(); ?>
+					
 				</div>
 
 <div class="container">
+<h1 style="text-align: center; font-variant: small-caps; color: #df5000;">My orders</h1>
 <?php if($key ?? ''){
                 
-                echo '<table class="table">
+                echo '<table class="table" >
 <thead class="thead-dark">
     <tr>
       <th scope="col">Status</th>
@@ -108,7 +111,7 @@
                      
                 }
                 if($key2 ?? ''){
-                    echo '<table class="table">
+                    echo '<table class="table" >
 <thead class="thead-dark">
     <tr>
       <th scope="col">Status</th>
@@ -172,6 +175,6 @@
                 }}
                 ?><tbody></table></div>
                 
-                
+       </div>         
 
 @endsection

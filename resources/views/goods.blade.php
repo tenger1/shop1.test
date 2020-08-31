@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+<div class="good_content" style="color:black;"><h4>{{$goods->total()}} @lang('main.prece')</h4></div>
 	   @foreach($goods as $good)   
            
            <style>
@@ -71,5 +72,6 @@ if($go == 0) $go= "-";
                     </div>
                 </div>
 	@endforeach
+	<div class="good_content">{{$goods->links()}}</div>
 	
 @endsection

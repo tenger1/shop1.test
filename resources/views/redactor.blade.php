@@ -210,13 +210,16 @@ mysqli_close($conn);
 </form>
     
 
-    
+             
+</div>
 
 
-  
-                <?php if($key ?? ''){
+@endsection
+
+@section('table')
+		<?php if($key ?? ''){
                 
-                echo '<table class="table">
+                echo '<table class="table" style="width: 70vw;">
 <thead class="thead-dark">
     <tr>
       <th scope="col">Complete</th>
@@ -298,7 +301,4 @@ mysqli_close($conn);
                               
                 ?>
 <tbody></table>
-</div>
-
-
 @endsection
