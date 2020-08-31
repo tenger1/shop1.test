@@ -13,7 +13,7 @@ class LoginController extends Controller
    // $login = htmlspecialchars($_POST['ulogin']);   
   // $pass = htmlspecialchars($_POST['ulogin']);
 $login = $_POST["ulogin"];
-$pass = $_POST["ulogin"];
+$pass = $_POST["upsw"];
 
       //  $login = ($_GET["ulogin"]);
       //  $pass = ($_GET["upsw"]);
@@ -32,9 +32,15 @@ $pass = md5($pass."uyfvhsfias");
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
  
-$result = mysqli_query($conn, "SELECT * FROM `login` WHERE `user` = '$login' AND `password` = '$pass'");
+$result = mysqli_query($conn, "SELECT * FROM login WHERE user='$login' AND password='$pass'");
 mysqli_close($conn);
-//var_dump($result);
+/*var_dump($result);
+$res = $result->fetch_assoc(); 
+
+print_r($res);
+echo "<br>";
+echo $pass;
+*/
 if(!$result) {
 	return redirect()->back()->with('message-error', 'DB Error!');
     
