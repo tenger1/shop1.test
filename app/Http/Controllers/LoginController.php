@@ -56,8 +56,7 @@ if(!$user) {
 }
 
 if(count($user) == 0){
-    echo "<h1>No such user!</h1>";
-    exit();
+    return redirect()->back()->with('message-error', 'No such user!');
 }
 
 setcookie('user', $user['name'], time() + 3600, "/");
@@ -71,9 +70,9 @@ setcookie('userrole', $user['role'], time() + 3600, "/");
 setcookie('userid', $user['id'], time() + 3600, "/");
 //if ($result) echo "<h1>Login good!</h1>";
 if($urole == "admin"){
-    return redirect()->to('/redactor');
+    return redirect()->to('/redactor')->with('message-success', 'Login successful!');
 }
-else return redirect()->to('/home');
+else return redirect()->to('/home')->with('message-success', 'Login successful!');
 }
 
 // $result=mysqli_query($conn, "SELECT * FROM login WHERE 'user'=".$_GET["uname"]." AND 'pass'=".$_GET["upsw"]."") ;
@@ -87,7 +86,8 @@ public function loginExit(){
     setcookie("userrole", "", time() - 3600);
     
    // return view('welcome');
-    return redirect()->to('/home');
+   // return redirect()->to('/home');
+	return redirect()->to('/home')->with('message-success', 'You have successfully logged out!');
 
 
 

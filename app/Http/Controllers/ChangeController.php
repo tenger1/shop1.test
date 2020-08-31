@@ -55,10 +55,10 @@ if (!defined('DB_HOST'))define('DB_HOST', $address);
 				$result2 = mysqli_query($conn, "UPDATE login SET name='$change_name' WHERE id='$userid'");
 				if($result2){
 					setcookie('user', $change_name, time() + 3600, "/");
-					return redirect()->back();
+					return redirect()->back()->with('message-success', 'Your name was changed!');
 				}
 			}
-			else echo "<h1>ERROR!</h1>";
+			else return redirect()->back()->with('message-error', 'Error!');
 		}
 		
 		public function ChangePass(Request $request){
@@ -85,12 +85,12 @@ if (!defined('DB_HOST'))define('DB_HOST', $address);
 			
 			$result2 = mysqli_query($conn, "UPDATE login SET password='$pass_new' WHERE id='$userid'");
 			if ($result2){
-			return redirect()->back()->with('message-success', 'Changed!');
+			return redirect()->back()->with('message-success', 'Your password updated!');
 			}
 			else return redirect()->back()->with('message-error', 'DB Error!');
 		}
 		else {
-			return redirect()->back()->with('message-error', 'Wrong pass!');
+			return redirect()->back()->with('message-error', 'Wrong password!');
 			
 		}
 			

@@ -11,7 +11,8 @@ class CategoriesController extends Controller
    public function categoryAction($id){
        $category = Categories::find($id);
        if ($category){
-           $goods = Goods::where('category_id', $id)->get();
+           $goods = Goods::where('category_id', $id)->paginate(5);
+
            return view('goods', ['goods' => $goods]);
                    
        }

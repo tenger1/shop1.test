@@ -12,10 +12,10 @@ class SearchController extends Controller
 //$search_value=$_POST["search"];
 
 //$products = Goods::find($search);
-$products = Goods::where('name', 'LIKE', '%' . $search . '%')->get();
+$products = Goods::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
 
 if ($products) {
-            return view('search', ['good' => $products]);
+            return view('search', ['goods' => $products]);
             
         }
 
