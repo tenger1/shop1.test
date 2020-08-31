@@ -19,7 +19,7 @@
 <script src="js/google-translate.js"></script>
 <script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
     
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/starter-template/">
 
@@ -219,7 +219,7 @@ for($i = 0; $i < count($prices2); ++$i) {
 <ul class="navbar list-inline mx-auto text-right">
   <li class="list-inline-item"><a class="nav-link bg-warning btn mb-2" href="/cart2/" title="Cart"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-</svg><?php echo $summ2; ?> €</a></li>
+</svg><?php echo number_format($summ2, 2, '.',' ');; ?> €</a></li>
 </ul>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -243,10 +243,8 @@ for($i = 0; $i < count($prices2); ++$i) {
             <h5 class="text-center mx-auto">@lang('main.Hello'), <?=$_COOKIE['user']?>! </h5> 
 			
         <ul class="list-inline mx-auto justify-content-center">
-       <li class="list-inline-item"><a class="btn btn-outline-danger mx-1 mb-2" href="/my_orders"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-truck" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5v7h-1v-7a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5v1A1.5 1.5 0 0 1 0 10.5v-7zM4.5 11h6v1h-6v-1z"/>
-  <path fill-rule="evenodd" d="M11 5h2.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5h-1v-1h1a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4.5h-1V5zm-8 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
-  <path fill-rule="evenodd" d="M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+       <li class="list-inline-item"><a class="btn btn-outline-danger mx-1 mb-2" href="/my_orders"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
 </svg></a></li>
         
         <li class="list-inline-item"><a class="btn btn-outline-danger mb-2" href="/redactor" style="text-align: center;"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -298,12 +296,71 @@ for($i = 0; $i < count($prices2); ++$i) {
 
   <div class="starter-template">
 	
-	<div class="row">
+	
 	
 		
 			@yield('content')
                         
-            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  
+  
+                        <style type="text/css">
+   .box{
+    width:600px;
+    margin:0 auto;
+    
+   }
+   .has-error
+   {
+    border-color:#cc0000;
+    background-color:#ffff99;
+   }
+  </style>
+
+  <br />
+  <br />
+  <br />
+  <div class="container box " style="width: 90vw;">
+   <h3 align="center">Email</h3><br />
+   @if (count($errors) > 0)
+    <div class="alert alert-danger">
+     <button type="button" class="close" data-dismiss="alert">×</button>
+     <ul>
+      @foreach ($errors->all() as $error)
+       <li>{{ $error }}</li>
+      @endforeach
+     </ul>
+    </div>
+   @endif
+   @if ($message = Session::get('success'))
+   <div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+           <strong>{{ $message }}</strong>
+   </div>
+   @endif
+   <form method="post" action="{{url('sendemail/send')}}">
+    {{ csrf_field() }}
+    <div class="form-group">
+     <label>Enter Your Name</label>
+     <input type="text" name="name" class="form-control" value="<?php 
+    if(isset($_COOKIE['user'])){
+    echo $_COOKIE['user'];} ?>" />
+
+    </div>
+    <div class="form-group">
+     <label>Enter Your Email</label>
+     <input type="text" name="email" class="form-control" value="" />
+    </div>
+    <div class="form-group">
+     <label>Enter Your Message</label>
+     <textarea name="message" class="form-control" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+     <input type="submit" name="send" class="btn btn-info" value="Send" />
+    </div>
+   </form>
+   
+  </div>
 		
    
 </div>

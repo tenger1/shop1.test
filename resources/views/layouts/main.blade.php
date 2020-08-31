@@ -243,10 +243,8 @@ for($i = 0; $i < count($prices2); ++$i) {
             <h5 class="text-center mx-auto">@lang('main.Hello'), <?=$_COOKIE['user']?>! </h5> 
 			
         <ul class="list-inline mx-auto justify-content-center">
-       <li class="list-inline-item"><a class="btn btn-outline-danger mx-1 mb-2" href="/my_orders"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-truck" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5v7h-1v-7a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5v1A1.5 1.5 0 0 1 0 10.5v-7zM4.5 11h6v1h-6v-1z"/>
-  <path fill-rule="evenodd" d="M11 5h2.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5h-1v-1h1a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4.5h-1V5zm-8 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
-  <path fill-rule="evenodd" d="M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+       <li class="list-inline-item"><a class="btn btn-outline-danger mx-1 mb-2" href="/my_orders"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
 </svg></a></li>
         
         <li class="list-inline-item"><a class="btn btn-outline-danger mb-2" href="/redactor" style="text-align: center;"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -308,7 +306,13 @@ for($i = 0; $i < count($prices2); ++$i) {
 		
             <div class="col-md-9">
 			@yield('content')
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			
+			</div>
+            </div>
+			
+			@yield('table')
+			
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   
   
                         <style type="text/css">
@@ -327,7 +331,7 @@ for($i = 0; $i < count($prices2); ++$i) {
   <br />
   <br />
   <br />
-  <div class="container box">
+  <div class="container box" style="width: 90vw;">
    <h3 align="center">Email</h3><br />
    @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -368,12 +372,12 @@ for($i = 0; $i < count($prices2); ++$i) {
    </form>
    
   </div>
-            </div>
-		
-   </div>
+   
 
 
   </div>
+  
+  
 </main><!-- /.container -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
